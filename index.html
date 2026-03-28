@@ -70,6 +70,7 @@
       max-width: 46rem;
     }
     .muted { color: var(--muted); }
+    .small { font-size: 0.88rem; color: var(--muted); }
 
     .btns { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
     .btn {
@@ -205,6 +206,8 @@
 
     .two-col { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 26px; align-items: start; }
     .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
     .card {
       background: rgba(255,255,255,0.88);
       border: 1px solid var(--line);
@@ -259,6 +262,101 @@
     .occasion-icon { font-size: 1.5rem; }
     .occasion p { margin-top: 10px; color: var(--muted); }
 
+    .preview-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 24px; align-items: start; }
+    .phone-stack { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .phone-shot {
+      background: linear-gradient(180deg, #f9f6ef 0%, #fff 100%);
+      border: 1px solid var(--line);
+      border-radius: 32px;
+      padding: 12px;
+      box-shadow: var(--shadow);
+    }
+    .phone-screen {
+      background: #fff;
+      border: 1px solid #ece4d7;
+      border-radius: 24px;
+      padding: 14px;
+      min-height: 360px;
+      display: grid;
+      gap: 12px;
+    }
+    .phone-notch { width: 92px; height: 6px; background: #d9d2c6; border-radius: 999px; margin: 0 auto 10px; }
+    .screen-pill { display: inline-flex; align-items: center; gap: 6px; background: #f4efe5; border-radius: 999px; padding: 6px 10px; font-size: 0.74rem; font-weight: 700; }
+    .screen-stat { border: 1px solid var(--line); border-radius: 18px; padding: 12px; background: #fdfbf6; }
+    .screen-stat strong { display: block; font-size: 1.5rem; letter-spacing: -0.05em; }
+    .screen-line { height: 9px; background: linear-gradient(90deg, #dfe8d8 0%, #cfe3c7 100%); border-radius: 999px; }
+    .screen-line.muted { background: #efe8db; }
+    .screen-chart {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 10px;
+      background: #fbf8f2;
+    }
+    .screen-list { display: grid; gap: 8px; }
+    .screen-list div { border: 1px solid var(--line); border-radius: 14px; padding: 10px 12px; font-size: 0.84rem; background: #fff; }
+
+    .featured-rail {
+      display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin-top: 26px;
+    }
+    .logo-badge {
+      background: rgba(255,255,255,0.82);
+      border: 1px dashed #c9bda9;
+      border-radius: 18px;
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .media-card .thumb {
+      aspect-ratio: 16 / 9;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #dde8d7 0%, #f2ece1 100%);
+      border: 1px solid var(--line);
+      display: grid;
+      place-items: center;
+      color: var(--green);
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    .story-card {
+      display: grid;
+      gap: 14px;
+      background: rgba(255,255,255,0.9);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+    .story-meta { display: flex; justify-content: space-between; gap: 10px; color: var(--muted); font-size: 0.9rem; }
+
+    .resource-card {
+      background: rgba(255,255,255,0.88);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+      min-height: 210px;
+      display: grid;
+      align-content: start;
+      gap: 12px;
+    }
+    .resource-type {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 999px;
+      background: #f4efe5;
+      padding: 6px 10px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      width: fit-content;
+    }
+
     .cta-panel {
       background: linear-gradient(180deg, #20432d 0%, #162e1f 100%);
       color: #f7f4ee;
@@ -276,7 +374,6 @@
       background: rgba(255,255,255,.06);
     }
     .cta-side strong { font-size: 2rem; letter-spacing: -0.05em; }
-    .small { font-size: 0.88rem; color: var(--muted); }
 
     footer { padding: 30px 0 46px; color: var(--muted); }
     .footer-row { display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap; border-top: 1px solid var(--line); padding-top: 18px; }
@@ -292,14 +389,15 @@
     .floaty { animation: bob 4.5s ease-in-out infinite; }
 
     @media (max-width: 1100px) {
-      .hero-grid, .two-col, .cta-panel, .growth-box { grid-template-columns: 1fr; }
-      .providers-grid, .occasion-grid { grid-template-columns: repeat(2, 1fr); }
-      .grid-3 { grid-template-columns: 1fr; }
+      .hero-grid, .two-col, .cta-panel, .growth-box, .preview-grid { grid-template-columns: 1fr; }
+      .providers-grid, .occasion-grid, .featured-rail { grid-template-columns: repeat(2, 1fr); }
+      .grid-3, .grid-4, .grid-2 { grid-template-columns: 1fr; }
+      .phone-stack { grid-template-columns: 1fr; }
       .hero-art { min-height: unset; }
     }
     @media (max-width: 760px) {
       .nav-links { display: none; }
-      .providers-grid, .occasion-grid, .mini-grid { grid-template-columns: 1fr; }
+      .providers-grid, .occasion-grid, .mini-grid, .featured-rail { grid-template-columns: 1fr; }
       .section { padding: 58px 0; }
       .hero { padding: 22px 0 44px; }
       .hero-art, .chart-card, .cta-panel { padding: 18px; }
@@ -319,11 +417,12 @@
       </a>
       <nav class="nav-links" aria-label="Primary">
         <a href="#how">How it works</a>
-        <a href="#providers">Providers</a>
-        <a href="#occasions">Occasions</a>
+        <a href="#preview">Inside the app</a>
+        <a href="#stories">Stories</a>
+        <a href="#featured">Featured</a>
         <a href="#faq">Why parents use it</a>
       </nav>
-      <a class="btn btn-primary" href="#cta">Get started</a>
+      <a class="btn btn-primary" href="https://app.usesapling.co.uk">Get started</a>
     </div>
   </header>
 
@@ -340,7 +439,7 @@
           </div>
           <p class="lead">A simple way for friends and family to contribute at birthdays, Christmas, christenings and baby showers — without cash getting forgotten, cheques sitting in drawers, or another pile of stuff cluttering the house.</p>
           <div class="btns">
-            <a class="btn btn-primary" href="#cta">Create your child’s Sapling</a>
+            <a class="btn btn-primary" href="https://app.usesapling.co.uk">Create your child’s Sapling</a>
             <a class="btn btn-secondary" href="#how">See how it works</a>
           </div>
         </div>
@@ -426,6 +525,81 @@
                     <div class="trunk"></div>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="preview">
+      <div class="container preview-grid">
+        <div>
+          <span class="eyebrow">Inside the app</span>
+          <h2 style="margin-top:14px; max-width: 11ch;">Show people the payoff, not just the idea.</h2>
+          <p class="lead">Sapling feels much more real once parents can picture the dashboard, event pages, growing totals and the “could be worth” forecasts their family will see in action.</p>
+          <div class="card" style="margin-top:24px;">
+            <h3>What people should immediately understand</h3>
+            <p>Parents can set up a child, share a birthday or baby shower page, collect gifts as one-off or recurring support, and see those gifts building into a long-term future — all in a product that feels calm, modern and easy to trust.</p>
+          </div>
+        </div>
+        <div class="phone-stack">
+          <div class="phone-shot">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <span class="screen-pill">Dashboard</span>
+              <div class="screen-stat">
+                <span class="small">Current value</span>
+                <strong>£2,640</strong>
+                <span class="small">Could be worth £18,240 by age 18</span>
+              </div>
+              <div class="screen-chart">
+                <svg viewBox="0 0 220 110" width="100%" height="110" aria-hidden="true">
+                  <path d="M10 94 C42 92, 62 84, 92 68 S146 35, 210 14" fill="none" stroke="#3f7b52" stroke-width="4" stroke-linecap="round"></path>
+                  <circle cx="210" cy="14" r="4.5" fill="#d2a34f"></circle>
+                </svg>
+              </div>
+              <div class="screen-list">
+                <div>One-off gifts · £920</div>
+                <div>Recurring support · £1,050</div>
+                <div>Referral bonuses · £100</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="phone-shot">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <span class="screen-pill">Birthday event</span>
+              <div class="screen-stat">
+                <span class="small">Ada's first birthday</span>
+                <strong>£420</strong>
+                <span class="small">Could be worth £1,180 by age 18</span>
+              </div>
+              <div class="screen-list">
+                <div>18 contributions</div>
+                <div>2 monthly supporters started</div>
+                <div>QR and event link ready to share</div>
+              </div>
+              <div class="screen-line"></div>
+              <div class="screen-line muted"></div>
+              <div class="screen-line"></div>
+            </div>
+          </div>
+
+          <div class="phone-shot">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <span class="screen-pill">Donation page</span>
+              <div class="screen-stat">
+                <span class="small">Atticus's future</span>
+                <strong>£10 · £20 · £50</strong>
+                <span class="small">Small donations today can help set them up for the years ahead.</span>
+              </div>
+              <div class="screen-list">
+                <div>Event total raised</div>
+                <div>Overall fund total</div>
+                <div>See how this could grow</div>
               </div>
             </div>
           </div>
@@ -580,10 +754,102 @@
             <p>Swap another ornamental gift for something that will still matter years later.</p>
           </div>
           <div class="occasion">
-            <div class="occasion-icon">🎄</div>
-            <h3>Christmas</h3>
-            <p>Give family an easy alternative to more plastic tat when everyone asks what to buy.</p>
+            <div class="occasion-icon">⚽</div>
+            <h3>Clubs &amp; teams</h3>
+            <p>Shared team QR codes, school events and sports milestones can all point back to future savings.</p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="stories">
+      <div class="container">
+        <span class="eyebrow">Stories, ideas and proof</span>
+        <h2 style="margin-top:14px; max-width: 12ch;">Build the site around how families actually use it.</h2>
+        <p class="lead">This section is ready to hold future customer stories, founder explainers, social carousels and practical ideas for how families share Sapling in the real world.</p>
+        <div class="grid-3" style="margin-top: 26px;">
+          <article class="story-card">
+            <div class="story-meta"><span>Customer story</span><span>Future section</span></div>
+            <h3>How Ada's first birthday raised £420 for her future</h3>
+            <p>Use this card later for a real parent story, including how the QR code was used, how many gifts came in, and what that total could become by 18.</p>
+          </article>
+          <article class="story-card">
+            <div class="story-meta"><span>Social carousel</span><span>Future section</span></div>
+            <h3>Less plastic tat. More future.</h3>
+            <p>Use this area for simple educational graphics that explain the product in one glance and show what small gifts can become over time.</p>
+          </article>
+          <article class="story-card">
+            <div class="story-meta"><span>Parent inspiration</span><span>Future section</span></div>
+            <h3>Pregnancy scan announcement, sports kit QR, family group links</h3>
+            <p>Use this section for ideas and inspiration showing the different ways parents actually share Sapling with friends and family.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container two-col">
+        <div>
+          <span class="eyebrow">Expert voices</span>
+          <h2 style="margin-top:14px; max-width:11ch;">A place for interviews that make the idea feel even more sensible.</h2>
+          <p class="lead">You mentioned interviews with IFAs, wealth managers and thoughtful parents. This section is designed to hold those later without needing another homepage redesign.</p>
+        </div>
+        <div class="grid-2">
+          <article class="card media-card">
+            <div class="thumb">Interview video placeholder</div>
+            <h3>Why starting early matters more than perfect timing</h3>
+            <p>Future home for a short expert clip or recorded conversation with an IFA or wealth manager.</p>
+          </article>
+          <article class="card media-card">
+            <div class="thumb">Parent conversation placeholder</div>
+            <h3>How parents explain Sapling to family without sounding awkward</h3>
+            <p>Future home for practical interviews that help normalise using Sapling at birthdays, baby showers and family milestones.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="featured">
+      <div class="container">
+        <span class="eyebrow">Featured on</span>
+        <h2 style="margin-top:14px; max-width: 12ch;">Make room now for the logos and mentions that add social proof later.</h2>
+        <p class="lead">This strip is intentionally placeholder-ready for future publication badges, podcast logos, community mentions and trusted-parent-platform coverage. Keep it hidden or obviously placeholder until you have real coverage.</p>
+        <div class="featured-rail">
+          <div class="logo-badge">Mumsnet</div>
+          <div class="logo-badge">Parenting press</div>
+          <div class="logo-badge">IFA interview</div>
+          <div class="logo-badge">Podcast feature</div>
+          <div class="logo-badge">Community mention</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="resources">
+      <div class="container">
+        <span class="eyebrow">Resources</span>
+        <h2 style="margin-top:14px; max-width: 12ch;">Give yourself somewhere for articles, explainers and future SEO content to live.</h2>
+        <p class="lead">This can evolve into the educational engine behind Sapling — clear articles, simple how-tos, social post support and authority-building explainers.</p>
+        <div class="grid-4" style="margin-top: 26px;">
+          <article class="resource-card">
+            <span class="resource-type">Guide</span>
+            <h3>How to use Sapling for a child’s birthday party</h3>
+            <p>Template for a practical article, with QR ideas, invite wording and how to make it feel normal for guests.</p>
+          </article>
+          <article class="resource-card">
+            <span class="resource-type">Explainer</span>
+            <h3>What small gifts can become by age 18</h3>
+            <p>Educational article or carousel support piece built around simple examples and projections.</p>
+          </article>
+          <article class="resource-card">
+            <span class="resource-type">Interview</span>
+            <h3>What IFAs wish parents understood about starting early</h3>
+            <p>Future long-form content slot for expert-backed reassurance and authority building.</p>
+          </article>
+          <article class="resource-card">
+            <span class="resource-type">Story</span>
+            <h3>Three ways families shared Sapling in real life</h3>
+            <p>Customer-story / inspiration section for social proof and practical use-case ideas.</p>
+          </article>
         </div>
       </div>
     </section>
@@ -606,7 +872,7 @@
           </div>
           <div class="card">
             <h3>Built to spread</h3>
-            <p>Later, referred parents could unlock a bonus contribution into their child’s ISA for signing up.</p>
+            <p>Visible totals, social proof and eventual featured coverage help Sapling feel like a sensible modern thing parents actually do.</p>
           </div>
         </div>
       </div>
@@ -619,14 +885,14 @@
           <h2 style="margin-top: 14px; color: #fff; max-width: 10ch;">Sapling makes the future-friendly option the easiest one to share.</h2>
           <p>Create a child’s fund, choose a provider, and give family and friends a better answer than more stuff they do not need.</p>
           <div class="btns">
-            <a class="btn btn-primary" href="#top">Create your child’s Sapling</a>
-            <a class="btn btn-secondary" href="#providers">See provider examples</a>
+            <a class="btn btn-primary" href="https://app.usesapling.co.uk">Get started in the app</a>
+            <a class="btn btn-secondary" href="#preview">See inside the app</a>
           </div>
         </div>
         <div class="cta-side">
-          <div class="demo-label" style="color: rgba(255,255,255,.72)">Future referral idea</div>
-          <strong>Refer another parent</strong>
-          <p style="margin-top: 12px; color: rgba(255,255,255,.82)">Later, Sapling could reward referred signups with a bonus contribution into the child’s savings — for example, £50 added when a new parent sets up their first fund.</p>
+          <div class="demo-label" style="color: rgba(255,255,255,.72)">Future marketing layer</div>
+          <strong>Stories, experts and social proof</strong>
+          <p style="margin-top: 12px; color: rgba(255,255,255,.82)">This homepage is now ready to hold customer stories, expert interviews, publication badges and practical resources without needing a full redesign later.</p>
         </div>
       </div>
     </section>
@@ -635,7 +901,7 @@
   <footer>
     <div class="container footer-row">
       <div>© Sapling</div>
-      <div>Placeholder concept homepage for getsapling.co.uk</div>
+      <div>Mainsite concept updated for future product proof, stories and social proof</div>
     </div>
   </footer>
 </body>
