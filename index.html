@@ -12,6 +12,649 @@
   <title>Sapling — Where their future takes root</title>
   <meta name="description" content="Sapling helps parents turn gifts from friends and family into long-term savings for their children." />
   <style>
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sapling — Where their future takes root</title>
+  <meta name="description" content="Sapling helps parents turn gifts from friends and family into long-term savings for their children." />
+  <style>
+    :root {
+      --bg: #f7f4ee;
+      --surface: #fffdf9;
+      --surface-2: #f1ece2;
+      --text: #1f2d24;
+      --muted: #5d6b62;
+      --line: #ded6c8;
+      --green: #3f7b52;
+      --green-2: #6aa073;
+      --green-3: #cfe3c7;
+      --sand: #efe5cf;
+      --gold: #d2a34f;
+      --shadow: 0 18px 40px rgba(31, 45, 36, 0.08);
+      --radius: 24px;
+      --radius-sm: 16px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background: linear-gradient(180deg, #fbf8f2 0%, #f7f4ee 42%, #f3eee5 100%);
+      line-height: 1.5;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container { width: min(var(--max), calc(100% - 32px)); margin: 0 auto; }
+    .section { padding: 78px 0; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: rgba(106, 160, 115, 0.1);
+      color: var(--green);
+      padding: 8px 14px; border-radius: 999px; font-weight: 700; font-size: 13px;
+      letter-spacing: 0.01em;
+    }
+    h1, h2, h3, p { margin: 0; }
+    h1 {
+      font-size: clamp(2.6rem, 5vw, 5rem);
+      line-height: 0.97;
+      letter-spacing: -0.05em;
+      max-width: 9ch;
+      margin-top: 18px;
+    }
+    h2 {
+      font-size: clamp(2rem, 3.6vw, 3.4rem);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+      max-width: 12ch;
+    }
+    h3 {
+      font-size: 1.2rem;
+      letter-spacing: -0.02em;
+    }
+    .lead {
+      margin-top: 22px;
+      font-size: clamp(1.05rem, 1.5vw, 1.28rem);
+      color: var(--muted);
+      max-width: 46rem;
+    }
+    .muted { color: var(--muted); }
+
+    .btns { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+    .btn {
+      border: 1px solid transparent;
+      border-radius: 999px;
+      padding: 14px 20px;
+      font-weight: 700;
+      font-size: 0.98rem;
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--green); color: white; box-shadow: var(--shadow); }
+    .btn-secondary { background: rgba(255,255,255,0.7); border-color: var(--line); }
+
+    .topbar {
+      position: sticky; top: 0; z-index: 20;
+      backdrop-filter: blur(12px);
+      background: rgba(251, 248, 242, 0.76);
+      border-bottom: 1px solid rgba(222, 214, 200, 0.75);
+    }
+    .nav {
+      min-height: 74px;
+      display: flex; align-items: center; justify-content: space-between; gap: 18px;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 1.15rem; letter-spacing: -0.03em; }
+    .brand-mark {
+      width: 40px; height: 40px; border-radius: 14px;
+      background: radial-gradient(circle at 30% 30%, #78b27f 0%, #4a855a 70%);
+      position: relative; box-shadow: inset 0 1px 0 rgba(255,255,255,.3);
+    }
+    .brand-mark::before {
+      content: ""; position: absolute; left: 19px; bottom: 7px; width: 2px; height: 18px; background: #f7f4ee;
+      border-radius: 99px;
+    }
+    .brand-mark::after {
+      content: ""; position: absolute; left: 11px; top: 9px; width: 18px; height: 13px;
+      background: #f7f4ee; border-radius: 18px 18px 18px 2px; transform: rotate(-28deg);
+      box-shadow: 11px 5px 0 -2px #f7f4ee;
+    }
+    .nav-links { display: flex; gap: 18px; align-items: center; color: var(--muted); font-weight: 600; }
+
+    .hero { padding: 34px 0 64px; }
+    .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 34px; align-items: center; }
+    .tagline { margin-top: 16px; font-weight: 800; letter-spacing: -0.02em; font-size: 1.15rem; }
+    .hero-copy-block {
+      margin-top: 26px;
+      padding: 20px 22px;
+      background: rgba(255,255,255,0.62);
+      border: 1px solid rgba(222, 214, 200, 0.85);
+      border-radius: 22px;
+      max-width: 42rem;
+    }
+    .hero-copy-block p:first-child { font-weight: 800; font-size: 1.15rem; }
+    .hero-copy-block p:last-child { margin-top: 10px; color: var(--muted); }
+
+    .hero-art {
+      background: linear-gradient(180deg, #fffdf8 0%, #f2eadb 100%);
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      box-shadow: var(--shadow);
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+      min-height: 640px;
+    }
+    .hero-orbit {
+      position: absolute; inset: auto -80px 28px auto; width: 240px; height: 240px;
+      border-radius: 50%; background: radial-gradient(circle, rgba(207,227,199,.9) 0%, rgba(207,227,199,0) 68%);
+      filter: blur(4px);
+    }
+    .demo-label { font-size: 0.92rem; color: var(--muted); font-weight: 700; }
+    .flow-cards { display: grid; gap: 16px; position: relative; z-index: 2; }
+    .flow-card {
+      background: rgba(255,255,255,0.92);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 18px;
+      display: grid;
+      gap: 14px;
+      box-shadow: 0 16px 32px rgba(31,45,36,.06);
+    }
+    .flow-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .phone-pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--surface-2); border-radius: 999px; padding: 6px 12px; font-size: 0.8rem; font-weight: 700;
+    }
+    .mini-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .mini-card {
+      border-radius: 18px; background: #faf7f0; border: 1px solid var(--line); padding: 12px; min-height: 92px;
+      display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .mini-card strong { font-size: 0.94rem; }
+    .mini-card span { color: var(--muted); font-size: 0.84rem; }
+    .share-row { display: flex; gap: 10px; flex-wrap: wrap; }
+    .chip {
+      display: inline-flex; align-items: center; gap: 8px; padding: 9px 12px;
+      border-radius: 999px; border: 1px solid var(--line); background: #fff; font-size: 0.84rem; font-weight: 700;
+    }
+    .growth-box {
+      display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 14px;
+      align-items: end;
+    }
+    .chart-wrap {
+      background: linear-gradient(180deg, #f7f4ec 0%, #fff 100%);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 14px;
+    }
+    .stat-card {
+      background: linear-gradient(180deg, #3f7b52 0%, #346745 100%);
+      color: #fff; border-radius: 22px; padding: 18px; min-height: 180px; display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .stat-card strong { font-size: 2.25rem; letter-spacing: -0.05em; line-height: 1; }
+    .tree {
+      height: 128px; display: flex; align-items: end; justify-content: center; position: relative; margin-top: 8px;
+    }
+    .trunk {
+      width: 14px; height: 58px; background: #73593f; border-radius: 10px;
+      transform-origin: bottom center; animation: sway 5.6s ease-in-out infinite;
+    }
+    .leaf {
+      position: absolute; bottom: 44px; width: 76px; height: 56px; background: #6ea473; border-radius: 76px 76px 76px 16px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.24);
+      animation: bob 4.2s ease-in-out infinite;
+    }
+    .leaf.left { transform: rotate(-26deg) translateX(-24px); left: calc(50% - 58px); }
+    .leaf.right { transform: rotate(30deg) translateX(24px); right: calc(50% - 58px); }
+    .leaf.top { width: 88px; height: 62px; bottom: 74px; border-radius: 90px 90px 90px 18px; transform: rotate(-5deg); }
+
+    .two-col { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 26px; align-items: start; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .card {
+      background: rgba(255,255,255,0.88);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 22px;
+    }
+    .step-no {
+      width: 38px; height: 38px; border-radius: 999px;
+      display: inline-flex; align-items: center; justify-content: center;
+      background: var(--green-3); color: var(--green); font-weight: 800; margin-bottom: 14px;
+    }
+    .card p { margin-top: 10px; color: var(--muted); }
+
+    .chart-card {
+      background: linear-gradient(180deg, #fffdf8 0%, #f5f0e6 100%);
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      box-shadow: var(--shadow);
+      padding: 24px;
+    }
+    .chart-head { display: flex; align-items: end; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
+    .chart-meta { color: var(--muted); max-width: 42rem; }
+    .chart-legend { display: flex; gap: 14px; flex-wrap: wrap; font-size: 0.92rem; color: var(--muted); }
+    .legend-item { display: inline-flex; align-items: center; gap: 8px; }
+    .dot { width: 12px; height: 12px; border-radius: 999px; }
+
+    .providers-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 28px; }
+    .provider-card {
+      background: rgba(255,255,255,0.88); border: 1px solid var(--line); border-radius: 24px; padding: 18px; box-shadow: var(--shadow);
+      min-height: 220px; display: flex; flex-direction: column; gap: 14px;
+    }
+    .provider-logo {
+      width: 52px; height: 52px; border-radius: 18px; display: inline-flex; align-items: center; justify-content: center;
+      font-weight: 800; letter-spacing: -0.03em; color: #fff;
+    }
+    .provider-logo.nutmeg { background: linear-gradient(135deg, #93654a 0%, #6a4631 100%); }
+    .provider-logo.vanguard { background: linear-gradient(135deg, #b93442 0%, #8c1f2c 100%); }
+    .provider-logo.cash { background: linear-gradient(135deg, #547bbb 0%, #345e9b 100%); }
+    .provider-logo.prebirth { background: linear-gradient(135deg, #7ca86d 0%, #557e47 100%); }
+    .provider-badge {
+      align-self: start;
+      background: #f2ece1; color: var(--text); border-radius: 999px; padding: 6px 10px; font-size: 0.75rem; font-weight: 800;
+    }
+    .provider-card p { color: var(--muted); }
+
+    .occasion-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 26px; }
+    .occasion {
+      background: rgba(255,255,255,0.82); border: 1px solid var(--line); border-radius: 22px; padding: 18px; box-shadow: var(--shadow);
+      min-height: 164px;
+    }
+    .occasion-icon { font-size: 1.5rem; }
+    .occasion p { margin-top: 10px; color: var(--muted); }
+
+    .cta-panel {
+      background: linear-gradient(180deg, #20432d 0%, #162e1f 100%);
+      color: #f7f4ee;
+      border-radius: 34px;
+      padding: 30px;
+      display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 24px; align-items: center;
+      box-shadow: 0 22px 50px rgba(22,46,31,.22);
+    }
+    .cta-panel p { color: rgba(247,244,238,.75); margin-top: 12px; max-width: 42rem; }
+    .cta-panel .btn-secondary { background: rgba(255,255,255,.1); color: #fff; border-color: rgba(255,255,255,.22); }
+    .cta-side {
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 24px;
+      padding: 20px;
+      background: rgba(255,255,255,.06);
+    }
+    .cta-side strong { font-size: 2rem; letter-spacing: -0.05em; }
+    .small { font-size: 0.88rem; color: var(--muted); }
+
+    footer { padding: 30px 0 46px; color: var(--muted); }
+    .footer-row { display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap; border-top: 1px solid var(--line); padding-top: 18px; }
+
+    @keyframes sway {
+      0%, 100% { transform: rotate(-2deg); }
+      50% { transform: rotate(2deg); }
+    }
+    @keyframes bob {
+      0%, 100% { transform: translateY(0) rotate(-4deg); }
+      50% { transform: translateY(-3px) rotate(1deg); }
+    }
+    .floaty { animation: bob 4.5s ease-in-out infinite; }
+
+    @media (max-width: 1100px) {
+      .hero-grid, .two-col, .cta-panel, .growth-box { grid-template-columns: 1fr; }
+      .providers-grid, .occasion-grid { grid-template-columns: repeat(2, 1fr); }
+      .grid-3 { grid-template-columns: 1fr; }
+      .hero-art { min-height: unset; }
+    }
+    @media (max-width: 760px) {
+      .nav-links { display: none; }
+      .providers-grid, .occasion-grid, .mini-grid { grid-template-columns: 1fr; }
+      .section { padding: 58px 0; }
+      .hero { padding: 22px 0 44px; }
+      .hero-art, .chart-card, .cta-panel { padding: 18px; }
+      .container { width: min(var(--max), calc(100% - 20px)); }
+      .btn { width: 100%; }
+      .btns { display: grid; }
+      .stat-card strong { font-size: 1.95rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="Sapling home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Sapling</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#how">How it works</a>
+        <a href="#providers">Providers</a>
+        <a href="#occasions">Occasions</a>
+        <a href="#faq">Why parents use it</a>
+      </nav>
+      <a class="btn btn-primary" href="#cta">Get started</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">UK gifting, routed into long-term savings</span>
+          <h1>Where their future takes root</h1>
+          <div class="tagline">Sapling helps parents turn gifts into a real financial future.</div>
+          <div class="hero-copy-block">
+            <p>Less plastic tat. More future.</p>
+            <p>With Sapling, every gift goes straight into their savings, so it starts growing straight away.</p>
+          </div>
+          <p class="lead">A simple way for friends and family to contribute at birthdays, Christmas, christenings and baby showers — without cash getting forgotten, cheques sitting in drawers, or another pile of stuff cluttering the house.</p>
+          <div class="btns">
+            <a class="btn btn-primary" href="#cta">Create your child’s Sapling</a>
+            <a class="btn btn-secondary" href="#how">See how it works</a>
+          </div>
+        </div>
+
+        <div class="hero-art">
+          <div class="hero-orbit" aria-hidden="true"></div>
+          <div class="flow-cards">
+            <div class="flow-card floaty">
+              <div class="flow-top">
+                <div>
+                  <div class="demo-label">1. Parent setup</div>
+                  <h3>Choose a provider, create the fund, share the QR</h3>
+                </div>
+                <span class="phone-pill">Mobile first</span>
+              </div>
+              <div class="mini-grid">
+                <div class="mini-card">
+                  <strong>Birthday</strong>
+                  <span>QR on invites</span>
+                </div>
+                <div class="mini-card">
+                  <strong>Baby shower</strong>
+                  <span>Start before they arrive</span>
+                </div>
+                <div class="mini-card">
+                  <strong>Christening</strong>
+                  <span>Share in the family chat</span>
+                </div>
+              </div>
+              <div class="share-row">
+                <span class="chip">📱 WhatsApp</span>
+                <span class="chip">🎟️ Invite card QR</span>
+                <span class="chip">🖨️ Party poster</span>
+              </div>
+            </div>
+
+            <div class="flow-card">
+              <div class="flow-top">
+                <div>
+                  <div class="demo-label">2. Friends &amp; family donate</div>
+                  <h3>Quick, simple, and built for occasions</h3>
+                </div>
+                <span class="phone-pill">No extra admin</span>
+              </div>
+              <div class="share-row">
+                <span class="chip">💷 One-off gifts</span>
+                <span class="chip">🔁 Recurring support</span>
+                <span class="chip">💬 Optional message</span>
+              </div>
+              <div class="growth-box">
+                <div class="chart-wrap">
+                  <svg viewBox="0 0 360 170" width="100%" height="160" role="img" aria-label="Illustrative growth chart">
+                    <defs>
+                      <linearGradient id="lineFill" x1="0" x2="0" y1="0" y2="1">
+                        <stop offset="0%" stop-color="#6aa073" stop-opacity="0.32"></stop>
+                        <stop offset="100%" stop-color="#6aa073" stop-opacity="0"></stop>
+                      </linearGradient>
+                    </defs>
+                    <line x1="20" y1="140" x2="342" y2="140" stroke="#d7cdbd" stroke-width="2" />
+                    <line x1="20" y1="20" x2="20" y2="140" stroke="#d7cdbd" stroke-width="2" />
+                    <path d="M20 132 C60 128, 72 118, 110 108 S175 88, 210 74 S276 46, 342 20" fill="none" stroke="#3f7b52" stroke-width="5" stroke-linecap="round" />
+                    <path d="M20 132 C60 128, 72 118, 110 108 S175 88, 210 74 S276 46, 342 20 L342 140 L20 140 Z" fill="url(#lineFill)" />
+                    <circle cx="20" cy="132" r="5" fill="#3f7b52" />
+                    <circle cx="110" cy="108" r="5" fill="#3f7b52" />
+                    <circle cx="210" cy="74" r="5" fill="#3f7b52" />
+                    <circle cx="342" cy="20" r="6" fill="#d2a34f" />
+                    <text x="18" y="158" font-size="12" fill="#5d6b62">Now</text>
+                    <text x="104" y="158" font-size="12" fill="#5d6b62">Age 5</text>
+                    <text x="201" y="158" font-size="12" fill="#5d6b62">Age 10</text>
+                    <text x="317" y="158" font-size="12" fill="#5d6b62">Age 18</text>
+                  </svg>
+                </div>
+                <div class="stat-card">
+                  <div>
+                    <div class="demo-label" style="color: rgba(255,255,255,.72)">Illustrative fund snapshot</div>
+                    <strong>£18,240</strong>
+                    <p style="margin-top:8px;color:rgba(255,255,255,.78)">Example value at 18 once gifts start early and keep coming.</p>
+                  </div>
+                  <div class="tree" aria-hidden="true">
+                    <div class="leaf left"></div>
+                    <div class="leaf right"></div>
+                    <div class="leaf top"></div>
+                    <div class="trunk"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="how">
+      <div class="container two-col">
+        <div>
+          <span class="eyebrow">How it works</span>
+          <h2>Built for parents who want the sensible option to be the easy one.</h2>
+          <p class="lead">Sapling is the middleman between parents, donors and Junior ISA providers. Parents create a child’s fund, choose a provider, then share a link or QR code so family and friends can contribute directly into their future savings.</p>
+        </div>
+        <div class="grid-3">
+          <div class="card">
+            <div class="step-no">1</div>
+            <h3>Create the fund</h3>
+            <p>Add your child, choose a provider and get a ready-to-share savings page in minutes.</p>
+          </div>
+          <div class="card">
+            <div class="step-no">2</div>
+            <h3>Share it anywhere</h3>
+            <p>Birthdays, Christmas, baby showers, christenings, school events or the family WhatsApp chat.</p>
+          </div>
+          <div class="card">
+            <div class="step-no">3</div>
+            <h3>Watch it grow</h3>
+            <p>See contributions, projected future value and the impact of family support all in one place.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container chart-card">
+        <div class="chart-head">
+          <div>
+            <span class="eyebrow">At-a-glance impact</span>
+            <h2 style="max-width: 13ch; margin-top: 14px;">The difference is not perfection. It’s starting early.</h2>
+            <p class="chart-meta lead" style="margin-top: 18px;">All of these are built for long-term saving, and over time they tend to grow in similar ways. What matters most is starting early and adding to it often.</p>
+          </div>
+          <div class="chart-legend">
+            <span class="legend-item"><span class="dot" style="background:#3f7b52"></span>Family gifts building over time</span>
+            <span class="legend-item"><span class="dot" style="background:#d2a34f"></span>Illustrative age-18 value</span>
+          </div>
+        </div>
+        <div style="margin-top: 22px;">
+          <svg viewBox="0 0 1100 420" width="100%" height="100%" role="img" aria-label="Illustrative line chart showing contributions growing over time">
+            <defs>
+              <linearGradient id="area2" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" stop-color="#3f7b52" stop-opacity="0.20"></stop>
+                <stop offset="100%" stop-color="#3f7b52" stop-opacity="0"></stop>
+              </linearGradient>
+            </defs>
+            <rect x="0" y="0" width="1100" height="420" fill="transparent" />
+            <g stroke="#ddd2c1" stroke-width="1.4">
+              <line x1="90" y1="335" x2="1020" y2="335" />
+              <line x1="90" y1="270" x2="1020" y2="270" />
+              <line x1="90" y1="205" x2="1020" y2="205" />
+              <line x1="90" y1="140" x2="1020" y2="140" />
+              <line x1="90" y1="75" x2="1020" y2="75" />
+            </g>
+            <g fill="#5d6b62" font-size="16" font-family="Inter, sans-serif">
+              <text x="30" y="340">£0</text>
+              <text x="18" y="275">£5k</text>
+              <text x="12" y="210">£10k</text>
+              <text x="12" y="145">£15k</text>
+              <text x="12" y="80">£20k</text>
+            </g>
+            <g stroke="#d7cdbd" stroke-width="2">
+              <line x1="90" y1="40" x2="90" y2="335" />
+              <line x1="90" y1="335" x2="1020" y2="335" />
+            </g>
+            <path d="M90 326 C150 323, 185 316, 230 304 S330 275, 390 255 S510 205, 580 180 S720 118, 810 88 S930 48, 1020 28" fill="none" stroke="#3f7b52" stroke-width="7" stroke-linecap="round" />
+            <path d="M90 326 C150 323, 185 316, 230 304 S330 275, 390 255 S510 205, 580 180 S720 118, 810 88 S930 48, 1020 28 L1020 335 L90 335 Z" fill="url(#area2)" />
+            <g fill="#3f7b52">
+              <circle cx="90" cy="326" r="8" />
+              <circle cx="230" cy="304" r="8" />
+              <circle cx="390" cy="255" r="8" />
+              <circle cx="580" cy="180" r="8" />
+              <circle cx="810" cy="88" r="8" />
+            </g>
+            <circle cx="1020" cy="28" r="10" fill="#d2a34f" />
+            <g fill="#5d6b62" font-size="16" font-family="Inter, sans-serif">
+              <text x="76" y="367">Birth</text>
+              <text x="216" y="367">Age 3</text>
+              <text x="376" y="367">Age 7</text>
+              <text x="565" y="367">Age 12</text>
+              <text x="795" y="367">Age 16</text>
+              <text x="992" y="367">18</text>
+            </g>
+          </svg>
+        </div>
+        <p class="small" style="margin-top: 14px;">Illustrative example only. Final balances and future values would come from the selected provider.</p>
+      </div>
+    </section>
+
+    <section class="section" id="providers">
+      <div class="container">
+        <span class="eyebrow">Provider marketplace</span>
+        <h2 style="margin-top: 14px; max-width: 11ch;">Parents get choice without being forced into homework.</h2>
+        <p class="lead">During onboarding, Sapling can show a limited set of partner options with simple descriptions, logos and plain-English explanations — not a wall of jargon.</p>
+        <div class="providers-grid">
+          <div class="provider-card">
+            <div class="provider-logo nutmeg">N</div>
+            <div class="provider-badge">Managed Junior ISA</div>
+            <h3>Nutmeg</h3>
+            <p>Fully managed portfolio investing in environmentally responsible companies.</p>
+          </div>
+          <div class="provider-card">
+            <div class="provider-logo vanguard">V</div>
+            <div class="provider-badge">Stocks &amp; Shares Junior ISA</div>
+            <h3>Vanguard</h3>
+            <p>Low-cost index investing designed for long-term growth.</p>
+          </div>
+          <div class="provider-card">
+            <div class="provider-logo cash">£</div>
+            <div class="provider-badge">Cash Junior ISA</div>
+            <h3>Cash ISA</h3>
+            <p>Simple savings with no investing for parents who want the straightforward option.</p>
+          </div>
+          <div class="provider-card">
+            <div class="provider-logo prebirth">B</div>
+            <div class="provider-badge">Pre-birth fund</div>
+            <h3>Before they arrive</h3>
+            <p>Start collecting gifts during pregnancy, then switch to a Junior ISA after the birth is confirmed.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="occasions">
+      <div class="container">
+        <span class="eyebrow">Built around real-life occasions</span>
+        <h2 style="margin-top:14px; max-width:11ch;">The product works because parents get prompted to actually use it.</h2>
+        <p class="lead">Sapling should actively coach parents on where to share, how to frame it, and how to make a donations-first event feel normal and exciting.</p>
+        <div class="occasion-grid">
+          <div class="occasion">
+            <div class="occasion-icon">🎂</div>
+            <h3>Birthdays</h3>
+            <p>Use a QR code on invites, a poster at the entrance, or a live display showing total raised.</p>
+          </div>
+          <div class="occasion">
+            <div class="occasion-icon">👶</div>
+            <h3>Baby showers</h3>
+            <p>Let family and friends start contributing before the baby arrives with a pre-birth fund.</p>
+          </div>
+          <div class="occasion">
+            <div class="occasion-icon">✨</div>
+            <h3>Christenings</h3>
+            <p>Swap another ornamental gift for something that will still matter years later.</p>
+          </div>
+          <div class="occasion">
+            <div class="occasion-icon">🎄</div>
+            <h3>Christmas</h3>
+            <p>Give family an easy alternative to more plastic tat when everyone asks what to buy.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="container two-col">
+        <div>
+          <span class="eyebrow">Why parents would use it</span>
+          <h2 style="margin-top:14px; max-width:10ch;">It makes the intelligent choice feel obvious.</h2>
+          <p class="lead">Sapling is built around three simple truths: parents want less clutter, donors want to feel their money matters, and the sooner money lands in savings, the more useful it becomes later.</p>
+        </div>
+        <div class="grid-3">
+          <div class="card">
+            <h3>No more forgotten cash</h3>
+            <p>Money does not have to sit in a drawer or wait for a parent to remember to move it later.</p>
+          </div>
+          <div class="card">
+            <h3>Donors feel real impact</h3>
+            <p>Live totals, contribution history and future projections make each gift feel meaningful, not token.</p>
+          </div>
+          <div class="card">
+            <h3>Built to spread</h3>
+            <p>Later, referred parents could unlock a bonus contribution into their child’s ISA for signing up.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="cta">
+      <div class="container cta-panel">
+        <div>
+          <span class="eyebrow" style="background: rgba(255,255,255,.08); color: #dfe9e1;">Ready to turn gifts into a future?</span>
+          <h2 style="margin-top: 14px; color: #fff; max-width: 10ch;">Sapling makes the future-friendly option the easiest one to share.</h2>
+          <p>Create a child’s fund, choose a provider, and give family and friends a better answer than more stuff they do not need.</p>
+          <div class="btns">
+            <a class="btn btn-primary" href="#top">Create your child’s Sapling</a>
+            <a class="btn btn-secondary" href="#providers">See provider examples</a>
+          </div>
+        </div>
+        <div class="cta-side">
+          <div class="demo-label" style="color: rgba(255,255,255,.72)">Future referral idea</div>
+          <strong>Refer another parent</strong>
+          <p style="margin-top: 12px; color: rgba(255,255,255,.82)">Later, Sapling could reward referred signups with a bonus contribution into the child’s savings — for example, £50 added when a new parent sets up their first fund.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <div>© Sapling</div>
+      <div>Placeholder concept homepage for getsapling.co.uk</div>
+    </div>
+  </footer>
+</body>
+</html>
+
     :root {
       --bg: #f7f4ee;
       --surface: #fffdf9;
