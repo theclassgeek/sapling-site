@@ -41,14 +41,9 @@
     }
 
     .brand-logo {
-  width: 44px;
-  height: 44px;
-  max-width: 44px;
-  max-height: 44px;
-  object-fit: contain;
-  display: block;
-  flex-shrink: 0;
-}
+      width: 44px; height: 44px; max-width: 44px; max-height: 44px;
+      object-fit: contain; display: block; flex-shrink: 0;
+    }
 
     a { color: inherit; text-decoration: none; }
     img { max-width: 100%; display: block; }
@@ -66,7 +61,7 @@
       font-size: clamp(2.6rem, 5vw, 5rem);
       line-height: 0.97;
       letter-spacing: -0.05em;
-      max-width: 9ch;
+      max-width: 13ch;
       margin-top: 18px;
     }
     h2 {
@@ -88,7 +83,7 @@
     .muted { color: var(--muted); }
     .small { font-size: 0.88rem; color: var(--muted); }
 
-    .btns { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+    .btns { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; align-items: center; }
     .btn {
       border: 1px solid transparent;
       border-radius: 999px;
@@ -103,6 +98,12 @@
     }
     .btn:hover { transform: translateY(-2px); }
     .btn-primary { background: var(--green); color: white; box-shadow: var(--shadow); }
+    .btn-link {
+      color: var(--muted); font-weight: 600; font-size: 0.95rem;
+      text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(93,107,98,0.4);
+      padding: 0;
+    }
+    .btn-link:hover { color: var(--text); transform: none; }
     .btn-secondary { background: rgba(255,255,255,0.7); border-color: var(--line); }
 
     .topbar {
@@ -116,25 +117,19 @@
       display: flex; align-items: center; justify-content: space-between; gap: 18px;
     }
     .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 1.15rem; letter-spacing: -0.03em; }
-    .brand-mark {
-      width: 40px; height: 40px; border-radius: 14px;
-      background: radial-gradient(circle at 30% 30%, #78b27f 0%, #4a855a 70%);
-      position: relative; box-shadow: inset 0 1px 0 rgba(255,255,255,.3);
-    }
-    .brand-mark::before {
-      content: ""; position: absolute; left: 19px; bottom: 7px; width: 2px; height: 18px; background: #f7f4ee;
-      border-radius: 99px;
-    }
-    .brand-mark::after {
-      content: ""; position: absolute; left: 11px; top: 9px; width: 18px; height: 13px;
-      background: #f7f4ee; border-radius: 18px 18px 18px 2px; transform: rotate(-28deg);
-      box-shadow: 11px 5px 0 -2px #f7f4ee;
-    }
     .nav-links { display: flex; gap: 18px; align-items: center; color: var(--muted); font-weight: 600; }
+    .nav-links a:hover { color: var(--text); }
 
     .hero { padding: 34px 0 64px; }
     .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 34px; align-items: center; }
-    .tagline { margin-top: 16px; font-weight: 800; letter-spacing: -0.02em; font-size: 1.15rem; }
+    .tagline {
+      margin-top: 16px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      font-size: 1.05rem;
+      color: var(--muted);
+      font-style: italic;
+    }
     .hero-copy-block {
       margin-top: 26px;
       padding: 20px 22px;
@@ -247,9 +242,39 @@
     }
     .chart-head { display: flex; align-items: end; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
     .chart-meta { color: var(--muted); max-width: 42rem; }
-    .chart-legend { display: flex; gap: 14px; flex-wrap: wrap; font-size: 0.92rem; color: var(--muted); }
-    .legend-item { display: inline-flex; align-items: center; gap: 8px; }
-    .dot { width: 12px; height: 12px; border-radius: 999px; }
+
+    /* ── Interactive comparison widget ── */
+    .comparison-widget { margin-top: 28px; }
+    .widget-subhead { margin-bottom: 20px; }
+    .widget-subhead h3 { font-size: 1.3rem; letter-spacing: -0.025em; }
+    .widget-subhead p { color: var(--muted); margin-top: 6px; font-size: 0.92rem; }
+    .slider-controls {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+      background: rgba(255,255,255,0.55); border: 1px solid var(--line);
+      border-radius: 18px; padding: 18px; margin-bottom: 22px;
+    }
+    .slider-group { display: grid; gap: 10px; }
+    .slider-label { display: flex; justify-content: space-between; align-items: baseline; }
+    .slider-label span { font-weight: 600; font-size: 0.9rem; }
+    .slider-label strong { color: var(--green); font-size: 1.05rem; font-weight: 800; letter-spacing: -0.02em; }
+    .slider-hint { font-size: 0.78rem; color: var(--muted); }
+    input[type="range"] { width: 100%; accent-color: var(--green); height: 4px; cursor: pointer; }
+    .comparison-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 22px; }
+    .comp-stat { border-radius: 20px; padding: 18px 20px; }
+    .comp-label { font-size: 0.82rem; color: var(--muted); display: block; margin-bottom: 8px; font-weight: 600; }
+    .comp-stat strong { font-size: 1.75rem; letter-spacing: -0.05em; display: block; line-height: 1; }
+    .comp-stat small { font-size: 0.78rem; color: var(--muted); margin-top: 5px; display: block; }
+    .comp-birth { background: rgba(63,123,82,0.07); border: 1px solid rgba(63,123,82,0.2); }
+    .comp-birth strong { color: var(--green); }
+    .comp-age5 { background: rgba(210,163,79,0.08); border: 1px solid rgba(210,163,79,0.25); }
+    .comp-age5 strong { color: var(--gold); }
+    .comp-diff { background: var(--text); }
+    .comp-diff .comp-label { color: rgba(247,244,238,0.72); }
+    .comp-diff strong { color: #f7f4ee; }
+    .comp-diff small { color: rgba(247,244,238,0.6); }
+
+    /* ── Mid-page CTA ── */
+    .mid-cta { margin-top: 36px; display: flex; justify-content: center; }
 
     .providers-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 28px; }
     .provider-card {
@@ -311,68 +336,7 @@
     .screen-list { display: grid; gap: 8px; }
     .screen-list div { border: 1px solid var(--line); border-radius: 14px; padding: 10px 12px; font-size: 0.84rem; background: #fff; }
 
-    .featured-rail {
-      display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin-top: 26px;
-    }
-    .logo-badge {
-      background: rgba(255,255,255,0.82);
-      border: 1px dashed #c9bda9;
-      border-radius: 18px;
-      min-height: 72px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--muted);
-      font-weight: 800;
-      letter-spacing: -0.02em;
-    }
-
-    .media-card .thumb {
-      aspect-ratio: 16 / 9;
-      border-radius: 20px;
-      background: linear-gradient(135deg, #dde8d7 0%, #f2ece1 100%);
-      border: 1px solid var(--line);
-      display: grid;
-      place-items: center;
-      color: var(--green);
-      font-weight: 800;
-      margin-bottom: 14px;
-    }
-
-    .story-card {
-      display: grid;
-      gap: 14px;
-      background: rgba(255,255,255,0.9);
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      padding: 20px;
-      box-shadow: var(--shadow);
-    }
-    .story-meta { display: flex; justify-content: space-between; gap: 10px; color: var(--muted); font-size: 0.9rem; }
-
-    .resource-card {
-      background: rgba(255,255,255,0.88);
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      padding: 20px;
-      box-shadow: var(--shadow);
-      min-height: 210px;
-      display: grid;
-      align-content: start;
-      gap: 12px;
-    }
-    .resource-type {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      border-radius: 999px;
-      background: #f4efe5;
-      padding: 6px 10px;
-      font-size: 0.75rem;
-      font-weight: 800;
-      width: fit-content;
-    }
-
+    /* ── CTA panel ── */
     .cta-panel {
       background: linear-gradient(180deg, #20432d 0%, #162e1f 100%);
       color: #f7f4ee;
@@ -383,16 +347,28 @@
     }
     .cta-panel p { color: rgba(247,244,238,.75); margin-top: 12px; max-width: 42rem; }
     .cta-panel .btn-secondary { background: rgba(255,255,255,.1); color: #fff; border-color: rgba(255,255,255,.22); }
-    .cta-side {
-      border: 1px solid rgba(255,255,255,.14);
-      border-radius: 24px;
-      padding: 20px;
-      background: rgba(255,255,255,.06);
+    .cta-checklist {
+      list-style: none; padding: 0; margin: 0;
+      display: grid; gap: 10px;
     }
-    .cta-side strong { font-size: 2rem; letter-spacing: -0.05em; }
+    .cta-checklist li {
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 14px;
+      padding: 11px 16px;
+      font-size: 0.92rem;
+      color: rgba(247,244,238,.88);
+      display: flex; align-items: center; gap: 10px;
+    }
 
     footer { padding: 30px 0 46px; color: var(--muted); }
-    .footer-row { display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap; border-top: 1px solid var(--line); padding-top: 18px; }
+    .footer-row {
+      display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap;
+      border-top: 1px solid var(--line); padding-top: 18px;
+      font-size: 0.9rem;
+    }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { color: var(--muted); }
+    .footer-links a:hover { color: var(--text); }
 
     @keyframes sway {
       0%, 100% { transform: rotate(-2deg); }
@@ -406,14 +382,16 @@
 
     @media (max-width: 1100px) {
       .hero-grid, .two-col, .cta-panel, .growth-box, .preview-grid { grid-template-columns: 1fr; }
-      .providers-grid, .occasion-grid, .featured-rail { grid-template-columns: repeat(2, 1fr); }
+      .providers-grid, .occasion-grid { grid-template-columns: repeat(2, 1fr); }
       .grid-3, .grid-4, .grid-2 { grid-template-columns: 1fr; }
       .phone-stack { grid-template-columns: 1fr; }
       .hero-art { min-height: unset; }
+      .slider-controls { grid-template-columns: 1fr; }
+      .comparison-stats { grid-template-columns: 1fr; }
     }
     @media (max-width: 760px) {
       .nav-links { display: none; }
-      .providers-grid, .occasion-grid, .mini-grid, .featured-rail { grid-template-columns: 1fr; }
+      .providers-grid, .occasion-grid, .mini-grid { grid-template-columns: 1fr; }
       .section { padding: 58px 0; }
       .hero { padding: 22px 0 44px; }
       .hero-art, .chart-card, .cta-panel { padding: 18px; }
@@ -421,6 +399,8 @@
       .btn { width: 100%; }
       .btns { display: grid; }
       .stat-card strong { font-size: 1.95rem; }
+      .comparison-stats { grid-template-columns: 1fr; }
+      .slider-controls { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -428,35 +408,36 @@
   <header class="topbar">
     <div class="container nav">
       <a class="brand" href="#top" aria-label="Sapling home">
-  <img class="brand-logo" src="/sapling.png" alt="Sapling logo">
-  <span class="brand-text">Sapling</span>
-</a>
+        <img class="brand-logo" src="/sapling.png" alt="Sapling logo">
+        <span class="brand-text">Sapling</span>
+      </a>
       <nav class="nav-links" aria-label="Primary">
         <a href="#how">How it works</a>
         <a href="#preview">Inside the app</a>
-        <a href="#stories">Stories</a>
-        <a href="#featured">Featured</a>
         <a href="#faq">Why parents use it</a>
+        <a href="/stories">Stories</a>
+        <a href="/resources">Resources</a>
       </nav>
       <a class="btn btn-primary" href="https://app.usesapling.co.uk">Get started</a>
     </div>
   </header>
 
   <main id="top">
+    <!-- ── Hero ── -->
     <section class="hero">
       <div class="container hero-grid">
         <div>
           <span class="eyebrow">UK gifting, routed into long-term savings</span>
-          <h1>Where their future takes root</h1>
-          <div class="tagline">Sapling helps parents turn gifts into a real financial future.</div>
+          <h1>Turn gifts into their financial future</h1>
+          <div class="tagline">Where their future takes root.</div>
           <div class="hero-copy-block">
             <p>Less plastic tat. More future.</p>
             <p>With Sapling, every gift goes straight into their savings, so it starts growing straight away.</p>
           </div>
           <p class="lead">A simple way for friends and family to contribute at birthdays, Christmas, christenings and baby showers — without cash getting forgotten, cheques sitting in drawers, or another pile of stuff cluttering the house.</p>
           <div class="btns">
-            <a class="btn btn-primary" href="https://app.usesapling.co.uk">Create your child’s Sapling</a>
-            <a class="btn btn-secondary" href="#how">See how it works</a>
+            <a class="btn btn-primary" href="https://app.usesapling.co.uk">Create your child's Sapling</a>
+            <a class="btn-link" href="#how">See how it works ↓</a>
           </div>
         </div>
 
@@ -532,7 +513,7 @@
                   <div>
                     <div class="demo-label" style="color: rgba(255,255,255,.72)">Illustrative fund snapshot</div>
                     <strong>£18,240</strong>
-                    <p style="margin-top:8px;color:rgba(255,255,255,.78)">Example value at 18 once gifts start early and keep coming.</p>
+                    <p style="margin-top:8px;color:rgba(255,255,255,.78);font-size:0.82rem;">Based on ~£40/month from grandparents and close family, plus ~£150 in birthday gifts each year, at 5% annual growth from birth.</p>
                   </div>
                   <div class="tree" aria-hidden="true">
                     <div class="leaf left"></div>
@@ -548,12 +529,13 @@
       </div>
     </section>
 
+    <!-- ── Inside the app ── -->
     <section class="section" id="preview">
       <div class="container preview-grid">
         <div>
           <span class="eyebrow">Inside the app</span>
           <h2 style="margin-top:14px; max-width: 11ch;">Show people the payoff, not just the idea.</h2>
-          <p class="lead">Sapling feels much more real once parents can picture the dashboard, event pages, growing totals and the “could be worth” forecasts their family will see in action.</p>
+          <p class="lead">Sapling feels much more real once parents can picture the dashboard, event pages, growing totals and the "could be worth" forecasts their family will see in action.</p>
           <div class="card" style="margin-top:24px;">
             <h3>What people should immediately understand</h3>
             <p>Parents can set up a child, share a birthday or baby shower page, collect gifts as one-off or recurring support, and see those gifts building into a long-term future — all in a product that feels calm, modern and easy to trust.</p>
@@ -582,7 +564,6 @@
               </div>
             </div>
           </div>
-
           <div class="phone-shot">
             <div class="phone-notch"></div>
             <div class="phone-screen">
@@ -602,7 +583,6 @@
               <div class="screen-line"></div>
             </div>
           </div>
-
           <div class="phone-shot">
             <div class="phone-notch"></div>
             <div class="phone-screen">
@@ -623,12 +603,13 @@
       </div>
     </section>
 
+    <!-- ── How it works ── -->
     <section class="section" id="how">
       <div class="container two-col">
         <div>
           <span class="eyebrow">How it works</span>
           <h2>Built for parents who want the sensible option to be the easy one.</h2>
-          <p class="lead">Sapling is the middleman between parents, donors and Junior ISA providers. Parents create a child’s fund, choose a provider, then share a link or QR code so family and friends can contribute directly into their future savings.</p>
+          <p class="lead">Sapling is the middleman between parents, donors and Junior ISA providers. Parents create a child's fund, choose a provider, then share a link or QR code so family and friends can contribute directly into their future savings.</p>
         </div>
         <div class="grid-3">
           <div class="card">
@@ -648,72 +629,111 @@
           </div>
         </div>
       </div>
+      <div class="mid-cta">
+        <a class="btn btn-primary" href="https://app.usesapling.co.uk">Create your child's Sapling</a>
+      </div>
     </section>
 
+    <!-- ── At-a-glance impact + interactive comparison widget ── -->
     <section class="section">
       <div class="container chart-card">
         <div class="chart-head">
           <div>
             <span class="eyebrow">At-a-glance impact</span>
-            <h2 style="max-width: 13ch; margin-top: 14px;">The difference is not perfection. It’s starting early.</h2>
-            <p class="chart-meta lead" style="margin-top: 18px;">All of these are built for long-term saving, and over time they tend to grow in similar ways. What matters most is starting early and adding to it often.</p>
-          </div>
-          <div class="chart-legend">
-            <span class="legend-item"><span class="dot" style="background:#3f7b52"></span>Family gifts building over time</span>
-            <span class="legend-item"><span class="dot" style="background:#d2a34f"></span>Illustrative age-18 value</span>
+            <h2 style="max-width: 13ch; margin-top: 14px;">The difference is not perfection. It's starting early.</h2>
+            <p class="chart-meta lead" style="margin-top: 18px;">Use the sliders to match your family's situation and see how much the timing of the first gift changes the outcome.</p>
           </div>
         </div>
-        <div style="margin-top: 22px;">
-          <svg viewBox="0 0 1100 420" width="100%" height="100%" role="img" aria-label="Illustrative line chart showing contributions growing over time">
+
+        <div class="comparison-widget">
+          <div class="widget-subhead">
+            <h3>What starting at birth is worth vs. starting at age 5</h3>
+            <p>At 5% annual growth — illustrative only. Actual returns depend on provider and market conditions.</p>
+          </div>
+
+          <div class="slider-controls">
+            <div class="slider-group">
+              <div class="slider-label">
+                <span>Monthly recurring</span>
+                <strong id="monthly-label">£40/mo</strong>
+              </div>
+              <input type="range" id="monthly-slider" min="10" max="100" step="5" value="40">
+              <span class="slider-hint">e.g. grandparents, close family setting up a standing order</span>
+            </div>
+            <div class="slider-group">
+              <div class="slider-label">
+                <span>Annual gift occasions</span>
+                <strong id="gift-label">£150/yr</strong>
+              </div>
+              <input type="range" id="gift-slider" min="0" max="500" step="25" value="150">
+              <span class="slider-hint">e.g. birthday collections, Christmas gifts, christenings</span>
+            </div>
+          </div>
+
+          <svg id="comparison-svg" viewBox="0 0 800 260" width="100%"
+               role="img" aria-label="Interactive chart comparing savings growth when starting at birth versus age 5">
             <defs>
-              <linearGradient id="area2" x1="0" x2="0" y1="0" y2="1">
-                <stop offset="0%" stop-color="#3f7b52" stop-opacity="0.20"></stop>
-                <stop offset="100%" stop-color="#3f7b52" stop-opacity="0"></stop>
+              <linearGradient id="birthGrad" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" stop-color="#3f7b52" stop-opacity="0.22"/>
+                <stop offset="100%" stop-color="#3f7b52" stop-opacity="0"/>
+              </linearGradient>
+              <linearGradient id="age5Grad" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" stop-color="#d2a34f" stop-opacity="0.15"/>
+                <stop offset="100%" stop-color="#d2a34f" stop-opacity="0"/>
               </linearGradient>
             </defs>
-            <rect x="0" y="0" width="1100" height="420" fill="transparent" />
-            <g stroke="#ddd2c1" stroke-width="1.4">
-              <line x1="90" y1="335" x2="1020" y2="335" />
-              <line x1="90" y1="270" x2="1020" y2="270" />
-              <line x1="90" y1="205" x2="1020" y2="205" />
-              <line x1="90" y1="140" x2="1020" y2="140" />
-              <line x1="90" y1="75" x2="1020" y2="75" />
+            <!-- Grid lines & y-axis labels rendered by JS -->
+            <g id="chart-grid"></g>
+            <!-- Areas -->
+            <path id="birth-area" fill="url(#birthGrad)"/>
+            <path id="age5-area" fill="url(#age5Grad)"/>
+            <!-- Lines -->
+            <path id="age5-path" fill="none" stroke="#d2a34f" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path id="birth-path" fill="none" stroke="#3f7b52" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- End-point circles -->
+            <circle id="birth-end" r="7" fill="#3f7b52"/>
+            <circle id="age5-end" r="7" fill="#d2a34f"/>
+            <!-- Static x-axis labels -->
+            <g font-size="12" fill="#5d6b62" font-family="Inter, sans-serif" text-anchor="middle">
+              <text x="60"  y="248">Birth</text>
+              <text x="260" y="248">Age 5</text>
+              <text x="460" y="248">Age 10</text>
+              <text x="660" y="248">Age 15</text>
+              <text x="780" y="248">18</text>
             </g>
-            <g fill="#5d6b62" font-size="16" font-family="Inter, sans-serif">
-              <text x="30" y="340">£0</text>
-              <text x="18" y="275">£5k</text>
-              <text x="12" y="210">£10k</text>
-              <text x="12" y="145">£15k</text>
-              <text x="12" y="80">£20k</text>
-            </g>
-            <g stroke="#d7cdbd" stroke-width="2">
-              <line x1="90" y1="40" x2="90" y2="335" />
-              <line x1="90" y1="335" x2="1020" y2="335" />
-            </g>
-            <path d="M90 326 C150 323, 185 316, 230 304 S330 275, 390 255 S510 205, 580 180 S720 118, 810 88 S930 48, 1020 28" fill="none" stroke="#3f7b52" stroke-width="7" stroke-linecap="round" />
-            <path d="M90 326 C150 323, 185 316, 230 304 S330 275, 390 255 S510 205, 580 180 S720 118, 810 88 S930 48, 1020 28 L1020 335 L90 335 Z" fill="url(#area2)" />
-            <g fill="#3f7b52">
-              <circle cx="90" cy="326" r="8" />
-              <circle cx="230" cy="304" r="8" />
-              <circle cx="390" cy="255" r="8" />
-              <circle cx="580" cy="180" r="8" />
-              <circle cx="810" cy="88" r="8" />
-            </g>
-            <circle cx="1020" cy="28" r="10" fill="#d2a34f" />
-            <g fill="#5d6b62" font-size="16" font-family="Inter, sans-serif">
-              <text x="76" y="367">Birth</text>
-              <text x="216" y="367">Age 3</text>
-              <text x="376" y="367">Age 7</text>
-              <text x="565" y="367">Age 12</text>
-              <text x="795" y="367">Age 16</text>
-              <text x="992" y="367">18</text>
+            <!-- Legend -->
+            <g font-size="12" font-weight="700" font-family="Inter, sans-serif">
+              <circle cx="62"  cy="16" r="5" fill="#3f7b52"/>
+              <text x="74"  y="21" fill="#3f7b52">Starting at birth</text>
+              <circle cx="210" cy="16" r="5" fill="#d2a34f"/>
+              <text x="222" y="21" fill="#d2a34f">Starting at age 5</text>
             </g>
           </svg>
+
+          <div class="comparison-stats">
+            <div class="comp-stat comp-birth">
+              <span class="comp-label">🌱 Starting at birth</span>
+              <strong id="birth-value">£18,240</strong>
+              <small>by age 18</small>
+            </div>
+            <div class="comp-stat comp-age5">
+              <span class="comp-label">⏳ Starting at age 5</span>
+              <strong id="age5-value">£12,088</strong>
+              <small>by age 18</small>
+            </div>
+            <div class="comp-stat comp-diff">
+              <span class="comp-label">The early start advantage</span>
+              <strong id="diff-value">£6,152 more</strong>
+              <small>at the same monthly rate</small>
+            </div>
+          </div>
         </div>
-        <p class="small" style="margin-top: 14px;">Illustrative example only. Final balances and future values would come from the selected provider.</p>
+
+        <p class="small" style="margin-top: 18px;">Illustrative example only. Final balances and future values would come from the selected provider.</p>
       </div>
     </section>
 
+    <!-- ── Provider marketplace ── -->
     <section class="section" id="providers">
       <div class="container">
         <span class="eyebrow">Provider marketplace</span>
@@ -748,6 +768,7 @@
       </div>
     </section>
 
+    <!-- ── Occasions ── -->
     <section class="section" id="occasions">
       <div class="container">
         <span class="eyebrow">Built around real-life occasions</span>
@@ -778,102 +799,11 @@
       </div>
     </section>
 
-    <section class="section" id="stories">
-      <div class="container">
-        <span class="eyebrow">Stories, ideas and proof</span>
-        <h2 style="margin-top:14px; max-width: 12ch;">Build the site around how families actually use it.</h2>
-        <p class="lead">This section is ready to hold future customer stories, founder explainers, social carousels and practical ideas for how families share Sapling in the real world.</p>
-        <div class="grid-3" style="margin-top: 26px;">
-          <article class="story-card">
-            <div class="story-meta"><span>Customer story</span><span>Future section</span></div>
-            <h3>How Ada's first birthday raised £420 for her future</h3>
-            <p>Use this card later for a real parent story, including how the QR code was used, how many gifts came in, and what that total could become by 18.</p>
-          </article>
-          <article class="story-card">
-            <div class="story-meta"><span>Social carousel</span><span>Future section</span></div>
-            <h3>Less plastic tat. More future.</h3>
-            <p>Use this area for simple educational graphics that explain the product in one glance and show what small gifts can become over time.</p>
-          </article>
-          <article class="story-card">
-            <div class="story-meta"><span>Parent inspiration</span><span>Future section</span></div>
-            <h3>Pregnancy scan announcement, sports kit QR, family group links</h3>
-            <p>Use this section for ideas and inspiration showing the different ways parents actually share Sapling with friends and family.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container two-col">
-        <div>
-          <span class="eyebrow">Expert voices</span>
-          <h2 style="margin-top:14px; max-width:11ch;">A place for interviews that make the idea feel even more sensible.</h2>
-          <p class="lead">You mentioned interviews with IFAs, wealth managers and thoughtful parents. This section is designed to hold those later without needing another homepage redesign.</p>
-        </div>
-        <div class="grid-2">
-          <article class="card media-card">
-            <div class="thumb">Interview video placeholder</div>
-            <h3>Why starting early matters more than perfect timing</h3>
-            <p>Future home for a short expert clip or recorded conversation with an IFA or wealth manager.</p>
-          </article>
-          <article class="card media-card">
-            <div class="thumb">Parent conversation placeholder</div>
-            <h3>How parents explain Sapling to family without sounding awkward</h3>
-            <p>Future home for practical interviews that help normalise using Sapling at birthdays, baby showers and family milestones.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="featured">
-      <div class="container">
-        <span class="eyebrow">Featured on</span>
-        <h2 style="margin-top:14px; max-width: 12ch;">Make room now for the logos and mentions that add social proof later.</h2>
-        <p class="lead">This strip is intentionally placeholder-ready for future publication badges, podcast logos, community mentions and trusted-parent-platform coverage. Keep it hidden or obviously placeholder until you have real coverage.</p>
-        <div class="featured-rail">
-          <div class="logo-badge">Mumsnet</div>
-          <div class="logo-badge">Parenting press</div>
-          <div class="logo-badge">IFA interview</div>
-          <div class="logo-badge">Podcast feature</div>
-          <div class="logo-badge">Community mention</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="resources">
-      <div class="container">
-        <span class="eyebrow">Resources</span>
-        <h2 style="margin-top:14px; max-width: 12ch;">Give yourself somewhere for articles, explainers and future SEO content to live.</h2>
-        <p class="lead">This can evolve into the educational engine behind Sapling — clear articles, simple how-tos, social post support and authority-building explainers.</p>
-        <div class="grid-4" style="margin-top: 26px;">
-          <article class="resource-card">
-            <span class="resource-type">Guide</span>
-            <h3>How to use Sapling for a child’s birthday party</h3>
-            <p>Template for a practical article, with QR ideas, invite wording and how to make it feel normal for guests.</p>
-          </article>
-          <article class="resource-card">
-            <span class="resource-type">Explainer</span>
-            <h3>What small gifts can become by age 18</h3>
-            <p>Educational article or carousel support piece built around simple examples and projections.</p>
-          </article>
-          <article class="resource-card">
-            <span class="resource-type">Interview</span>
-            <h3>What IFAs wish parents understood about starting early</h3>
-            <p>Future long-form content slot for expert-backed reassurance and authority building.</p>
-          </article>
-          <article class="resource-card">
-            <span class="resource-type">Story</span>
-            <h3>Three ways families shared Sapling in real life</h3>
-            <p>Customer-story / inspiration section for social proof and practical use-case ideas.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
+    <!-- ── Why parents use it ── -->
     <section class="section" id="faq">
       <div class="container two-col">
         <div>
-          <span class="eyebrow">Why parents would use it</span>
+          <span class="eyebrow">Why parents use it</span>
           <h2 style="margin-top:14px; max-width:10ch;">It makes the intelligent choice feel obvious.</h2>
           <p class="lead">Sapling is built around three simple truths: parents want less clutter, donors want to feel their money matters, and the sooner money lands in savings, the more useful it becomes later.</p>
         </div>
@@ -888,27 +818,32 @@
           </div>
           <div class="card">
             <h3>Built to spread</h3>
-            <p>Visible totals, social proof and eventual featured coverage help Sapling feel like a sensible modern thing parents actually do.</p>
+            <p>Visible totals, social proof and shareable event pages help Sapling feel like a sensible modern thing parents actually do.</p>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- ── CTA panel ── -->
     <section class="section" id="cta">
       <div class="container cta-panel">
         <div>
           <span class="eyebrow" style="background: rgba(255,255,255,.08); color: #dfe9e1;">Ready to turn gifts into a future?</span>
           <h2 style="margin-top: 14px; color: #fff; max-width: 10ch;">Sapling makes the future-friendly option the easiest one to share.</h2>
-          <p>Create a child’s fund, choose a provider, and give family and friends a better answer than more stuff they do not need.</p>
-          <div class="btns">
+          <p>Create a child's fund, choose a provider, and give family and friends a better answer than more stuff they do not need.</p>
+          <div class="btns" style="margin-top: 24px;">
             <a class="btn btn-primary" href="https://app.usesapling.co.uk">Get started in the app</a>
             <a class="btn btn-secondary" href="#preview">See inside the app</a>
           </div>
         </div>
-        <div class="cta-side">
-          <div class="demo-label" style="color: rgba(255,255,255,.72)">Future marketing layer</div>
-          <strong>Stories, experts and social proof</strong>
-          <p style="margin-top: 12px; color: rgba(255,255,255,.82)">This homepage is now ready to hold customer stories, expert interviews, publication badges and practical resources without needing a full redesign later.</p>
+        <div>
+          <ul class="cta-checklist">
+            <li>⏱&nbsp; 5 minutes to set up your child's fund</li>
+            <li>🎁&nbsp; Works at birthdays, baby showers &amp; Christmas</li>
+            <li>📈&nbsp; Connects to Nutmeg, Vanguard and more</li>
+            <li>🔗&nbsp; One link or QR code for the whole family</li>
+            <li>🇬🇧&nbsp; Built for UK Junior ISAs</li>
+          </ul>
         </div>
       </div>
     </section>
@@ -917,8 +852,137 @@
   <footer>
     <div class="container footer-row">
       <div>© Sapling</div>
-      <div>Mainsite concept updated for future product proof, stories and social proof</div>
+      <div class="footer-links">
+        <a href="/stories">Stories</a>
+        <a href="/resources">Resources</a>
+        <a href="https://app.usesapling.co.uk">Get started</a>
+      </div>
     </div>
   </footer>
+
+  <script>
+  (function () {
+    // Chart constants
+    var W = 800, H = 260;
+    var PAD = { l: 60, r: 20, t: 32, b: 30 };
+    var cW = W - PAD.l - PAD.r;  // 720
+    var cH = H - PAD.t - PAD.b;  // 198
+
+    // Future value of monthly contributions + annual lump sums
+    function fv(monthly, annualGift, years) {
+      if (years <= 0) return 0;
+      var r = 0.05 / 12;
+      var n = years * 12;
+      var mfv = monthly * ((Math.pow(1 + r, n) - 1) / r) * (1 + r);
+      var gfv = annualGift > 0 ? annualGift * ((Math.pow(1.05, years) - 1) / 0.05) * 1.05 : 0;
+      return Math.round(mfv + gfv);
+    }
+
+    function toX(age) { return PAD.l + (age / 18) * cW; }
+    function toY(val, max) { return PAD.t + cH - (val / max) * cH; }
+
+    function pts2path(pts) {
+      if (!pts.length) return '';
+      return pts.map(function (p, i) {
+        return (i ? 'L' : 'M') + p[0].toFixed(1) + ',' + p[1].toFixed(1);
+      }).join('');
+    }
+
+    function fmt(n) {
+      return '£' + n.toLocaleString('en-GB');
+    }
+
+    function update() {
+      var monthly = parseInt(document.getElementById('monthly-slider').value, 10);
+      var gift = parseInt(document.getElementById('gift-slider').value, 10);
+
+      document.getElementById('monthly-label').textContent = fmt(monthly) + '/mo';
+      document.getElementById('gift-label').textContent = gift > 0 ? fmt(gift) + '/yr' : '£0/yr';
+
+      // Build data arrays for ages 0–18
+      var birthVals = [];
+      var age5Vals  = [];
+      for (var i = 0; i <= 18; i++) {
+        birthVals.push(fv(monthly, gift, i));
+        age5Vals.push(i < 5 ? 0 : fv(monthly, gift, i - 5));
+      }
+
+      var maxVal = Math.max.apply(null, birthVals) * 1.08;
+
+      // Convert to SVG coordinates
+      var birthPts = birthVals.map(function (v, i) { return [toX(i), toY(v, maxVal)]; });
+      var age5Pts  = age5Vals.map( function (v, i) { return [toX(i), toY(v, maxVal)]; });
+      var baseY = toY(0, maxVal);
+
+      // Update birth line + area
+      var birthLine = pts2path(birthPts);
+      document.getElementById('birth-path').setAttribute('d', birthLine);
+      document.getElementById('birth-area').setAttribute('d',
+        birthLine +
+        'L' + toX(18).toFixed(1) + ',' + baseY.toFixed(1) +
+        'L' + toX(0).toFixed(1)  + ',' + baseY.toFixed(1) + 'Z'
+      );
+
+      // age5 line starts at age 5 — only draw from index 5 onwards
+      var age5Visible = age5Pts.slice(5);
+      var age5Line = pts2path(age5Visible);
+      document.getElementById('age5-path').setAttribute('d', age5Line);
+      document.getElementById('age5-area').setAttribute('d',
+        age5Line +
+        'L' + toX(18).toFixed(1) + ',' + baseY.toFixed(1) +
+        'L' + toX(5).toFixed(1)  + ',' + baseY.toFixed(1) + 'Z'
+      );
+
+      // End-point circles
+      var bEnd = birthPts[18], aEnd = age5Pts[18];
+      document.getElementById('birth-end').setAttribute('cx', bEnd[0]);
+      document.getElementById('birth-end').setAttribute('cy', bEnd[1]);
+      document.getElementById('age5-end').setAttribute('cx', aEnd[0]);
+      document.getElementById('age5-end').setAttribute('cy', aEnd[1]);
+
+      // Stat boxes
+      document.getElementById('birth-value').textContent = fmt(birthVals[18]);
+      document.getElementById('age5-value').textContent  = fmt(age5Vals[18]);
+      document.getElementById('diff-value').textContent  = fmt(birthVals[18] - age5Vals[18]) + ' more';
+
+      // Re-draw grid lines + y-axis labels
+      var ns = 'http://www.w3.org/2000/svg';
+      var grid = document.getElementById('chart-grid');
+      grid.innerHTML = '';
+
+      var steps = 4;
+      for (var s = 0; s <= steps; s++) {
+        var val  = Math.round((maxVal * s / steps) / 1000) * 1000;
+        var y    = toY(val, maxVal);
+
+        var gLine = document.createElementNS(ns, 'line');
+        gLine.setAttribute('x1', PAD.l);     gLine.setAttribute('x2', W - PAD.r);
+        gLine.setAttribute('y1', y);         gLine.setAttribute('y2', y);
+        gLine.setAttribute('stroke', '#ddd2c1'); gLine.setAttribute('stroke-width', '1');
+        grid.appendChild(gLine);
+
+        var label = document.createElementNS(ns, 'text');
+        label.setAttribute('x', PAD.l - 6);  label.setAttribute('y', y + 4);
+        label.setAttribute('font-size', '11'); label.setAttribute('fill', '#5d6b62');
+        label.setAttribute('font-family', 'Inter, sans-serif');
+        label.setAttribute('text-anchor', 'end');
+        label.textContent = val >= 1000 ? '£' + (val / 1000) + 'k' : '£' + val;
+        grid.appendChild(label);
+      }
+
+      // Dashed vertical marker at age 5
+      var marker = document.createElementNS(ns, 'line');
+      marker.setAttribute('x1', toX(5)); marker.setAttribute('x2', toX(5));
+      marker.setAttribute('y1', PAD.t);  marker.setAttribute('y2', baseY);
+      marker.setAttribute('stroke', '#d2a34f'); marker.setAttribute('stroke-width', '1.5');
+      marker.setAttribute('stroke-dasharray', '5,4'); marker.setAttribute('opacity', '0.45');
+      grid.appendChild(marker);
+    }
+
+    document.getElementById('monthly-slider').addEventListener('input', update);
+    document.getElementById('gift-slider').addEventListener('input', update);
+    update();
+  })();
+  </script>
 </body>
 </html>
