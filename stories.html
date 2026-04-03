@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<link rel="icon" href="/sapling.ico" sizes="any">
+<link rel="icon" type="image/png" href="/sapling.png">
+<link rel="apple-touch-icon" href="/sapling.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stories — Sapling</title>
+  <meta name="description" content="Real families, expert voices and social proof from the Sapling community." />
+  <style>
+    :root {
+      --bg: #f7f4ee;
+      --surface: #fffdf9;
+      --surface-2: #f1ece2;
+      --text: #1f2d24;
+      --muted: #5d6b62;
+      --line: #ded6c8;
+      --green: #3f7b52;
+      --green-2: #6aa073;
+      --green-3: #cfe3c7;
+      --sand: #efe5cf;
+      --gold: #d2a34f;
+      --shadow: 0 18px 40px rgba(31, 45, 36, 0.08);
+      --radius: 24px;
+      --max: 1180px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+      color: var(--text);
+      background: linear-gradient(180deg, #fbf8f2 0%, #f7f4ee 42%, #f3eee5 100%);
+      line-height: 1.5;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    h1, h2, h3, p { margin: 0; }
+    .container { width: min(var(--max), calc(100% - 32px)); margin: 0 auto; }
+    .section { padding: 72px 0; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: rgba(106,160,115,0.1); color: var(--green);
+      padding: 8px 14px; border-radius: 999px; font-weight: 700; font-size: 13px;
+    }
+    h1 { font-size: clamp(2.4rem, 4.5vw, 4.4rem); line-height: 0.97; letter-spacing: -0.05em; margin-top: 18px; }
+    h2 { font-size: clamp(1.8rem, 3.2vw, 3rem); line-height: 1.02; letter-spacing: -0.04em; }
+    h3 { font-size: 1.15rem; letter-spacing: -0.02em; }
+    .lead { margin-top: 18px; font-size: clamp(1rem, 1.4vw, 1.2rem); color: var(--muted); max-width: 48rem; }
+    .small { font-size: 0.88rem; color: var(--muted); }
+    .muted { color: var(--muted); }
+
+    /* Nav */
+    .topbar {
+      position: sticky; top: 0; z-index: 20;
+      backdrop-filter: blur(12px);
+      background: rgba(251,248,242,0.76);
+      border-bottom: 1px solid rgba(222,214,200,0.75);
+    }
+    .nav {
+      min-height: 74px; display: flex; align-items: center;
+      justify-content: space-between; gap: 18px;
+      width: min(var(--max), calc(100% - 32px)); margin: 0 auto;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 1.15rem; letter-spacing: -0.03em; }
+    .brand-logo { width: 44px; height: 44px; object-fit: contain; display: block; }
+    .nav-links { display: flex; gap: 18px; align-items: center; color: var(--muted); font-weight: 600; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a.active { color: var(--green); }
+    .btn {
+      border: 1px solid transparent; border-radius: 999px; padding: 14px 20px;
+      font-weight: 700; font-size: 0.98rem;
+      transition: transform .18s ease, box-shadow .18s ease;
+      display: inline-flex; align-items: center; gap: 10px;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--green); color: white; box-shadow: var(--shadow); }
+    .btn-secondary { background: rgba(255,255,255,0.7); border-color: var(--line); }
+
+    /* Hero */
+    .page-hero { padding: 64px 0 72px; }
+    .page-hero-inner { max-width: 760px; }
+    .hero-meta { margin-top: 22px; display: flex; gap: 28px; flex-wrap: wrap; }
+    .hero-meta span { font-size: 0.9rem; color: var(--muted); font-weight: 600; }
+
+    /* Grid layouts */
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+
+    /* Story cards */
+    .story-card {
+      background: rgba(255,255,255,0.9); border: 1px solid var(--line);
+      border-radius: 26px; padding: 24px; box-shadow: var(--shadow);
+      display: grid; gap: 16px; align-content: start;
+    }
+    .story-type {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #f4efe5; border-radius: 999px; padding: 6px 12px;
+      font-size: 0.75rem; font-weight: 800; width: fit-content; color: var(--text);
+    }
+    .story-thumb {
+      aspect-ratio: 16/9; border-radius: 18px;
+      background: linear-gradient(135deg, #dde8d7 0%, #f2ece1 100%);
+      border: 1px solid var(--line);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem; font-weight: 700; color: var(--green);
+    }
+    .story-card h3 { font-size: 1.1rem; }
+    .story-card p { color: var(--muted); font-size: 0.95rem; margin-top: 6px; }
+    .coming-soon-tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(63,123,82,0.08); color: var(--green);
+      border-radius: 999px; padding: 5px 10px; font-size: 0.75rem; font-weight: 700; width: fit-content;
+    }
+
+    /* Expert section */
+    .expert-card {
+      background: rgba(255,255,255,0.88); border: 1px solid var(--line);
+      border-radius: 26px; padding: 24px; box-shadow: var(--shadow);
+      display: grid; gap: 16px; align-content: start;
+    }
+    .expert-card .video-thumb {
+      aspect-ratio: 16/9; border-radius: 18px;
+      background: linear-gradient(135deg, #d1e4d6 0%, #e8f0e2 100%);
+      border: 1px solid var(--line);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .play-btn {
+      width: 52px; height: 52px; border-radius: 50%;
+      background: rgba(63,123,82,0.9); display: flex; align-items: center; justify-content: center;
+    }
+    .play-btn::after {
+      content: ''; border: 0 solid transparent;
+      border-left: 18px solid white; border-top: 11px solid transparent;
+      border-bottom: 11px solid transparent; margin-left: 4px;
+    }
+
+    /* Featured / press strip */
+    .press-strip { margin-top: 28px; }
+    .press-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin-top: 16px; }
+    .press-badge {
+      background: rgba(255,255,255,0.75); border: 1px dashed #c9bda9;
+      border-radius: 18px; min-height: 80px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--muted); font-weight: 700; font-size: 0.88rem;
+    }
+
+    /* Section divider */
+    .section-divider { border: 0; border-top: 1px solid var(--line); margin: 0; }
+
+    /* Submit CTA */
+    .submit-cta {
+      background: linear-gradient(180deg, #fffdf8 0%, #f2ece1 100%);
+      border: 1px solid var(--line); border-radius: 30px; padding: 36px;
+      text-align: center; box-shadow: var(--shadow);
+    }
+    .submit-cta h2 { max-width: unset; margin: 16px auto 0; }
+    .submit-cta p { color: var(--muted); margin: 14px auto 0; max-width: 42rem; }
+    .btns { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: 24px; }
+
+    footer { padding: 30px 0 46px; color: var(--muted); }
+    .footer-row {
+      display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap;
+      border-top: 1px solid var(--line); padding-top: 18px; font-size: 0.9rem;
+      width: min(var(--max), calc(100% - 32px)); margin: 0 auto;
+    }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { color: var(--muted); }
+    .footer-links a:hover { color: var(--text); }
+
+    @media (max-width: 1100px) {
+      .grid-3, .grid-4 { grid-template-columns: repeat(2, 1fr); }
+      .press-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 760px) {
+      .nav-links { display: none; }
+      .grid-3, .grid-2, .grid-4 { grid-template-columns: 1fr; }
+      .press-grid { grid-template-columns: repeat(2, 1fr); }
+      .section { padding: 52px 0; }
+      .page-hero { padding: 40px 0 52px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="nav">
+      <a class="brand" href="/" aria-label="Sapling home">
+        <img class="brand-logo" src="/sapling.png" alt="Sapling logo">
+        <span>Sapling</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="/#how">How it works</a>
+        <a href="/#preview">Inside the app</a>
+        <a href="/#faq">Why parents use it</a>
+        <a href="/stories" class="active">Stories</a>
+        <a href="/resources">Resources</a>
+      </nav>
+      <a class="btn btn-primary" href="https://app.usesapling.co.uk">Get started</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ── Page hero ── -->
+    <section class="page-hero">
+      <div class="container page-hero-inner">
+        <span class="eyebrow">Stories, expert voices &amp; social proof</span>
+        <h1>Real families.<br>Honest experts.</h1>
+        <p class="lead">This is where Sapling builds its evidence base — customer stories, IFA interviews, parent conversations and press coverage that make the decision to start easier for everyone who comes next.</p>
+        <div class="hero-meta">
+          <span>🌱 Customer stories</span>
+          <span>🎙 Expert interviews</span>
+          <span>📰 Press coverage</span>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- ── Customer stories ── -->
+    <section class="section">
+      <div class="container">
+        <span class="eyebrow">Customer stories</span>
+        <h2 style="margin-top: 14px; max-width: 14ch;">How families are actually using Sapling</h2>
+        <p class="lead">First-hand accounts of parents who chose Sapling for birthdays, baby showers and christenings — and what happened next.</p>
+
+        <div class="grid-3" style="margin-top: 32px;">
+          <article class="story-card">
+            <span class="story-type">Parent story</span>
+            <div class="story-thumb">Coming soon</div>
+            <span class="coming-soon-tag">✦ In progress</span>
+            <h3>How Ada's first birthday raised £420 for her future</h3>
+            <p>A QR code on the invites, 18 contributions from family and friends, and two grandparents who now send money every month.</p>
+          </article>
+          <article class="story-card">
+            <span class="story-type">Baby shower</span>
+            <div class="story-thumb">Coming soon</div>
+            <span class="coming-soon-tag">✦ In progress</span>
+            <h3>Starting the fund before the baby even arrived</h3>
+            <p>How one family used Sapling's pre-birth fund at their baby shower and had contributions waiting from day one.</p>
+          </article>
+          <article class="story-card">
+            <span class="story-type">Christening</span>
+            <div class="story-thumb">Coming soon</div>
+            <span class="coming-soon-tag">✦ In progress</span>
+            <h3>A christening gift that will still matter in 18 years</h3>
+            <p>Replacing the ornamental silver spoon with something the whole congregation could contribute to.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- ── Expert interviews ── -->
+    <section class="section">
+      <div class="container">
+        <span class="eyebrow">Expert voices</span>
+        <h2 style="margin-top: 14px; max-width: 14ch;">Interviews that make the idea feel even more sensible</h2>
+        <p class="lead">IFAs, wealth managers and thoughtful parents talking about why starting early matters — and why it's easier than most people assume.</p>
+
+        <div class="grid-2" style="margin-top: 32px;">
+          <article class="expert-card">
+            <div class="video-thumb">
+              <div class="play-btn"></div>
+            </div>
+            <span class="coming-soon-tag">✦ Coming soon</span>
+            <h3>Why starting early matters more than perfect timing</h3>
+            <p class="muted" style="margin-top: 8px;">A short conversation with an IFA or wealth manager on the compounding advantage of early contributions — and why waiting for the "right moment" costs more than people realise.</p>
+          </article>
+          <article class="expert-card">
+            <div class="video-thumb">
+              <div class="play-btn"></div>
+            </div>
+            <span class="coming-soon-tag">✦ Coming soon</span>
+            <h3>How parents explain Sapling to family without sounding awkward</h3>
+            <p class="muted" style="margin-top: 8px;">A parent conversation about making donations feel natural at occasions — the words that work, the framing that lands, and what relatives actually say when they receive the link.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- ── Press & featured ── -->
+    <section class="section">
+      <div class="container">
+        <span class="eyebrow">Featured on</span>
+        <h2 style="margin-top: 14px; max-width: 14ch;">Press coverage, podcasts and community mentions</h2>
+        <p class="lead">Publication badges, podcast logos and community features will live here as Sapling grows. This section is held ready — not yet filled.</p>
+
+        <div class="press-grid">
+          <div class="press-badge">Mumsnet</div>
+          <div class="press-badge">Parenting press</div>
+          <div class="press-badge">IFA interview</div>
+          <div class="press-badge">Podcast feature</div>
+          <div class="press-badge">Community mention</div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- ── Submit your story CTA ── -->
+    <section class="section">
+      <div class="container submit-cta">
+        <span class="eyebrow">Used Sapling?</span>
+        <h2>Share your family's story</h2>
+        <p>If you've set up a fund, run a birthday collection or used Sapling at a baby shower, we'd love to hear how it went. Your story helps other parents feel confident making the same call.</p>
+        <div class="btns">
+          <a class="btn btn-primary" href="https://app.usesapling.co.uk">Get started in the app</a>
+          <a class="btn btn-secondary" href="/">Back to homepage</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-row">
+      <div>© Sapling</div>
+      <div class="footer-links">
+        <a href="/stories">Stories</a>
+        <a href="/resources">Resources</a>
+        <a href="https://app.usesapling.co.uk">Get started</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
