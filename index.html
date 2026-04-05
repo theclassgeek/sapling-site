@@ -76,6 +76,7 @@
     .brand img { width: 42px; height: 42px; object-fit: contain; }
     .eyebrow {
       display: inline-flex; align-items: center; gap: 8px;
+      align-self: flex-start;
       margin-top: 28px;
       background: rgba(104,160,120,.1); color: var(--green);
       border: 1px solid rgba(104,160,120,.2);
@@ -128,6 +129,7 @@
     }
     @media (max-width: 760px) {
       .panel { padding: 24px; }
+      .eyebrow { margin-top: 22px; }
       h1 { max-width: 100%; }
     }
   </style>
