@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <link rel="icon" href="/sapling.ico" sizes="any">
+  <link rel="icon" type="image/png" href="/sapling.png">
+  <link rel="apple-touch-icon" href="/sapling.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sapling — Where their future takes root</title>
+  <meta name="description" content="Sapling helps parents turn gifts from friends and family into long-term savings for their children." />
+  <style>
+    :root {
+      --bg:        #f8f5ef;
+      --surface:   #fffefb;
+      --surface-2: #f1ebe0;
+      --text:      #1a2b1f;
+      --muted:     #5a6860;
+      --line:      #e0d6c6;
+      --green:     #3a7049;
+      --green-mid: #4d8f5f;
+      --green-lt:  #68a078;
+      --green-3:   #d0e6c8;
+      --gold:      #c89a3f;
+      --sand:      #ede3cd;
+      --sh-xs: 0 1px 2px rgba(26,43,31,.04), 0 2px 8px rgba(26,43,31,.06);
+      --sh-sm: 0 2px 4px rgba(26,43,31,.04), 0 6px 20px rgba(26,43,31,.07);
+      --sh-md: 0 4px 8px rgba(26,43,31,.04), 0 12px 32px rgba(26,43,31,.09), 0 28px 52px rgba(26,43,31,.05);
+      --sh-lg: 0 6px 12px rgba(26,43,31,.05), 0 20px 48px rgba(26,43,31,.11), 0 48px 80px rgba(26,43,31,.07);
+      --sh-green: 0 8px 28px rgba(58,112,73,.38);
+      --radius-sm: 16px;
+      --radius:    24px;
+      --radius-lg: 32px;
+      --radius-xl: 40px;
+      --max: 1180px;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+      color: var(--text);
+      background-color: var(--bg);
+      background-image:
+        radial-gradient(ellipse 900px 600px at 70% -10%, rgba(106,160,115,.14) 0%, transparent 70%),
+        radial-gradient(ellipse 700px 500px at -10% 60%, rgba(200,154,63,.08) 0%, transparent 70%),
+        linear-gradient(180deg, #faf7f0 0%, #f8f5ef 50%, #f3ede2 100%);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+    /* Grain overlay */
+    body::after {
+      content: '';
+      position: fixed; inset: 0;
+      pointer-events: none; z-index: 9999;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      opacity: .032; mix-blend-mode: multiply;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    h1, h2, h3, h4, p { margin: 0; }
+
+    /* ── Typography ── */
+    h1, h2, h3 { font-family: 'Fraunces', Georgia, serif; font-optical-sizing: auto; }
+    h1 { font-size: clamp(3rem, 5.5vw, 5.6rem); line-height: .94; letter-spacing: -.04em; font-weight: 800; }
+    h2 { font-size: clamp(2.2rem, 3.8vw, 4rem); line-height: .97; letter-spacing: -.04em; font-weight: 700; }
+    h3 { font-size: 1.2rem; line-height: 1.25; letter-spacing: -.025em; font-weight: 700; }
+    .lead { margin-top: 20px; font-size: clamp(1.05rem, 1.5vw, 1.22rem); color: var(--muted); line-height: 1.6; max-width: 46rem; }
+    .small { font-size: .86rem; color: var(--muted); }
+    .muted { color: var(--muted); }
+
+    /* ── Layout ── */
+    .container { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+    .section    { padding: 92px 0; }
+    .two-col    { display: grid; grid-template-columns: .95fr 1.05fr; gap: 32px; align-items: start; }
+    .grid-3     { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+    .grid-2     { display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; }
+    .grid-4     { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; }
+
+    /* ── Eyebrow ── */
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(104,160,120,.1); color: var(--green);
+      border: 1px solid rgba(104,160,120,.2);
+      padding: 7px 14px; border-radius: 999px;
+      font-weight: 600; font-size: 12.5px; letter-spacing: .02em; text-transform: uppercase;
+    }
+
+    /* ── Buttons ── */
+    .btns { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; align-items: center; }
+    .btn {
+      border: 1px solid transparent; border-radius: 999px; padding: 14px 24px;
+      font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: .97rem;
+      cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      position: relative; overflow: hidden; white-space: nowrap;
+      transition: transform .22s cubic-bezier(.34,1.56,.64,1), box-shadow .22s ease;
+    }
+    .btn::after { content: ''; position: absolute; inset: 0; background: rgba(255,255,255,0); transition: background .2s; }
+    .btn:hover::after { background: rgba(255,255,255,.1); }
+    .btn-primary { background: var(--green); color: #fff; box-shadow: var(--sh-sm), var(--sh-green); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: var(--sh-md), 0 12px 36px rgba(58,112,73,.42); }
+    .btn-secondary { background: rgba(255,255,255,.75); border-color: var(--line); backdrop-filter: blur(6px); }
+    .btn-secondary:hover { transform: translateY(-2px); box-shadow: var(--sh-sm); }
+    .btn-link {
+      color: var(--muted); font-weight: 600; font-size: .95rem;
+      text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(90,104,96,.35);
+      padding: 0; overflow: visible;
+    }
+    .btn-link:hover { color: var(--text); transform: none; }
+    .btn-link::after { display: none; }
+
+    /* ── Nav ── */
+    .topbar {
+      position: sticky; top: 0; z-index: 200;
+      backdrop-filter: blur(18px) saturate(1.3);
+      background: rgba(248,245,239,.72);
+      border-bottom: 1px solid rgba(224,214,198,.6);
+      transition: background .3s, box-shadow .3s;
+    }
+    .topbar.scrolled { background: rgba(248,245,239,.92); box-shadow: var(--sh-sm); }
+    .nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { display: flex; align-items: center; gap: 11px; font-family: 'Fraunces', serif; font-weight: 700; font-size: 1.22rem; letter-spacing: -.03em; }
+    .brand-logo { width: 40px; height: 40px; object-fit: contain; display: block; flex-shrink: 0; }
+    .nav-links { display: flex; gap: 4px; align-items: center; }
+    .nav-links a { color: var(--muted); font-weight: 500; font-size: .9rem; padding: 7px 12px; border-radius: 10px; transition: color .15s, background .15s; }
+    .nav-links a:hover { color: var(--text); background: rgba(0,0,0,.04); }
+
+    .hero-shot-grid { display: grid; grid-template-columns: .88fr 1.12fr; gap: 16px; align-items: stretch; position: relative; z-index: 2; }
+    .hero-shot-stack { display: grid; gap: 16px; }
+    .hero-shot-card {
+      background: rgba(255,255,255,.94);
+      border: 1px solid rgba(224,214,198,.85);
+      border-radius: 28px;
+      padding: 10px;
+      box-shadow: var(--sh-sm);
+      overflow: hidden;
+    }
+    .hero-shot-card img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 20px;
+      display: block;
+    }
+    .hero-shot-card.main { padding: 12px; box-shadow: var(--sh-md); }
+    .hero-shot-card.main img { height: 100%; min-height: 520px; aspect-ratio: auto; object-position: center top; }
+    .hero-shot-label {
+      display: inline-flex; align-items: center; gap: 7px;
+      margin: 0 0 10px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #f6f1e8;
+      color: var(--muted);
+      font-size: .75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+
+    .phone-shot img {
+      width: 100%;
+      border-radius: 22px;
+      border: 1px solid #ede5d8;
+      object-fit: cover;
+      aspect-ratio: 4 / 5;
+      object-position: center top;
+      background: #fff;
+    }
+
+    /* ── Scroll reveal ── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .75s cubic-bezier(.22,1,.36,1), transform .75s cubic-bezier(.22,1,.36,1); }
+    .reveal.r2 { transition-delay: .1s; }
+    .reveal.r3 { transition-delay: .2s; }
+    .reveal.r4 { transition-delay: .3s; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── Hero ── */
+    .hero { padding: 52px 0 80px; }
+    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+    .hero-tagline { margin-top: 18px; font-family: 'Fraunces', serif; font-style: italic; font-size: 1.1rem; font-weight: 400; color: var(--muted); }
+    .hero-punch { margin-top: 26px; padding: 20px 24px; background: rgba(255,255,255,.65); border: 1px solid rgba(224,214,198,.9); border-radius: var(--radius); max-width: 44rem; backdrop-filter: blur(6px); }
+    .hero-punch p:first-child { font-family: 'Fraunces', serif; font-weight: 700; font-size: 1.18rem; letter-spacing: -.02em; }
+    .hero-punch p:last-child { margin-top: 8px; color: var(--muted); font-size: .96rem; }
+
+    /* Hero art */
+    .hero-art { background: linear-gradient(160deg, #fffefb 0%, #f3ebe0 100%); border: 1px solid var(--line); border-radius: var(--radius-xl); box-shadow: var(--sh-lg); padding: 28px; position: relative; overflow: hidden; min-height: 660px; }
+    .hero-art-glow { position: absolute; width: 380px; height: 380px; border-radius: 50%; background: radial-gradient(circle, rgba(104,160,120,.3) 0%, transparent 70%); filter: blur(50px); bottom: -60px; right: -60px; animation: glow-drift 9s ease-in-out infinite alternate; pointer-events: none; }
+    @keyframes glow-drift { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(-30px,-20px) scale(1.15); } }
+    .demo-label { font-size: .78rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: .06em; }
+    .flow-cards { display: grid; gap: 16px; position: relative; z-index: 2; }
+    .flow-card { background: rgba(255,255,255,.94); border: 1px solid rgba(224,214,198,.85); border-radius: var(--radius); padding: 20px; display: grid; gap: 14px; box-shadow: var(--sh-sm); transition: transform .3s ease, box-shadow .3s ease; }
+    .flow-card:hover { transform: translateY(-3px); box-shadow: var(--sh-md); }
+    .floaty { animation: bob 5s ease-in-out infinite; }
+    @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+    .flow-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+    .phone-pill { display: inline-flex; align-items: center; background: var(--surface-2); border-radius: 999px; padding: 5px 11px; font-size: .76rem; font-weight: 600; color: var(--muted); white-space: nowrap; flex-shrink: 0; }
+    .mini-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 9px; }
+    .mini-card { border-radius: var(--radius-sm); background: #faf7f0; border: 1px solid var(--line); padding: 12px; min-height: 88px; display: flex; flex-direction: column; justify-content: space-between; }
+    .mini-card strong { font-family: 'Fraunces', serif; font-size: .9rem; font-weight: 700; }
+    .mini-card span { color: var(--muted); font-size: .8rem; }
+    .share-row { display: flex; gap: 8px; flex-wrap: wrap; }
+    .chip { display: inline-flex; align-items: center; gap: 7px; padding: 8px 12px; border-radius: 999px; border: 1px solid var(--line); background: #fff; font-size: .82rem; font-weight: 600; }
+    .growth-box { display: grid; grid-template-columns: 1.15fr .85fr; gap: 12px; align-items: end; }
+    .chart-wrap { background: linear-gradient(180deg,#f8f5ec 0%,#fff 100%); border: 1px solid var(--line); border-radius: 18px; padding: 14px; }
+    .stat-card { background: linear-gradient(155deg, #3a7049 0%, #2c5637 100%); color: #fff; border-radius: 20px; padding: 18px; min-height: 185px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 8px 24px rgba(42,80,54,.35); }
+    .stat-card strong { font-family: 'Fraunces', serif; font-size: 2.4rem; letter-spacing: -.05em; line-height: 1; }
+    .stat-note { font-size: .78rem; color: rgba(255,255,255,.72); margin-top: 7px; line-height: 1.4; }
+    .tree { height: 120px; display: flex; align-items: end; justify-content: center; position: relative; }
+    .trunk { width: 13px; height: 54px; background: #7a6248; border-radius: 8px; transform-origin: bottom; animation: sway 6s ease-in-out infinite; }
+    .leaf { position: absolute; bottom: 40px; width: 72px; height: 52px; background: radial-gradient(circle at 40% 40%, #7ab580 0%, #5d9066 100%); border-radius: 72px 72px 72px 14px; box-shadow: inset 0 1px 0 rgba(255,255,255,.2); animation: bob 5s ease-in-out infinite; }
+    .leaf.left  { transform: rotate(-26deg) translateX(-22px); left: calc(50% - 54px); }
+    .leaf.right { transform: rotate(30deg) translateX(22px); right: calc(50% - 54px); }
+    .leaf.top   { width: 84px; height: 60px; bottom: 72px; border-radius: 84px 84px 84px 16px; transform: rotate(-5deg); }
+    @keyframes sway { 0%,100% { transform: rotate(-2.5deg); } 50% { transform: rotate(2.5deg); } }
+
+    /* ── Cards ── */
+    .card { background: rgba(255,255,255,.9); border: 1px solid rgba(224,214,198,.75); border-radius: var(--radius); box-shadow: var(--sh-sm); padding: 26px; transition: transform .28s cubic-bezier(.34,1.56,.64,1), box-shadow .28s ease; }
+    .card:hover { transform: translateY(-4px); box-shadow: var(--sh-md); }
+    .card p { margin-top: 10px; color: var(--muted); font-size: .95rem; }
+    .step-no { width: 36px; height: 36px; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center; background: var(--green-3); color: var(--green); font-family: 'Fraunces', serif; font-weight: 700; font-size: 1rem; margin-bottom: 14px; }
+    .mid-cta { display: flex; justify-content: center; padding-top: 44px; }
+
+    /* ── Chart section ── */
+    .chart-card { background: linear-gradient(160deg, #fffefb 0%, #f5efe5 100%); border: 1px solid var(--line); border-radius: var(--radius-xl); box-shadow: var(--sh-md); padding: 40px; }
+    .chart-head { margin-bottom: 32px; }
+    .chart-head h2 { margin-top: 14px; }
+    .slider-controls { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; background: rgba(255,255,255,.55); border: 1px solid var(--line); border-radius: 20px; padding: 20px; margin-bottom: 24px; }
+    .slider-group { display: grid; gap: 8px; }
+    .slider-label { display: flex; justify-content: space-between; align-items: baseline; }
+    .slider-label span { font-weight: 600; font-size: .88rem; color: var(--muted); }
+    .slider-label strong { font-family: 'Fraunces', serif; color: var(--green); font-size: 1.1rem; font-weight: 700; letter-spacing: -.03em; }
+    .slider-hint { font-size: .78rem; color: var(--muted); line-height: 1.4; }
+    input[type="range"] { width: 100%; accent-color: var(--green); height: 4px; cursor: pointer; border-radius: 2px; }
+    .comparison-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-top: 24px; }
+    .comp-stat { border-radius: 20px; padding: 20px 22px; }
+    .comp-label { font-size: .78rem; color: var(--muted); display: block; margin-bottom: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; }
+    .comp-stat strong { font-family: 'Fraunces', serif; font-size: 2rem; letter-spacing: -.05em; display: block; line-height: 1; }
+    .comp-stat small { font-size: .78rem; color: var(--muted); margin-top: 6px; display: block; }
+    .comp-birth { background: rgba(58,112,73,.07); border: 1px solid rgba(58,112,73,.18); }
+    .comp-birth strong { color: var(--green); }
+    .comp-age5  { background: rgba(200,154,63,.07); border: 1px solid rgba(200,154,63,.22); }
+    .comp-age5 strong { color: var(--gold); }
+    .comp-diff  { background: var(--text); }
+    .comp-diff .comp-label { color: rgba(247,244,238,.65); }
+    .comp-diff strong { color: #f7f4ee; }
+    .comp-diff small { color: rgba(247,244,238,.55); }
+
+    /* ── Providers ── */
+    .providers-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; margin-top: 32px; }
+    .provider-card { background: rgba(255,255,255,.9); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; box-shadow: var(--sh-sm); min-height: 224px; display: flex; flex-direction: column; gap: 12px; transition: transform .28s cubic-bezier(.34,1.56,.64,1), box-shadow .28s ease; }
+    .provider-card:hover { transform: translateY(-4px); box-shadow: var(--sh-md); }
+    .provider-logo { width: 50px; height: 50px; border-radius: 16px; display: inline-flex; align-items: center; justify-content: center; font-family: 'Fraunces', serif; font-weight: 700; color: #fff; font-size: 1.1rem; }
+    .provider-logo.nutmeg  { background: linear-gradient(135deg,#93654a 0%,#6a4631 100%); }
+    .provider-logo.vanguard{ background: linear-gradient(135deg,#b93442 0%,#8c1f2c 100%); }
+    .provider-logo.cash    { background: linear-gradient(135deg,#547bbb 0%,#345e9b 100%); }
+    .provider-logo.prebirth{ background: linear-gradient(135deg,#7ca86d 0%,#557e47 100%); }
+    .provider-badge { align-self: start; background: #f2ece1; color: var(--text); border-radius: 999px; padding: 5px 10px; font-size: .73rem; font-weight: 700; }
+    .provider-card h3 { font-size: 1.05rem; }
+    .provider-card p { color: var(--muted); font-size: .9rem; }
+
+    /* ── Occasions ── */
+    .occasion-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; margin-top: 28px; }
+    .occasion { background: rgba(255,255,255,.84); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; box-shadow: var(--sh-sm); transition: transform .28s cubic-bezier(.34,1.56,.64,1), box-shadow .28s ease; }
+    .occasion:hover { transform: translateY(-4px); box-shadow: var(--sh-md); }
+    .occasion-icon { font-size: 1.6rem; margin-bottom: 12px; }
+    .occasion p { margin-top: 8px; color: var(--muted); font-size: .91rem; }
+
+    /* ── Phone stack ── */
+    .preview-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 28px; align-items: start; }
+    .phone-stack  { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+    .phone-shot { background: linear-gradient(170deg,#f9f7f1 0%,#fff 100%); border: 1px solid var(--line); border-radius: 30px; padding: 12px; box-shadow: var(--sh-md); }
+    .phone-screen { background: #fff; border: 1px solid #ede5d8; border-radius: 22px; padding: 14px; min-height: 360px; display: grid; gap: 11px; }
+    .phone-notch { width: 88px; height: 5px; background: #d6cfc3; border-radius: 999px; margin: 0 auto 10px; }
+    .screen-pill { display: inline-flex; align-items: center; background: #f4efe5; border-radius: 999px; padding: 5px 10px; font-size: .72rem; font-weight: 700; }
+    .screen-stat { border: 1px solid var(--line); border-radius: 16px; padding: 12px; background: #fdfbf6; }
+    .screen-stat strong { display: block; font-family: 'Fraunces', serif; font-size: 1.6rem; letter-spacing: -.05em; }
+    .screen-line { height: 8px; background: linear-gradient(90deg,#dce8d6 0%,#cfe3c7 100%); border-radius: 999px; }
+    .screen-line.muted { background: #efe8db; }
+    .screen-chart { border: 1px solid var(--line); border-radius: 16px; padding: 10px; background: #fbf8f2; }
+    .screen-list { display: grid; gap: 7px; }
+    .screen-list div { border: 1px solid var(--line); border-radius: 12px; padding: 9px 12px; font-size: .82rem; background: #fff; }
+
+    /* ── FAQ ── */
+    .faq-card { background: rgba(255,255,255,.9); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; box-shadow: var(--sh-sm); }
+    .faq-card p { margin-top: 8px; color: var(--muted); font-size: .95rem; }
+
+    /* ── CTA ── */
+    .cta-panel { background: linear-gradient(155deg, #1e3d29 0%, #152a1c 100%); color: #f7f4ee; border-radius: var(--radius-xl); padding: 48px; display: grid; grid-template-columns: 1.2fr .8fr; gap: 32px; align-items: center; box-shadow: 0 24px 64px rgba(20,40,26,.28), 0 4px 12px rgba(20,40,26,.18); position: relative; overflow: hidden; }
+    .cta-panel::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 600px 400px at 100% 0%, rgba(106,160,120,.18) 0%, transparent 70%); pointer-events: none; }
+    .cta-panel p { color: rgba(247,244,238,.72); margin-top: 14px; max-width: 44rem; }
+    .cta-panel h2 { color: #fff; margin-top: 14px; }
+    .cta-panel .btn-secondary { background: rgba(255,255,255,.1); color: #fff; border-color: rgba(255,255,255,.2); backdrop-filter: none; }
+    .cta-checklist { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; position: relative; z-index: 1; }
+    .cta-checklist li { border: 1px solid rgba(255,255,255,.11); background: rgba(255,255,255,.05); border-radius: 14px; padding: 12px 16px; font-size: .91rem; color: rgba(247,244,238,.84); display: flex; align-items: center; gap: 10px; transition: background .2s, border-color .2s; }
+    .cta-checklist li:hover { background: rgba(255,255,255,.09); border-color: rgba(255,255,255,.18); }
+
+    /* ── Footer ── */
+    footer { padding: 28px 0 44px; color: var(--muted); }
+    .footer-row { display: flex; justify-content: space-between; align-items: center; gap: 18px; flex-wrap: wrap; border-top: 1px solid var(--line); padding-top: 20px; font-size: .88rem; }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { color: var(--muted); transition: color .15s; }
+    .footer-links a:hover { color: var(--text); }
+
+    /* ── Responsive ── */
+    @media (max-width: 1100px) {
+      .hero-grid, .two-col, .cta-panel, .growth-box, .preview-grid { grid-template-columns: 1fr; }
+      .providers-grid, .occasion-grid { grid-template-columns: repeat(2,1fr); }
+      .grid-3, .grid-4, .grid-2 { grid-template-columns: 1fr; }
+      .phone-stack { grid-template-columns: 1fr; }
+      .hero-art { min-height: unset; }
+      .slider-controls, .comparison-stats { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 760px) {
+      .nav-links { display: none; }
+      .providers-grid, .occasion-grid, .mini-grid { grid-template-columns: 1fr; }
+      .section { padding: 64px 0; }
+      .hero { padding: 28px 0 52px; }
+      .chart-card, .cta-panel { padding: 24px; }
+      .container { width: min(var(--max), calc(100% - 24px)); }
+      .btn { width: 100%; }
+      .btns { display: grid; }
+      h1 { font-size: clamp(2.6rem, 9vw, 3.2rem); }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar" id="topbar">
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="Sapling home">
+        <img class="brand-logo" src="/sapling.png" alt="Sapling logo">
+        <span>Sapling</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#how">How it works</a>
+        <a href="#preview">Inside the app</a>
+        <a href="#faq">Why parents use it</a>
+        <a href="/partners">Partners</a>
+      </nav>
+      <a class="btn btn-primary" href="https://app.usesapling.co.uk">Get started</a>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow reveal">UK gifting, routed into long-term savings</span>
+          <h1 class="reveal r2">Turn gifts into their financial future</h1>
+          <p class="hero-tagline reveal r3">Where their future takes root.</p>
+          <div class="hero-punch reveal r3">
+            <p>Less plastic tat. More future.</p>
+            <p>With Sapling, every gift goes straight into their savings, so it starts growing straight away.</p>
+          </div>
+          <p class="lead reveal r4">A simple way for friends and family to contribute at birthdays, Christmas, christenings and baby showers — without cash getting forgotten, cheques sitting in drawers, or another pile of stuff cluttering the house.</p>
+          <div class="btns reveal r4">
+            <a class="btn btn-primary" href="https://app.usesapling.co.uk">Create your child's Sapling</a>
+            <a class="btn-link" href="#how">See how it works ↓</a>
+          </div>
+        </div>
+
+        <div class="hero-art reveal r2">
+          <div class="hero-art-glow" aria-hidden="true"></div>
+          <div class="hero-shot-grid">
+            <div class="hero-shot-stack">
+              <div class="hero-shot-card floaty">
+                <div class="hero-shot-label">Parent setup</div>
+                <img src="/assets/screenshots/03-create-child-filled-4x5.png" alt="Sapling child setup screen showing a completed onboarding step">
+              </div>
+              <div class="hero-shot-card">
+                <div class="hero-shot-label">Share with family</div>
+                <img src="/assets/screenshots/08-share-link-4x5.png" alt="Sapling share link screen for sending a child's savings page to family and friends">
+              </div>
+            </div>
+            <div class="hero-shot-card main">
+              <div class="hero-shot-label">Inside the dashboard</div>
+              <img src="/assets/screenshots/existing-account-dashboard-4x5.png" alt="Sapling dashboard showing portfolio value, future projection, events, and recent activity">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Inside the app -->
+    <section class="section" id="preview">
+      <div class="container preview-grid">
+        <div class="reveal">
+          <span class="eyebrow">Inside the app</span>
+          <h2 style="margin-top:16px;max-width:11ch;">Show people the payoff, not just the idea.</h2>
+          <p class="lead">Sapling feels much more real once parents can picture the dashboard, event pages, growing totals and the "could be worth" forecasts their family will see in action.</p>
+          <div class="card" style="margin-top:26px;">
+            <h3>What people should immediately understand</h3>
+            <p>Parents can set up a child, share a birthday or baby shower page, collect gifts as one-off or recurring support, and see those gifts building into a long-term future — all in a product that feels calm, modern and easy to trust.</p>
+          </div>
+        </div>
+        <div class="phone-stack">
+          <div class="phone-shot reveal r2">
+            <img src="/assets/screenshots/03-create-child-filled-4x5.png" alt="Sapling onboarding screen for creating a child's savings fund">
+          </div>
+          <div class="phone-shot reveal r3">
+            <img src="/assets/screenshots/08-share-link-4x5.png" alt="Sapling share screen showing the event share link for family and friends">
+          </div>
+          <div class="phone-shot reveal r4">
+            <img src="/assets/screenshots/existing-account-dashboard-4x5.png" alt="Sapling dashboard with savings totals, projected value, events, and activity">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="section" id="how">
+      <div class="container two-col">
+        <div class="reveal">
+          <span class="eyebrow">How it works</span>
+          <h2 style="margin-top:16px;">Built for parents who want the sensible option to be the easy one.</h2>
+          <p class="lead">Sapling is the middleman between parents, donors and Junior ISA providers. Parents create a child's fund, choose a provider, then share a link or QR code so family and friends can contribute directly into their future savings.</p>
+        </div>
+        <div class="grid-3">
+          <div class="card reveal r2"><div class="step-no">1</div><h3>Create the fund</h3><p>Add your child, choose a provider and get a ready-to-share savings page in minutes.</p></div>
+          <div class="card reveal r3"><div class="step-no">2</div><h3>Share it anywhere</h3><p>Birthdays, Christmas, baby showers, christenings, school events or the family WhatsApp chat.</p></div>
+          <div class="card reveal r4"><div class="step-no">3</div><h3>Watch it grow</h3><p>See contributions, projected future value and the impact of family support all in one place.</p></div>
+        </div>
+      </div>
+      <div class="mid-cta reveal">
+        <a class="btn btn-primary" href="https://app.usesapling.co.uk">Create your child's Sapling</a>
+      </div>
+    </section>
+
+    <!-- Interactive comparison -->
+    <section class="section">
+      <div class="container chart-card reveal">
+        <div class="chart-head">
+          <span class="eyebrow">At-a-glance impact</span>
+          <h2>The difference is not perfection.<br>It's starting early.</h2>
+          <p class="lead">Use the sliders to match your family's situation and see what the timing of the first gift actually costs.</p>
+        </div>
+        <p style="font-size:.92rem;font-weight:600;color:var(--muted);margin-bottom:16px;">What starting at birth is worth vs. starting at age 5</p>
+
+        <div class="slider-controls">
+          <div class="slider-group">
+            <div class="slider-label"><span>Monthly recurring</span><strong id="monthly-label">£40/mo</strong></div>
+            <input type="range" id="monthly-slider" min="10" max="150" step="5" value="40">
+            <span class="slider-hint">e.g. grandparents or close family setting up a standing order</span>
+          </div>
+          <div class="slider-group">
+            <div class="slider-label"><span>Annual gift occasions</span><strong id="gift-label">£150/yr</strong></div>
+            <input type="range" id="gift-slider" min="0" max="600" step="25" value="150">
+            <span class="slider-hint">e.g. birthday collections, Christmas, christenings</span>
+          </div>
+        </div>
+
+        <svg id="comparison-svg" viewBox="0 0 860 280" width="100%" role="img" aria-label="Chart comparing growth starting at birth versus age 5">
+          <defs>
+            <linearGradient id="birthGrad" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0%"   stop-color="#3a7049" stop-opacity=".18"/>
+              <stop offset="100%" stop-color="#3a7049" stop-opacity="0"/>
+            </linearGradient>
+            <linearGradient id="age5Grad" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0%"   stop-color="#c89a3f" stop-opacity=".13"/>
+              <stop offset="100%" stop-color="#c89a3f" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <g id="chart-grid"></g>
+          <path id="birth-area" fill="url(#birthGrad)"/>
+          <path id="age5-area"  fill="url(#age5Grad)"/>
+          <path id="age5-path"  fill="none" stroke="#c89a3f" stroke-width="3"   stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 4"/>
+          <path id="birth-path" fill="none" stroke="#3a7049" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle id="birth-end" r="7" fill="#3a7049"/>
+          <circle id="age5-end"  r="7" fill="#c89a3f"/>
+          <g font-size="12" fill="#5a6860" font-family="DM Sans,sans-serif" text-anchor="middle">
+            <text x="68"  y="265">Birth</text>
+            <text x="268" y="265">Age 5</text>
+            <text x="468" y="265">Age 10</text>
+            <text x="668" y="265">Age 15</text>
+            <text x="808" y="265">18</text>
+          </g>
+          <g font-size="12" font-weight="600" font-family="DM Sans,sans-serif">
+            <circle cx="68"  cy="18" r="5" fill="#3a7049"/>
+            <text x="80"  y="23" fill="#3a7049">Starting at birth</text>
+            <circle cx="220" cy="18" r="5" fill="#c89a3f"/>
+            <text x="232" y="23" fill="#c89a3f">Starting at age 5</text>
+          </g>
+        </svg>
+
+        <div class="comparison-stats">
+          <div class="comp-stat comp-birth"><span class="comp-label">🌱 Starting at birth</span><strong id="birth-value">£18,240</strong><small>by age 18</small></div>
+          <div class="comp-stat comp-age5"><span class="comp-label">⏳ Starting at age 5</span><strong id="age5-value">£12,088</strong><small>by age 18</small></div>
+          <div class="comp-stat comp-diff"><span class="comp-label">The early start advantage</span><strong id="diff-value">£6,152 more</strong><small>at the same monthly rate</small></div>
+        </div>
+        <p class="small" style="margin-top:18px;">Illustrative only. Assumes 5% annual growth throughout. Final balances come from the selected provider.</p>
+      </div>
+    </section>
+
+    <!-- Providers -->
+    <section class="section" id="providers">
+      <div class="container">
+        <div class="reveal">
+          <span class="eyebrow">Provider marketplace</span>
+          <h2 style="margin-top:16px;max-width:11ch;">Parents get choice without being forced into homework.</h2>
+          <p class="lead">A limited set of partner options with simple descriptions and plain-English explanations — not a wall of jargon.</p>
+        </div>
+        <div class="providers-grid">
+          <div class="provider-card reveal r2"><div class="provider-logo nutmeg">N</div><div class="provider-badge">Managed Junior ISA</div><h3>Nutmeg</h3><p>Fully managed portfolio investing in environmentally responsible companies.</p></div>
+          <div class="provider-card reveal r3"><div class="provider-logo vanguard">V</div><div class="provider-badge">Stocks &amp; Shares Junior ISA</div><h3>Vanguard</h3><p>Low-cost index investing designed for long-term growth.</p></div>
+          <div class="provider-card reveal r3"><div class="provider-logo cash">£</div><div class="provider-badge">Cash Junior ISA</div><h3>Cash ISA</h3><p>Simple savings with no investing for parents who want the straightforward option.</p></div>
+          <div class="provider-card reveal r4"><div class="provider-logo prebirth">B</div><div class="provider-badge">Pre-birth fund</div><h3>Before they arrive</h3><p>Start collecting during pregnancy, then switch to a Junior ISA once the birth is confirmed.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Occasions -->
+    <section class="section" id="occasions">
+      <div class="container">
+        <div class="reveal">
+          <span class="eyebrow">Built around real-life occasions</span>
+          <h2 style="margin-top:16px;max-width:11ch;">The product works because parents get prompted to actually use it.</h2>
+          <p class="lead">Sapling coaches parents on where to share, how to frame it, and how to make a donations-first event feel normal and exciting.</p>
+        </div>
+        <div class="occasion-grid">
+          <div class="occasion reveal r2"><div class="occasion-icon">🎂</div><h3>Birthdays</h3><p>A QR code on invites, a poster at the entrance, or a live display showing total raised.</p></div>
+          <div class="occasion reveal r3"><div class="occasion-icon">👶</div><h3>Baby showers</h3><p>Let family and friends start contributing before the baby arrives with a pre-birth fund.</p></div>
+          <div class="occasion reveal r3"><div class="occasion-icon">✨</div><h3>Christenings</h3><p>Swap another ornamental gift for something that will still matter years later.</p></div>
+          <div class="occasion reveal r4"><div class="occasion-icon">⚽</div><h3>Clubs &amp; teams</h3><p>Shared team QR codes, school events and sports milestones can all point back to future savings.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why parents use it -->
+    <section class="section" id="faq">
+      <div class="container two-col">
+        <div class="reveal">
+          <span class="eyebrow">Why parents use it</span>
+          <h2 style="margin-top:16px;max-width:10ch;">It makes the intelligent choice feel obvious.</h2>
+          <p class="lead">Parents want less clutter. Donors want to feel their money matters. And the sooner money lands in savings, the more useful it becomes later.</p>
+        </div>
+        <div class="grid-3">
+          <div class="faq-card reveal r2"><h3>No more forgotten cash</h3><p>Money doesn't have to sit in a drawer or wait for a parent to remember to move it later.</p></div>
+          <div class="faq-card reveal r3"><h3>Donors feel real impact</h3><p>Live totals, contribution history and future projections make each gift feel meaningful, not token.</p></div>
+          <div class="faq-card reveal r4"><h3>Built to spread</h3><p>Visible totals and shareable event pages help Sapling feel like a sensible modern thing parents actually do.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section" id="cta">
+      <div class="container">
+        <div class="cta-panel reveal">
+          <div style="position:relative;z-index:1;">
+            <span class="eyebrow" style="background:rgba(255,255,255,.08);color:#c8dcc0;border-color:rgba(255,255,255,.12);">Ready to turn gifts into a future?</span>
+            <h2>Sapling makes the future-friendly option the easiest one to share.</h2>
+            <p>Create a child's fund, choose a provider, and give family and friends a better answer than more stuff they don't need.</p>
+            <div class="btns" style="margin-top:28px;">
+              <a class="btn btn-primary" href="https://app.usesapling.co.uk">Get started in the app</a>
+              <a class="btn btn-secondary" href="#preview">See inside the app</a>
+            </div>
+          </div>
+          <ul class="cta-checklist">
+            <li>⏱&nbsp; 5 minutes to set up your child's fund</li>
+            <li>🎁&nbsp; Works at birthdays, baby showers &amp; Christmas</li>
+            <li>📈&nbsp; Connects to Nutmeg, Vanguard and more</li>
+            <li>🔗&nbsp; One link or QR code for the whole family</li>
+            <li>🇬🇧&nbsp; Built for UK Junior ISAs</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <div>© Sapling</div>
+      <div class="footer-links">
+        <a href="/partners">Partners</a>
+        <a href="https://app.usesapling.co.uk">Get started</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  /* Scroll reveal */
+  (function(){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, {threshold:.08});
+    document.querySelectorAll('.reveal').forEach(function(el){ obs.observe(el); });
+    setTimeout(function(){ document.querySelectorAll('.hero .reveal').forEach(function(el){ el.classList.add('visible'); }); }, 80);
+  })();
+
+  /* Nav scroll */
+  (function(){
+    var tb = document.getElementById('topbar');
+    window.addEventListener('scroll', function(){ tb.classList.toggle('scrolled', window.scrollY > 64); }, {passive:true});
+  })();
+
+  /* Animated number counter */
+  function animateNum(el, from, to, suffix){
+    var dur=380, s=performance.now();
+    suffix = suffix||'';
+    function step(now){
+      var t=Math.min((now-s)/dur,1), ease=1-Math.pow(1-t,3);
+      el.textContent = '£' + Math.round(from+(to-from)*ease).toLocaleString('en-GB') + suffix;
+      if(t<1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  /* Comparison widget */
+  (function(){
+    var W=860, H=280, PAD={l:68,r:24,t:36,b:36};
+    var cW=W-PAD.l-PAD.r, cH=H-PAD.t-PAD.b;
+
+    function fv(mo,gift,yrs){
+      if(yrs<=0) return 0;
+      var r=.05/12, n=yrs*12;
+      var mfv=mo*((Math.pow(1+r,n)-1)/r)*(1+r);
+      var gfv=gift>0?gift*((Math.pow(1.05,yrs)-1)/.05)*1.05:0;
+      return Math.round(mfv+gfv);
+    }
+    function toX(age){ return PAD.l+(age/18)*cW; }
+    function toY(v,mx){ return PAD.t+cH-(v/mx)*cH; }
+    function path(pts){ return pts.map(function(p,i){ return (i?'L':'M')+p[0].toFixed(1)+','+p[1].toFixed(1); }).join(' '); }
+
+    var pB=18240, pA=12088, pD=6152;
+
+    function update(){
+      var mo=+document.getElementById('monthly-slider').value;
+      var gift=+document.getElementById('gift-slider').value;
+      document.getElementById('monthly-label').textContent='£'+mo+'/mo';
+      document.getElementById('gift-label').textContent=gift>0?'£'+gift+'/yr':'£0/yr';
+
+      var bv=[], av=[];
+      for(var i=0;i<=18;i++){ bv.push(fv(mo,gift,i)); av.push(i<5?0:fv(mo,gift,i-5)); }
+
+      var mx=Math.max.apply(null,bv)*1.1;
+      var by=toY(0,mx);
+      var bpts=bv.map(function(v,i){return[toX(i),toY(v,mx)];});
+      var apts=av.map(function(v,i){return[toX(i),toY(v,mx)];});
+
+      var bl=path(bpts);
+      document.getElementById('birth-path').setAttribute('d',bl);
+      document.getElementById('birth-area').setAttribute('d',bl+' L'+toX(18).toFixed(1)+','+by.toFixed(1)+' L'+toX(0).toFixed(1)+','+by.toFixed(1)+' Z');
+
+      var al=path(apts.slice(5));
+      document.getElementById('age5-path').setAttribute('d',al);
+      document.getElementById('age5-area').setAttribute('d',al+' L'+toX(18).toFixed(1)+','+by.toFixed(1)+' L'+toX(5).toFixed(1)+','+by.toFixed(1)+' Z');
+
+      document.getElementById('birth-end').setAttribute('cx',bpts[18][0]);
+      document.getElementById('birth-end').setAttribute('cy',bpts[18][1]);
+      document.getElementById('age5-end').setAttribute('cx',apts[18][0]);
+      document.getElementById('age5-end').setAttribute('cy',apts[18][1]);
+
+      var nb=bv[18], na=av[18], nd=nb-na;
+      animateNum(document.getElementById('birth-value'),pB,nb,'');
+      animateNum(document.getElementById('age5-value'),pA,na,'');
+      animateNum(document.getElementById('diff-value'),pD,nd,' more');
+      pB=nb; pA=na; pD=nd;
+
+      var ns='http://www.w3.org/2000/svg';
+      var grid=document.getElementById('chart-grid');
+      grid.innerHTML='';
+      for(var s=0;s<=4;s++){
+        var val=Math.round((mx*s/4)/1000)*1000;
+        var y=toY(val,mx);
+        var ln=document.createElementNS(ns,'line');
+        ln.setAttribute('x1',PAD.l); ln.setAttribute('x2',W-PAD.r);
+        ln.setAttribute('y1',y);     ln.setAttribute('y2',y);
+        ln.setAttribute('stroke','#ddd4c4'); ln.setAttribute('stroke-width','1');
+        grid.appendChild(ln);
+        var lb=document.createElementNS(ns,'text');
+        lb.setAttribute('x',PAD.l-8); lb.setAttribute('y',y+4);
+        lb.setAttribute('font-size','11'); lb.setAttribute('fill','#5a6860');
+        lb.setAttribute('font-family','DM Sans,sans-serif'); lb.setAttribute('text-anchor','end');
+        lb.textContent=val>=1000?'£'+(val/1000)+'k':'£'+val;
+        grid.appendChild(lb);
+      }
+      var mk=document.createElementNS(ns,'line');
+      mk.setAttribute('x1',toX(5)); mk.setAttribute('x2',toX(5));
+      mk.setAttribute('y1',PAD.t);  mk.setAttribute('y2',by);
+      mk.setAttribute('stroke','#c89a3f'); mk.setAttribute('stroke-width','1.5');
+      mk.setAttribute('stroke-dasharray','5,4'); mk.setAttribute('opacity','.4');
+      grid.appendChild(mk);
+    }
+    document.getElementById('monthly-slider').addEventListener('input',update);
+    document.getElementById('gift-slider').addEventListener('input',update);
+    update();
+  })();
+  </script>
+</body>
+</html>
