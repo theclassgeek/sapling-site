@@ -127,6 +127,49 @@
     .nav-links a { color: var(--muted); font-weight: 500; font-size: .9rem; padding: 7px 12px; border-radius: 10px; transition: color .15s, background .15s; }
     .nav-links a:hover { color: var(--text); background: rgba(0,0,0,.04); }
 
+    .hero-shot-grid { display: grid; grid-template-columns: .88fr 1.12fr; gap: 16px; align-items: stretch; position: relative; z-index: 2; }
+    .hero-shot-stack { display: grid; gap: 16px; }
+    .hero-shot-card {
+      background: rgba(255,255,255,.94);
+      border: 1px solid rgba(224,214,198,.85);
+      border-radius: 28px;
+      padding: 10px;
+      box-shadow: var(--sh-sm);
+      overflow: hidden;
+    }
+    .hero-shot-card img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 20px;
+      display: block;
+    }
+    .hero-shot-card.main { padding: 12px; box-shadow: var(--sh-md); }
+    .hero-shot-card.main img { height: 100%; min-height: 520px; aspect-ratio: auto; object-position: center top; }
+    .hero-shot-label {
+      display: inline-flex; align-items: center; gap: 7px;
+      margin: 0 0 10px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #f6f1e8;
+      color: var(--muted);
+      font-size: .75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+
+    .phone-shot img {
+      width: 100%;
+      border-radius: 22px;
+      border: 1px solid #ede5d8;
+      object-fit: cover;
+      aspect-ratio: 4 / 5;
+      object-position: center top;
+      background: #fff;
+    }
+
     /* ── Scroll reveal ── */
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity .75s cubic-bezier(.22,1,.36,1), transform .75s cubic-bezier(.22,1,.36,1); }
     .reveal.r2 { transition-delay: .1s; }
@@ -295,8 +338,7 @@
         <a href="#how">How it works</a>
         <a href="#preview">Inside the app</a>
         <a href="#faq">Why parents use it</a>
-        <a href="/stories">Stories</a>
-        <a href="/resources">Resources</a>
+        <a href="/partners">Partners</a>
       </nav>
       <a class="btn btn-primary" href="https://app.usesapling.co.uk">Get started</a>
     </div>
@@ -324,80 +366,21 @@
 
         <div class="hero-art reveal r2">
           <div class="hero-art-glow" aria-hidden="true"></div>
-          <div class="flow-cards">
-
-            <div class="flow-card floaty">
-              <div class="flow-top">
-                <div>
-                  <div class="demo-label">Step 1 — Parent setup</div>
-                  <h3 style="margin-top:6px;">Choose a provider, create the fund, share the QR</h3>
-                </div>
-                <span class="phone-pill">Mobile first</span>
+          <div class="hero-shot-grid">
+            <div class="hero-shot-stack">
+              <div class="hero-shot-card floaty">
+                <div class="hero-shot-label">Parent setup</div>
+                <img src="/assets/screenshots/03-create-child-filled-4x5.png" alt="Sapling child setup screen showing a completed onboarding step">
               </div>
-              <div class="mini-grid">
-                <div class="mini-card"><strong>Birthday</strong><span>QR on invites</span></div>
-                <div class="mini-card"><strong>Baby shower</strong><span>Start before they arrive</span></div>
-                <div class="mini-card"><strong>Christening</strong><span>Share in the family chat</span></div>
-              </div>
-              <div class="share-row">
-                <span class="chip">📱 WhatsApp</span>
-                <span class="chip">🎟️ Invite card QR</span>
-                <span class="chip">🖨️ Party poster</span>
+              <div class="hero-shot-card">
+                <div class="hero-shot-label">Share with family</div>
+                <img src="/assets/screenshots/08-share-link-4x5.png" alt="Sapling share link screen for sending a child's savings page to family and friends">
               </div>
             </div>
-
-            <div class="flow-card">
-              <div class="flow-top">
-                <div>
-                  <div class="demo-label">Step 2 — Friends &amp; family donate</div>
-                  <h3 style="margin-top:6px;">Quick, simple, and built for occasions</h3>
-                </div>
-                <span class="phone-pill">No extra admin</span>
-              </div>
-              <div class="share-row">
-                <span class="chip">💷 One-off gifts</span>
-                <span class="chip">🔁 Recurring support</span>
-                <span class="chip">💬 Optional message</span>
-              </div>
-              <div class="growth-box">
-                <div class="chart-wrap">
-                  <svg viewBox="0 0 360 170" width="100%" height="156" role="img" aria-label="Illustrative growth chart">
-                    <defs>
-                      <linearGradient id="lineFillHero" x1="0" x2="0" y1="0" y2="1">
-                        <stop offset="0%" stop-color="#68a078" stop-opacity=".28"/>
-                        <stop offset="100%" stop-color="#68a078" stop-opacity="0"/>
-                      </linearGradient>
-                    </defs>
-                    <line x1="20" y1="140" x2="342" y2="140" stroke="#ddd4c4" stroke-width="1.5"/>
-                    <line x1="20" y1="20"  x2="20"  y2="140" stroke="#ddd4c4" stroke-width="1.5"/>
-                    <path d="M20 132 C60 128,72 118,110 108 S175 88,210 74 S276 46,342 20" fill="none" stroke="#3a7049" stroke-width="4.5" stroke-linecap="round"/>
-                    <path d="M20 132 C60 128,72 118,110 108 S175 88,210 74 S276 46,342 20 L342 140 L20 140Z" fill="url(#lineFillHero)"/>
-                    <circle cx="20"  cy="132" r="4.5" fill="#3a7049"/>
-                    <circle cx="110" cy="108" r="4.5" fill="#3a7049"/>
-                    <circle cx="210" cy="74"  r="4.5" fill="#3a7049"/>
-                    <circle cx="342" cy="20"  r="6"   fill="#c89a3f"/>
-                    <text x="18"  y="157" font-size="11" fill="#5a6860" font-family="DM Sans,sans-serif">Now</text>
-                    <text x="104" y="157" font-size="11" fill="#5a6860" font-family="DM Sans,sans-serif">Age 5</text>
-                    <text x="200" y="157" font-size="11" fill="#5a6860" font-family="DM Sans,sans-serif">Age 10</text>
-                    <text x="318" y="157" font-size="11" fill="#5a6860" font-family="DM Sans,sans-serif">Age 18</text>
-                  </svg>
-                </div>
-                <div class="stat-card">
-                  <div>
-                    <div class="demo-label" style="color:rgba(255,255,255,.65)">Illustrative snapshot</div>
-                    <strong>£18,240</strong>
-                    <p class="stat-note">Based on ~£40/month from close family plus ~£150 in birthday gifts per year, at 5% annual growth from birth.</p>
-                  </div>
-                  <div class="tree" aria-hidden="true">
-                    <div class="leaf left"></div>
-                    <div class="leaf right"></div>
-                    <div class="leaf top"></div>
-                    <div class="trunk"></div>
-                  </div>
-                </div>
-              </div>
+            <div class="hero-shot-card main">
+              <div class="hero-shot-label">Inside the dashboard</div>
+              <img src="/assets/screenshots/existing-account-dashboard-4x5.png" alt="Sapling dashboard showing portfolio value, future projection, events, and recent activity">
             </div>
-
           </div>
         </div>
       </div>
@@ -417,30 +400,13 @@
         </div>
         <div class="phone-stack">
           <div class="phone-shot reveal r2">
-            <div class="phone-notch"></div>
-            <div class="phone-screen">
-              <span class="screen-pill">Dashboard</span>
-              <div class="screen-stat"><span class="small">Current value</span><strong>£2,640</strong><span class="small">Could be worth £18,240 by age 18</span></div>
-              <div class="screen-chart"><svg viewBox="0 0 220 110" width="100%" height="110" aria-hidden="true"><path d="M10 94 C42 92,62 84,92 68 S146 35,210 14" fill="none" stroke="#3a7049" stroke-width="3.5" stroke-linecap="round"/><circle cx="210" cy="14" r="4" fill="#c89a3f"/></svg></div>
-              <div class="screen-list"><div>One-off gifts · £920</div><div>Recurring support · £1,050</div><div>Referral bonuses · £100</div></div>
-            </div>
+            <img src="/assets/screenshots/03-create-child-filled-4x5.png" alt="Sapling onboarding screen for creating a child's savings fund">
           </div>
           <div class="phone-shot reveal r3">
-            <div class="phone-notch"></div>
-            <div class="phone-screen">
-              <span class="screen-pill">Birthday event</span>
-              <div class="screen-stat"><span class="small">Ada's first birthday</span><strong>£420</strong><span class="small">Could be worth £1,180 by age 18</span></div>
-              <div class="screen-list"><div>18 contributions</div><div>2 monthly supporters started</div><div>QR and event link ready to share</div></div>
-              <div class="screen-line"></div><div class="screen-line muted"></div><div class="screen-line"></div>
-            </div>
+            <img src="/assets/screenshots/08-share-link-4x5.png" alt="Sapling share screen showing the event share link for family and friends">
           </div>
           <div class="phone-shot reveal r4">
-            <div class="phone-notch"></div>
-            <div class="phone-screen">
-              <span class="screen-pill">Donation page</span>
-              <div class="screen-stat"><span class="small">Atticus's future</span><strong>£10 · £20 · £50</strong><span class="small">Small donations today can help set them up for the years ahead.</span></div>
-              <div class="screen-list"><div>Event total raised</div><div>Overall fund total</div><div>See how this could grow</div></div>
-            </div>
+            <img src="/assets/screenshots/existing-account-dashboard-4x5.png" alt="Sapling dashboard with savings totals, projected value, events, and activity">
           </div>
         </div>
       </div>
@@ -610,8 +576,7 @@
     <div class="container footer-row">
       <div>© Sapling</div>
       <div class="footer-links">
-        <a href="/stories">Stories</a>
-        <a href="/resources">Resources</a>
+        <a href="/partners">Partners</a>
         <a href="https://app.usesapling.co.uk">Get started</a>
       </div>
     </div>

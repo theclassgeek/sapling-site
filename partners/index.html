@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <link rel="icon" href="/sapling.ico" sizes="any">
+  <link rel="icon" type="image/png" href="/sapling.png">
+  <link rel="apple-touch-icon" href="/sapling.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Partners — Sapling</title>
+  <meta name="description" content="Partner with Sapling to offer families something genuinely useful and earn lump-sum referral revenue plus an annual share of AUM as referred accounts grow." />
+  <style>
+    :root {
+      --bg:        #f8f5ef;
+      --surface:   #fffefb;
+      --surface-2: #f1ebe0;
+      --text:      #1a2b1f;
+      --muted:     #5a6860;
+      --line:      #e0d6c6;
+      --green:     #3a7049;
+      --green-lt:  #68a078;
+      --green-3:   #d0e6c8;
+      --gold:      #c89a3f;
+      --sh-sm: 0 2px 4px rgba(26,43,31,.04), 0 6px 20px rgba(26,43,31,.07);
+      --sh-md: 0 4px 8px rgba(26,43,31,.04), 0 12px 32px rgba(26,43,31,.09), 0 28px 52px rgba(26,43,31,.05);
+      --sh-lg: 0 6px 12px rgba(26,43,31,.05), 0 20px 48px rgba(26,43,31,.11), 0 48px 80px rgba(26,43,31,.07);
+      --sh-green: 0 8px 28px rgba(58,112,73,.38);
+      --radius:    24px;
+      --radius-lg: 32px;
+      --radius-xl: 40px;
+      --max: 1180px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+      color: var(--text);
+      background-color: var(--bg);
+      background-image:
+        radial-gradient(ellipse 760px 520px at 92% 5%, rgba(200,154,63,.1) 0%, transparent 65%),
+        radial-gradient(ellipse 760px 560px at 0% 78%, rgba(104,160,120,.11) 0%, transparent 65%),
+        linear-gradient(180deg, #faf7f0 0%, #f8f5ef 55%, #f2ece0 100%);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+    body::after {
+      content: '';
+      position: fixed; inset: 0;
+      pointer-events: none; z-index: 9999;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      opacity: .032; mix-blend-mode: multiply;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    h1, h2, h3, h4, p { margin: 0; }
+    h1, h2, h3 { font-family: 'Fraunces', Georgia, serif; font-optical-sizing: auto; }
+    h1 { font-size: clamp(2.9rem, 5.1vw, 5.3rem); line-height: .92; letter-spacing: -.045em; font-weight: 800; }
+    h2 { font-size: clamp(2rem, 3.4vw, 3.6rem); line-height: .97; letter-spacing: -.04em; font-weight: 700; }
+    h3 { font-size: 1.18rem; line-height: 1.3; letter-spacing: -.025em; font-weight: 700; }
+    .lead { margin-top: 20px; font-size: clamp(1.05rem, 1.4vw, 1.2rem); color: var(--muted); line-height: 1.65; max-width: 48rem; }
+    .small { font-size: .84rem; color: var(--muted); }
+    .container { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+    .section { padding: 88px 0; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 22px; }
+
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(104,160,120,.1); color: var(--green);
+      border: 1px solid rgba(104,160,120,.2);
+      padding: 7px 14px; border-radius: 999px;
+      font-weight: 600; font-size: 12px; letter-spacing: .05em; text-transform: uppercase;
+    }
+
+    .btns { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; align-items: center; }
+    .btn {
+      border: 1px solid transparent; border-radius: 999px; padding: 14px 24px;
+      font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: .97rem;
+      display: inline-flex; align-items: center; gap: 8px;
+      position: relative; overflow: hidden; white-space: nowrap;
+      transition: transform .22s cubic-bezier(.34,1.56,.64,1), box-shadow .22s ease;
+    }
+    .btn::after { content: ''; position: absolute; inset: 0; background: rgba(255,255,255,0); transition: background .2s; }
+    .btn:hover::after { background: rgba(255,255,255,.1); }
+    .btn-primary { background: var(--green); color: #fff; box-shadow: var(--sh-sm), var(--sh-green); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: var(--sh-md), 0 12px 36px rgba(58,112,73,.42); }
+    .btn-secondary { background: rgba(255,255,255,.75); border-color: var(--line); backdrop-filter: blur(6px); }
+    .btn-secondary:hover { transform: translateY(-2px); box-shadow: var(--sh-sm); }
+
+    .topbar {
+      position: sticky; top: 0; z-index: 200;
+      backdrop-filter: blur(18px) saturate(1.3);
+      background: rgba(248,245,239,.72);
+      border-bottom: 1px solid rgba(224,214,198,.6);
+      transition: background .3s, box-shadow .3s;
+    }
+    .topbar.scrolled { background: rgba(248,245,239,.92); box-shadow: var(--sh-sm); }
+    .nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { display: flex; align-items: center; gap: 11px; font-family: 'Fraunces', serif; font-weight: 700; font-size: 1.22rem; letter-spacing: -.03em; }
+    .brand-logo { width: 40px; height: 40px; object-fit: contain; display: block; flex-shrink: 0; }
+    .nav-links { display: flex; gap: 4px; }
+    .nav-links a { color: var(--muted); font-weight: 500; font-size: .9rem; padding: 7px 12px; border-radius: 10px; transition: color .15s, background .15s; }
+    .nav-links a:hover { color: var(--text); background: rgba(0,0,0,.04); }
+    .nav-links a.active { color: var(--green); font-weight: 600; }
+
+    .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1); }
+    .reveal.r2 { transition-delay: .1s; }
+    .reveal.r3 { transition-delay: .2s; }
+    .reveal.r4 { transition-delay: .3s; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    .page-hero { padding: 72px 0 80px; }
+    .page-hero-grid { display: grid; grid-template-columns: 1.02fr .98fr; gap: 56px; align-items: center; }
+    .hero-kicker {
+      font-family: 'Fraunces', serif; font-style: italic; font-weight: 400;
+      font-size: clamp(1rem, 1.5vw, 1.25rem); color: var(--muted);
+      margin-top: 22px; line-height: 1.65; max-width: 40rem;
+    }
+
+    .featured-card {
+      background: linear-gradient(155deg, #1e3d29 0%, #2c5537 100%);
+      border-radius: var(--radius-lg); padding: 32px;
+      box-shadow: var(--sh-lg), 0 20px 48px rgba(20,48,30,.22);
+      position: relative; overflow: hidden;
+    }
+    .featured-card::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 420px 320px at 100% 0%, rgba(104,160,120,.25) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .featured-card .eyebrow { background: rgba(255,255,255,.1); color: rgba(200,220,200,.9); border-color: rgba(255,255,255,.15); }
+    .featured-card h3 { color: #fff; margin-top: 14px; font-size: 1.45rem; line-height: 1.25; }
+    .featured-card p { color: rgba(247,244,238,.72); margin-top: 10px; font-size: .93rem; line-height: 1.6; }
+    .featured-rows { display: grid; gap: 10px; margin-top: 20px; }
+    .featured-row {
+      border: 1px solid rgba(255,255,255,.1);
+      background: rgba(255,255,255,.06);
+      border-radius: 14px; padding: 12px 16px;
+      display: flex; justify-content: space-between; align-items: baseline; gap: 10px;
+    }
+    .featured-row span { font-size: .88rem; color: rgba(247,244,238,.72); }
+    .featured-row strong { font-family: 'Fraunces', serif; font-size: 1.08rem; color: #fff; letter-spacing: -.03em; white-space: nowrap; }
+
+    .hr { border: 0; border-top: 1px solid var(--line); margin: 0; }
+
+    .fit-card, .info-card, .step-card, .faq-card, .field-card {
+      background: rgba(255,255,255,.9);
+      border: 1px solid rgba(224,214,198,.8);
+      border-radius: 28px; padding: 26px;
+      box-shadow: var(--sh-sm);
+      transition: transform .28s cubic-bezier(.34,1.56,.64,1), box-shadow .28s ease;
+    }
+    .fit-card:hover, .info-card:hover, .step-card:hover, .faq-card:hover, .field-card:hover {
+      transform: translateY(-4px); box-shadow: var(--sh-md);
+    }
+    .fit-type, .pill {
+      display: inline-flex; align-items: center; gap: 7px;
+      border-radius: 999px; background: #f0ece2;
+      padding: 6px 12px; font-size: .72rem; font-weight: 700; width: fit-content;
+      text-transform: uppercase; letter-spacing: .04em;
+    }
+    .fit-card p, .info-card p, .step-card p, .faq-card p, .field-card p { color: var(--muted); font-size: .93rem; line-height: 1.6; margin-top: 10px; }
+    .step-no {
+      width: 38px; height: 38px; border-radius: 999px;
+      display: inline-flex; align-items: center; justify-content: center;
+      background: var(--green-3); color: var(--green);
+      font-family: 'Fraunces', serif; font-weight: 700; margin-bottom: 14px;
+    }
+
+    .economics-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 24px; margin-top: 36px; }
+    .economics-panel {
+      background: linear-gradient(160deg, #fffefb 0%, #f5efe5 100%);
+      border: 1px solid var(--line); border-radius: var(--radius-xl);
+      box-shadow: var(--sh-md); padding: 34px;
+    }
+    .economics-panel h3 { font-size: 1.3rem; }
+    .econ-list { display: grid; gap: 14px; margin-top: 22px; }
+    .econ-item {
+      display: flex; justify-content: space-between; gap: 16px; align-items: start;
+      padding: 14px 16px; border-radius: 16px; background: rgba(255,255,255,.72); border: 1px solid var(--line);
+    }
+    .econ-item span { color: var(--muted); font-size: .92rem; max-width: 28rem; }
+    .econ-item strong { font-family: 'Fraunces', serif; font-size: 1.05rem; letter-spacing: -.03em; white-space: nowrap; }
+
+    .calc-card {
+      background: linear-gradient(155deg, #1e3d29 0%, #152a1c 100%);
+      border-radius: var(--radius-xl); padding: 30px;
+      color: #f7f4ee; box-shadow: 0 24px 64px rgba(20,40,26,.26), 0 4px 12px rgba(20,40,26,.16);
+      position: relative; overflow: hidden;
+    }
+    .calc-card::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 540px 380px at 100% 0%, rgba(104,160,120,.18) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .calc-card .eyebrow { background: rgba(255,255,255,.08); color: #c8dcc0; border-color: rgba(255,255,255,.12); }
+    .calc-card p { color: rgba(247,244,238,.72); margin-top: 12px; }
+    .calc-stack { display: grid; gap: 12px; margin-top: 22px; position: relative; z-index: 1; }
+    .calc-row {
+      display: flex; justify-content: space-between; gap: 12px; align-items: center;
+      border: 1px solid rgba(255,255,255,.11); background: rgba(255,255,255,.05);
+      border-radius: 14px; padding: 12px 14px;
+    }
+    .calc-row span { color: rgba(247,244,238,.78); font-size: .88rem; }
+    .calc-row strong { color: #fff; font-family: 'Fraunces', serif; font-size: 1.08rem; letter-spacing: -.03em; }
+
+    .form-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 18px; margin-top: 32px; }
+    .field-card strong { display: block; font-family: 'Fraunces', serif; font-size: 1rem; letter-spacing: -.02em; }
+    .field-hint { margin-top: 8px; display: block; color: var(--muted); font-size: .84rem; }
+    .field-card.wide { grid-column: 1 / -1; }
+
+    .cta-panel {
+      background: linear-gradient(155deg, #1e3d29 0%, #152a1c 100%);
+      border-radius: var(--radius-xl); padding: 56px 48px;
+      text-align: center; position: relative; overflow: hidden;
+      box-shadow: 0 24px 64px rgba(20,40,26,.26), 0 4px 12px rgba(20,40,26,.16);
+    }
+    .cta-panel::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 700px 500px at 50% -20%, rgba(104,160,120,.22) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .cta-panel .eyebrow { background: rgba(255,255,255,.08); color: #c8dcc0; border-color: rgba(255,255,255,.12); }
+    .cta-panel h2 { color: #fff; margin-top: 18px; font-size: clamp(2rem, 3.5vw, 3.2rem); max-width: 17ch; margin-left: auto; margin-right: auto; }
+    .cta-panel p { color: rgba(247,244,238,.72); margin: 16px auto 0; max-width: 46rem; font-size: 1.05rem; }
+    .cta-panel .btn-secondary { background: rgba(255,255,255,.1); color: #fff; border-color: rgba(255,255,255,.2); backdrop-filter: none; }
+    .cta-panel .btns { position: relative; z-index: 1; justify-content: center; }
+
+    footer { padding: 28px 0 44px; }
+    .footer-row { display: flex; justify-content: space-between; align-items: center; gap: 18px; flex-wrap: wrap; border-top: 1px solid var(--line); padding-top: 20px; font-size: .88rem; color: var(--muted); }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { color: var(--muted); transition: color .15s; }
+    .footer-links a:hover { color: var(--text); }
+
+    @media (max-width: 1100px) {
+      .page-hero-grid, .economics-grid { grid-template-columns: 1fr; gap: 40px; }
+      .grid-3, .grid-2, .form-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 760px) {
+      .nav-links { display: none; }
+      .section { padding: 60px 0; }
+      .page-hero { padding: 48px 0 60px; }
+      .cta-panel, .calc-card, .economics-panel { padding: 28px 24px; }
+      .container { width: min(var(--max), calc(100% - 24px)); }
+      .btn { width: 100%; }
+      .btns { display: grid; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar" id="topbar">
+    <div class="container nav">
+      <a class="brand" href="/" aria-label="Sapling home">
+        <img class="brand-logo" src="/sapling.png" alt="Sapling logo">
+        <span>Sapling</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="/#how">How it works</a>
+        <a href="/#preview">Inside the app</a>
+        <a href="/#faq">Why parents use it</a>
+        <a href="/partners" class="active">Partners</a>
+      </nav>
+      <a class="btn btn-primary" href="#apply">Apply to partner</a>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="page-hero">
+      <div class="container page-hero-grid">
+        <div>
+          <span class="eyebrow reveal">For sole traders & small businesses</span>
+          <h1 class="reveal r2">A better referral income stream for people already trusted by families.</h1>
+          <p class="hero-kicker reveal r3">Sapling gives parents a smarter answer than more clutter, and gives partners a more meaningful commercial model than a one-off code. Refer families into long-term savings and earn lump sums plus an annual share of AUM as those accounts grow.</p>
+          <div class="btns reveal r4">
+            <a class="btn btn-primary" href="#apply">Apply to partner</a>
+            <a class="btn btn-secondary" href="#economics">See how partner revenue works</a>
+          </div>
+        </div>
+
+        <div class="featured-card reveal r3">
+          <span class="eyebrow">Best fit partners</span>
+          <h3>Built first for small, local, family-facing businesses.</h3>
+          <p>Prenatal classes, nurseries, individual teachers, and other trusted small operators who already help parents make thoughtful decisions.</p>
+          <div class="featured-rows">
+            <div class="featured-row"><span>Lump-sum rewards</span><strong>when referred accounts pass £500 AUM</strong></div>
+            <div class="featured-row"><span>Annual revenue share</span><strong>tied to ongoing AUM</strong></div>
+            <div class="featured-row"><span>Approved partner access</span><strong>deeper economics + revenue modelling</strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="hr">
+
+    <section class="section">
+      <div class="container">
+        <div class="reveal">
+          <span class="eyebrow">Who this is for</span>
+          <h2 style="margin-top:16px;max-width:16ch;">The partners most likely to win with Sapling are trusted, personal, and close to the parent.</h2>
+          <p class="lead">This is not an enterprise programme first. It is designed for the people and businesses families already listen to when they are preparing for a baby, choosing childcare, or making sensible long-term decisions.</p>
+        </div>
+
+        <div class="grid-3" style="margin-top:36px;">
+          <article class="fit-card reveal r2">
+            <span class="fit-type">🤰 Prenatal classes</span>
+            <h3 style="margin-top:12px;">A natural fit for parents already thinking about the future.</h3>
+            <p>Ideal for antenatal and prenatal class leaders who want to recommend something practical, tasteful, and genuinely useful for growing families.</p>
+          </article>
+
+          <article class="fit-card reveal r3">
+            <span class="fit-type">🧸 Nurseries</span>
+            <h3 style="margin-top:12px;">A simple extra value-add for parents you already serve.</h3>
+            <p>Nurseries can introduce Sapling as a sensible option for birthdays, family gifting, and long-term child savings without creating more admin for staff.</p>
+          </article>
+
+          <article class="fit-card reveal r4">
+            <span class="fit-type">📚 Individual teachers</span>
+            <h3 style="margin-top:12px;">Better suited to personal trust than institutional sales.</h3>
+            <p>For individual teachers, tutors, and local educators with strong parent trust and a natural channel into family recommendations.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <hr class="hr">
+
+    <section class="section" id="economics">
+      <div class="container">
+        <div class="reveal">
+          <span class="eyebrow">Partner economics</span>
+          <h2 style="margin-top:16px;max-width:14ch;">Commercially clear, without turning the page into an affiliate scheme.</h2>
+          <p class="lead">Partners should understand the shape of the opportunity quickly. The public page stays moderately explicit. Approved partners get the fuller model, assumptions, and a deeper earnings calculator.</p>
+        </div>
+
+        <div class="economics-grid reveal r2">
+          <div class="economics-panel">
+            <h3>How partner revenue works</h3>
+            <div class="econ-list">
+              <div class="econ-item">
+                <span>Earn a lump-sum reward when a referred family becomes an active account and reaches the minimum AUM threshold.</span>
+                <strong>£500 AUM milestone</strong>
+              </div>
+              <div class="econ-item">
+                <span>Earn an annual revenue share linked to the AUM your referred families build over time.</span>
+                <strong>ongoing annual share</strong>
+              </div>
+              <div class="econ-item">
+                <span>Approved partners get access to more detailed economics, assumptions, and a rough revenue calculator for planning.</span>
+                <strong>second-stage detail</strong>
+              </div>
+            </div>
+            <p class="small" style="margin-top:18px;">Exact rates and partner terms are shared after approval, once fit and audience quality have been reviewed.</p>
+          </div>
+
+          <div class="calc-card">
+            <span class="eyebrow">Approved partner preview</span>
+            <h3 style="margin-top:14px;color:#fff;">The next-stage calculator will make the opportunity feel concrete.</h3>
+            <p>Approved partners should be able to model rough annual signups, active-account conversion, average AUM, and child-age growth assumptions to see likely lump sums and recurring annual revenue.</p>
+            <div class="calc-stack">
+              <div class="calc-row"><span>Estimated signups per year</span><strong>input</strong></div>
+              <div class="calc-row"><span>Active accounts reaching £500 AUM</span><strong>conversion assumption</strong></div>
+              <div class="calc-row"><span>Lump-sum rewards</span><strong>projected output</strong></div>
+              <div class="calc-row"><span>Annual AUM share</span><strong>projected output</strong></div>
+              <div class="calc-row"><span>Total recurring value over time</span><strong>projected output</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="hr">
+
+    <section class="section">
+      <div class="container">
+        <div class="reveal">
+          <span class="eyebrow">Why partners like it</span>
+          <h2 style="margin-top:16px;max-width:15ch;">It gives families something useful, and gives you a commercial reason to keep referring it.</h2>
+          <p class="lead">Sapling works best when the partner recommendation feels genuine, practical, and aligned with the audience. The commercial model matters, but it works because the product itself is something families are happy to hear about.</p>
+        </div>
+
+        <div class="grid-3" style="margin-top:36px;">
+          <article class="info-card reveal r2">
+            <span class="pill">💚 Useful to families</span>
+            <h3 style="margin-top:12px;">You are recommending something genuinely valuable, not just monetising attention.</h3>
+            <p>Sapling helps parents turn gifting moments into long-term savings. That makes the recommendation feel practical and tasteful, not pushy.</p>
+          </article>
+
+          <article class="info-card reveal r3">
+            <span class="pill">💷 Real revenue</span>
+            <h3 style="margin-top:12px;">The upside is not vague.</h3>
+            <p>Partners can earn both lump-sum referral rewards and annual recurring revenue linked to the AUM they help bring in.</p>
+          </article>
+
+          <article class="info-card reveal r4">
+            <span class="pill">🌱 Long-term alignment</span>
+            <h3 style="margin-top:12px;">As referred families keep building, partner value compounds too.</h3>
+            <p>The model is designed to reward partners for introducing families who stick, save, and grow meaningful balances over time.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <hr class="hr">
+
+    <section class="section">
+      <div class="container">
+        <div class="reveal">
+          <span class="eyebrow">How it works</span>
+          <h2 style="margin-top:16px;max-width:14ch;">A light-touch approval flow, then a more serious second stage for the right partners.</h2>
+          <p class="lead">The public page is there to qualify interest. The deeper commercial materials come after first-stage approval, once Sapling knows the audience fit is real.</p>
+        </div>
+
+        <div class="grid-3" style="margin-top:36px;">
+          <article class="step-card reveal r2">
+            <div class="step-no">1</div>
+            <h3>Apply</h3>
+            <p>Tell us who you are, who you serve, and why Sapling would be a good fit for your audience.</p>
+          </article>
+          <article class="step-card reveal r3">
+            <div class="step-no">2</div>
+            <h3>Get reviewed</h3>
+            <p>We look at audience quality, relevance, and whether the fit feels authentic enough to build something sensible together.</p>
+          </article>
+          <article class="step-card reveal r4">
+            <div class="step-no">3</div>
+            <h3>Unlock details</h3>
+            <p>Approved partners get access to fuller economics, practical partner materials, and revenue modelling based on realistic scenarios.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <hr class="hr">
+
+    <section class="section">
+      <div class="container">
+        <div class="reveal">
+          <span class="eyebrow">FAQs</span>
+          <h2 style="margin-top:16px;max-width:15ch;">The practical questions a good partner will ask early.</h2>
+        </div>
+
+        <div class="grid-2" style="margin-top:36px;">
+          <article class="faq-card reveal r2">
+            <h3>Do I need a huge audience?</h3>
+            <p>No. Sapling is particularly interested in trusted small operators with the right audience, not just the biggest list.</p>
+          </article>
+          <article class="faq-card reveal r3">
+            <h3>Will the full revenue model be public?</h3>
+            <p>No. The page explains the commercial structure clearly, but fuller economics are reserved for approved partners.</p>
+          </article>
+          <article class="faq-card reveal r3">
+            <h3>Who is the programme designed for first?</h3>
+            <p>Prenatal classes, nurseries, individual teachers, and other small family-facing businesses with real parent trust.</p>
+          </article>
+          <article class="faq-card reveal r4">
+            <h3>Why not lead with bigger institutions?</h3>
+            <p>Because Sapling is more likely to convert well through trusted local recommendations than through slow, institutional partnership cycles.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="apply">
+      <div class="container">
+        <div class="cta-panel reveal">
+          <span class="eyebrow">Apply to partner</span>
+          <h2>Tell Sapling who you serve and why the fit makes sense.</h2>
+          <p>This first stage is deliberately simple. The goal is to identify partners with a trusted audience and a sensible use case, then continue the conversation with the right people.</p>
+        </div>
+
+        <div class="form-grid">
+          <article class="field-card reveal r2">
+            <strong>Your name</strong>
+            <p>The main contact for the partnership application.</p>
+            <span class="field-hint">Field placeholder: e.g. Sarah Thompson</span>
+          </article>
+          <article class="field-card reveal r3">
+            <strong>Business or role</strong>
+            <p>Your business name or the role you are known by.</p>
+            <span class="field-hint">Field placeholder: e.g. North Leeds Antenatal Classes</span>
+          </article>
+          <article class="field-card reveal r3">
+            <strong>Audience type</strong>
+            <p>Help Sapling understand who you reach.</p>
+            <span class="field-hint">Field options: prenatal classes / nursery / teacher / tutor / other</span>
+          </article>
+          <article class="field-card reveal r4">
+            <strong>Audience size</strong>
+            <p>A rough sense of annual parent reach is enough at this stage.</p>
+            <span class="field-hint">Field placeholder: e.g. 120 families per year</span>
+          </article>
+          <article class="field-card reveal r4">
+            <strong>Website or social link</strong>
+            <p>Anything that helps validate fit and audience quality.</p>
+            <span class="field-hint">Field placeholder: website / Instagram / booking page</span>
+          </article>
+          <article class="field-card reveal r2">
+            <strong>Contact email</strong>
+            <p>Where Sapling should follow up after review.</p>
+            <span class="field-hint">Field placeholder: you@example.com</span>
+          </article>
+          <article class="field-card wide reveal r3">
+            <strong>Why are you interested?</strong>
+            <p>A short explanation of why Sapling fits your audience, and how you would likely introduce it.</p>
+            <span class="field-hint">Field type: longer text area</span>
+          </article>
+          <article class="field-card wide reveal r4">
+            <strong>Next step after approval</strong>
+            <p>Approved partners should receive fuller commercial details, practical onboarding materials, and access to the deeper revenue calculator described above.</p>
+          </article>
+        </div>
+
+        <div class="btns reveal" style="justify-content:center; margin-top:28px;">
+          <a class="btn btn-primary" href="mailto:partners@usesapling.co.uk?subject=Sapling%20Partner%20Application">Apply by email</a>
+          <a class="btn btn-secondary" href="/">Back to homepage</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <div>© Sapling</div>
+      <div class="footer-links">
+        <a href="/partners">Partners</a>
+        <a href="https://app.usesapling.co.uk">Get started</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  (function(){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, {threshold:.08});
+    document.querySelectorAll('.reveal').forEach(function(el){ obs.observe(el); });
+    setTimeout(function(){ document.querySelectorAll('.page-hero .reveal').forEach(function(el){ el.classList.add('visible'); }); }, 80);
+    var tb = document.getElementById('topbar');
+    window.addEventListener('scroll', function(){ tb.classList.toggle('scrolled', window.scrollY > 64); }, {passive:true});
+  })();
+  </script>
+</body>
+</html>
