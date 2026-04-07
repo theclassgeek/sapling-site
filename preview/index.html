@@ -127,6 +127,94 @@
     .nav-links a { color: var(--muted); font-weight: 500; font-size: .9rem; padding: 7px 12px; border-radius: 10px; transition: color .15s, background .15s; }
     .nav-links a:hover { color: var(--text); background: rgba(0,0,0,.04); }
 
+    /* ── Trust rail ── */
+    .trust-rail {
+      background: rgba(255,255,255,.6);
+      border-bottom: 1px solid rgba(224,214,198,.5);
+      backdrop-filter: blur(8px);
+      padding: 11px 0;
+    }
+    .trust-items {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .trust-item svg { flex-shrink: 0; }
+    .trust-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--line); flex-shrink: 0; }
+    @media (max-width: 760px) { .trust-dot { display: none; } }
+
+    /* ── Hero shot ── */
+    .hero-shot-outer {
+      position: relative;
+      z-index: 2;
+    }
+    .hero-shot-primary {
+      background: rgba(255,255,255,.94);
+      border: 1px solid rgba(224,214,198,.85);
+      border-radius: 30px;
+      padding: 12px;
+      box-shadow: var(--sh-lg);
+      overflow: hidden;
+      transform: perspective(1200px) rotateY(-3deg) rotateX(1.5deg);
+      transition: transform .4s ease;
+    }
+    .hero-shot-primary:hover { transform: perspective(1200px) rotateY(-1deg) rotateX(.5deg); }
+    .hero-shot-primary img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 20px;
+      display: block;
+    }
+    .hero-shot-secondary {
+      position: absolute;
+      width: 46%;
+      background: rgba(255,255,255,.96);
+      border: 1px solid rgba(224,214,198,.9);
+      border-radius: 22px;
+      padding: 8px;
+      box-shadow: var(--sh-md);
+      overflow: hidden;
+    }
+    .hero-shot-secondary img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 16px;
+      display: block;
+    }
+    .hero-shot-secondary.top-left  { top: -32px; left: -48px; }
+    .hero-shot-secondary.bot-right { bottom: -28px; right: -40px; transform: rotate(1.5deg); }
+    .hero-shot-label {
+      display: inline-flex; align-items: center; gap: 7px;
+      margin: 0 0 8px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: #f6f1e8;
+      color: var(--muted);
+      font-size: .73rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    @media (max-width: 1100px) {
+      .hero-shot-primary { transform: none !important; }
+      .hero-shot-secondary { display: none; }
+    }
+
     .hero-shot-grid { display: grid; grid-template-columns: .88fr 1.12fr; gap: 16px; align-items: stretch; position: relative; z-index: 2; }
     .hero-shot-stack { display: grid; gap: 16px; }
     .hero-shot-card {
@@ -147,18 +235,6 @@
     }
     .hero-shot-card.main { padding: 12px; box-shadow: var(--sh-md); }
     .hero-shot-card.main img { height: 100%; min-height: 520px; aspect-ratio: auto; object-position: center top; }
-    .hero-shot-label {
-      display: inline-flex; align-items: center; gap: 7px;
-      margin: 0 0 10px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: #f6f1e8;
-      color: var(--muted);
-      font-size: .75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: .04em;
-    }
 
     .phone-shot img {
       width: 100%;
@@ -344,6 +420,31 @@
     </div>
   </header>
 
+  <!-- Trust rail -->
+  <div class="trust-rail">
+    <div class="container trust-items">
+      <span class="trust-item">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1.5L8.6 5.1L12.5 5.7L9.75 8.4L10.4 12.3L7 10.5L3.6 12.3L4.25 8.4L1.5 5.7L5.4 5.1L7 1.5Z" fill="#3a7049" opacity=".7"/></svg>
+        Junior ISA linked
+      </span>
+      <span class="trust-dot" aria-hidden="true"></span>
+      <span class="trust-item">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="2" y="5" width="10" height="8" rx="2" stroke="#3a7049" stroke-width="1.4" opacity=".7"/><path d="M4.5 5V3.5a2.5 2.5 0 015 0V5" stroke="#3a7049" stroke-width="1.4" stroke-linecap="round" opacity=".7"/></svg>
+        UK-regulated providers
+      </span>
+      <span class="trust-dot" aria-hidden="true"></span>
+      <span class="trust-item">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="#3a7049" stroke-width="1.4" opacity=".7"/><path d="M4.5 7l2 2 3-3" stroke="#3a7049" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" opacity=".7"/></svg>
+        No hidden fees
+      </span>
+      <span class="trust-dot" aria-hidden="true"></span>
+      <span class="trust-item">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1.5C4.5 3 2 3.5 2 3.5v4.5c0 2.5 2.5 4 5 5 2.5-1 5-2.5 5-5V3.5S9.5 3 7 1.5Z" stroke="#3a7049" stroke-width="1.4" stroke-linejoin="round" opacity=".7"/></svg>
+        Built for UK families
+      </span>
+    </div>
+  </div>
+
   <main id="top">
 
     <!-- Hero -->
@@ -366,20 +467,18 @@
 
         <div class="hero-art reveal r2">
           <div class="hero-art-glow" aria-hidden="true"></div>
-          <div class="hero-shot-grid">
-            <div class="hero-shot-stack">
-              <div class="hero-shot-card floaty">
-                <div class="hero-shot-label">Parent setup</div>
-                <img src="/assets/screenshots/03-create-child-filled-4x5.png" alt="Sapling child setup screen showing a completed onboarding step">
-              </div>
-              <div class="hero-shot-card">
-                <div class="hero-shot-label">Share with family</div>
-                <img src="/assets/screenshots/08-share-link-4x5.png" alt="Sapling share link screen for sending a child's savings page to family and friends">
-              </div>
+          <div class="hero-shot-outer">
+            <div class="hero-shot-secondary top-left">
+              <div class="hero-shot-label">Parent setup</div>
+              <img src="/assets/screenshots/03-create-child-filled-4x5.png" alt="Sapling parent setup screen">
             </div>
-            <div class="hero-shot-card main">
+            <div class="hero-shot-primary">
               <div class="hero-shot-label">Inside the dashboard</div>
               <img src="/assets/screenshots/existing-account-dashboard-4x5.png" alt="Sapling dashboard showing portfolio value, future projection, events, and recent activity">
+            </div>
+            <div class="hero-shot-secondary bot-right">
+              <div class="hero-shot-label">Share with family</div>
+              <img src="/assets/screenshots/08-share-link-4x5.png" alt="Sapling share link screen">
             </div>
           </div>
         </div>
