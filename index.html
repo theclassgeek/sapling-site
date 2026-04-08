@@ -16,7 +16,7 @@
       --bg: #f8f5ef; --text: #1a2b1f; --muted: #5a6860;
       --line: #e0d6c6; --green: #3a7049;
       --sh-lg: 0 8px 18px rgba(26,43,31,.05), 0 24px 56px rgba(26,43,31,.10);
-      --radius: 24px; --radius-xl: 40px; --max: 1080px;
+      --radius: 24px; --radius-xl: 40px; --max: 640px;
     }
     *, *::before, *::after { box-sizing: border-box; }
     body {
@@ -43,383 +43,76 @@
       border-radius: var(--radius-xl);
       box-shadow: var(--sh-lg);
       backdrop-filter: blur(12px);
-      padding: 52px 56px;
+      padding: 52px 48px;
       overflow: hidden; position: relative;
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 40px; align-items: center; min-height: 520px;
+      display: flex; flex-direction: column;
+      align-items: center; text-align: center;
     }
     .panel::before {
       content: ''; position: absolute; inset: 0;
       background: radial-gradient(ellipse 500px 320px at 100% 0%, rgba(104,160,120,.12) 0%, transparent 60%);
       pointer-events: none;
     }
-    .panel-text {
-      display: flex; flex-direction: column; align-items: flex-start;
-      position: relative; z-index: 1;
-    }
-    .panel-tree {
-      display: flex; align-items: flex-end; justify-content: center;
-      position: relative; z-index: 1;
-    }
     .brand {
       display: inline-flex; align-items: center; gap: 12px;
       font-family: 'Fraunces', serif; font-weight: 700;
       font-size: 1.25rem; letter-spacing: -.03em;
+      position: relative; z-index: 1;
     }
     .brand img { width: 42px; height: 42px; object-fit: contain; }
     .eyebrow {
       display: inline-flex; align-items: center; gap: 8px;
-      margin-top: 28px; align-self: flex-start;
+      margin-top: 28px;
       background: rgba(104,160,120,.1); color: var(--green);
       border: 1px solid rgba(104,160,120,.2);
       padding: 7px 14px; border-radius: 999px;
       font-weight: 600; font-size: 12px; letter-spacing: .05em; text-transform: uppercase;
+      position: relative; z-index: 1;
     }
     h1 {
       margin: 18px 0 0;
       font-family: 'Fraunces', Georgia, serif;
-      font-size: clamp(2.4rem, 4.5vw, 4.4rem);
-      line-height: .94; letter-spacing: -.05em; max-width: 10ch;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      line-height: .94; letter-spacing: -.05em;
+      position: relative; z-index: 1;
     }
     .lead {
-      margin-top: 18px; max-width: 36rem;
-      color: var(--muted); font-size: clamp(1rem, 1.2vw, 1.1rem);
+      margin-top: 18px; max-width: 34rem;
+      color: var(--muted); font-size: clamp(1rem, 1.2vw, 1.08rem);
+      position: relative; z-index: 1;
     }
     .quote {
       margin-top: 24px; padding: 16px 20px;
       border-radius: var(--radius);
       background: rgba(255,255,255,.7);
       border: 1px solid rgba(224,214,198,.9);
+      position: relative; z-index: 1;
     }
     .quote strong {
       display: block; font-family: 'Fraunces', serif;
       font-size: 1.05rem; letter-spacing: -.02em;
     }
     .quote span { display: block; margin-top: 7px; color: var(--muted); font-size: .92rem; }
-    .foot { margin-top: 22px; color: var(--muted); font-size: .86rem; }
-    .sapling-logo-large {
-      width: 240px;
-      height: 240px;
-      object-fit: contain;
-      transform-origin: center 85%;
-      animation: sapling-sway 5s ease-in-out infinite alternate;
-      filter: drop-shadow(0 12px 32px rgba(58,112,73,.18));
-    }
-    @keyframes sapling-sway {
-      0%   { transform: rotate(-3deg); }
-      100% { transform: rotate(3deg); }
-    }
-    @media (max-width: 800px) {
-      .panel { grid-template-columns: 1fr; padding: 32px 28px; min-height: unset; gap: 0; }
-      .panel-tree { margin-top: 24px; }
-      .sapling-logo-large { width: 160px; height: 160px; }
-      .eyebrow { margin-top: 22px; }
-      h1 { max-width: 100%; }
+    .foot { margin-top: 22px; color: var(--muted); font-size: .86rem; position: relative; z-index: 1; }
+    @media (max-width: 600px) {
+      .panel { padding: 36px 28px; }
     }
   </style>
 </head>
 <body>
   <main class="panel">
-    <div class="panel-text">
-      <div class="brand">
-        <img src="/sapling.png" alt="Sapling logo">
-        <span>Sapling</span>
-      </div>
-      <span class="eyebrow">Coming soon</span>
-      <h1>Something thoughtful for families is taking root.</h1>
-      <p class="lead">Sapling is currently being prepared behind the scenes. The public website will return soon with a clearer, more polished launch experience.</p>
-      <div class="quote">
-        <strong>Less plastic tat. More future.</strong>
-        <span>We're not quite ready to put the full story live yet — but we're getting close.</span>
-      </div>
-      <p class="foot">A fuller public launch is on the way.</p>
+    <div class="brand">
+      <img src="/sapling.png" alt="Sapling logo">
+      <span>Sapling</span>
     </div>
-    <div class="panel-tree" aria-hidden="true">
-      <img class="sapling-logo-large" src="/sapling.png" alt="">
+    <span class="eyebrow">Coming soon</span>
+    <h1>Something thoughtful for families is taking root.</h1>
+    <p class="lead">Sapling is currently being prepared behind the scenes. The public website will return soon with a clearer, more polished launch experience.</p>
+    <div class="quote">
+      <strong>Less plastic tat. More future.</strong>
+      <span>We're not quite ready to put the full story live yet — but we're getting close.</span>
     </div>
+    <p class="foot">A fuller public launch is on the way.</p>
   </main>
-
-  <script>
-  (function () {
-    var canvas = document.getElementById('treeCanvas');
-    var ctx = canvas.getContext('2d');
-    var W = canvas.width, H = canvas.height;
-
-    // Responsive size on mobile
-    if (window.innerWidth <= 800) {
-      canvas.width = 240; canvas.height = 300;
-      W = 240; H = 300;
-    }
-
-    var GY = H - 48;   // ground y
-    var RX = W * 0.5;  // root x
-
-    // Colours
-    var TRUNK  = '#7a6045';
-    var BARK   = '#9a7a58';
-    var LD     = '#2d5e3c';
-    var LM     = '#3a7049';
-    var LL     = '#5d9066';
-    var LH     = '#7ab580';
-    var GOLD   = '#c89a3f';
-    var SOIL   = 'rgba(165,135,95,0.18)';
-
-    // Cubic bezier eval
-    function cbez(p0, p1, p2, p3, t) {
-      var u=1-t;
-      return {
-        x: u*u*u*p0.x + 3*u*u*t*p1.x + 3*u*t*t*p2.x + t*t*t*p3.x,
-        y: u*u*u*p0.y + 3*u*u*t*p1.y + 3*u*t*t*p2.y + t*t*t*p3.y
-      };
-    }
-    function lerp(a,b,t){return a+(b-a)*t;}
-    function clamp(v,a,b){return Math.max(a,Math.min(b,v));}
-    function easeOut3(t){return 1-Math.pow(1-t,3);}
-    function easeOut2(t){return 1-Math.pow(1-t,2);}
-
-    // Trunk bezier — thin sapling curve, slightly bowing left
-    var TH = GY - 30;  // trunk total pixel height
-    var tp = [
-      {x: RX,     y: GY},
-      {x: RX - 6, y: GY - TH*0.35},
-      {x: RX + 9, y: GY - TH*0.68},
-      {x: RX - 4, y: GY - TH}
-    ];
-
-    function trunkAt(t) { return cbez(tp[0],tp[1],tp[2],tp[3],t); }
-    function trunkDir(t) {
-      var dt=0.01, a=trunkAt(Math.max(0,t-dt)), b=trunkAt(Math.min(1,t+dt));
-      return Math.atan2(b.y-a.y, b.x-a.x);
-    }
-
-    // Leaves: {t, side(-1/0/1), sz, col, bloom}
-    var leafDefs = [
-      {t:0.08, side:-1, sz:8,  col:LL,  bloom:0.20},
-      {t:0.12, side: 1, sz:7,  col:LL,  bloom:0.23},
-      {t:0.18, side:-1, sz:9,  col:LM,  bloom:0.27},
-      {t:0.23, side: 1, sz:8,  col:LM,  bloom:0.30},
-      {t:0.30, side:-1, sz:10, col:LM,  bloom:0.35},
-      {t:0.36, side: 1, sz:9,  col:LD,  bloom:0.39},
-      {t:0.43, side:-1, sz:10, col:LD,  bloom:0.44},
-      {t:0.50, side: 1, sz:11, col:LM,  bloom:0.49},
-      {t:0.56, side:-1, sz:10, col:LD,  bloom:0.54},
-      {t:0.63, side: 1, sz:10, col:LM,  bloom:0.59},
-      {t:0.70, side:-1, sz:9,  col:LD,  bloom:0.64},
-      {t:0.76, side: 1, sz:9,  col:LM,  bloom:0.68},
-      {t:0.83, side:-1, sz:8,  col:LD,  bloom:0.73},
-      {t:0.88, side: 1, sz:8,  col:LM,  bloom:0.77},
-      {t:0.93, side:-1, sz:7,  col:LD,  bloom:0.81},
-      {t:0.97, side: 1, sz:7,  col:LM,  bloom:0.85},
-      {t:1.00, side: 0, sz:9,  col:LH,  bloom:0.90},  // tip
-      // Gold accent leaves
-      {t:0.22, side:-1, sz:5,  col:GOLD, bloom:0.32},
-      {t:0.51, side: 1, sz:5,  col:GOLD, bloom:0.55},
-      {t:0.87, side:-1, sz:4,  col:GOLD, bloom:0.84},
-    ];
-
-    // Branches: {trunkT, angleDeg, len, width, bloom, leafTips}
-    var branchDefs = [
-      {trunkT:0.28, angleDeg:-58, len:H*0.14, w:2.2, bloom:0.40, tips:[LM,LL]},
-      {trunkT:0.37, angleDeg: 54, len:H*0.13, w:2.2, bloom:0.46, tips:[LD,LM]},
-      {trunkT:0.50, angleDeg:-48, len:H*0.12, w:1.8, bloom:0.54, tips:[LM,LH]},
-      {trunkT:0.60, angleDeg: 46, len:H*0.11, w:1.8, bloom:0.60, tips:[LD,LM]},
-      {trunkT:0.71, angleDeg:-40, len:H*0.09, w:1.4, bloom:0.67, tips:[LM]},
-      {trunkT:0.80, angleDeg: 38, len:H*0.08, w:1.4, bloom:0.73, tips:[LD]},
-      {trunkT:0.89, angleDeg:-32, len:H*0.06, w:1.0, bloom:0.79, tips:[LM]},
-      {trunkT:0.94, angleDeg: 30, len:H*0.05, w:1.0, bloom:0.84, tips:[LH]},
-    ];
-
-    // Draw a single teardrop leaf
-    function drawLeaf(x, y, angle, sz, alpha, col) {
-      ctx.save();
-      ctx.globalAlpha = alpha;
-      ctx.translate(x, y);
-      ctx.rotate(angle);
-      ctx.beginPath();
-      ctx.moveTo(0, 0);
-      ctx.bezierCurveTo( sz*0.55,-sz*0.25, sz*0.65,-sz*0.75, 0,-sz);
-      ctx.bezierCurveTo(-sz*0.65,-sz*0.75,-sz*0.55,-sz*0.25, 0, 0);
-      ctx.fillStyle = col;
-      ctx.fill();
-      // mid vein
-      ctx.beginPath();
-      ctx.moveTo(0,0);
-      ctx.lineTo(0,-sz*0.72);
-      ctx.strokeStyle = 'rgba(255,255,255,0.22)';
-      ctx.lineWidth = 0.6;
-      ctx.stroke();
-      ctx.restore();
-    }
-
-    // Trunk segment drawing (stroked bezier up to t=progress)
-    function drawTrunk(progress) {
-      var steps = 80;
-      ctx.beginPath();
-      var p = trunkAt(0);
-      ctx.moveTo(p.x, p.y);
-      for (var i=1; i<=steps; i++) {
-        var t = (i/steps)*progress;
-        p = trunkAt(t);
-        ctx.lineTo(p.x, p.y);
-      }
-      // gradient stroke: thicker at base
-      var baseW = W*0.018, tipW = W*0.005;
-      ctx.strokeStyle = TRUNK;
-      ctx.lineWidth = lerp(baseW, tipW, progress*0.4);
-      ctx.lineCap = 'round';
-      ctx.lineJoin = 'round';
-      ctx.stroke();
-    }
-
-    // Draw a branch
-    function drawBranch(b, progress) {
-      if (progress <= 0) return;
-      var bp = trunkAt(b.trunkT);
-      var baseAng = trunkDir(b.trunkT);
-      var ang = baseAng + b.angleDeg * Math.PI/180;
-      var ex = bp.x + Math.cos(ang)*b.len*progress;
-      var ey = bp.y + Math.sin(ang)*b.len*progress;
-      // slight bow
-      var cx = bp.x + Math.cos(ang)*b.len*0.45 + Math.sin(ang)*5;
-      var cy = bp.y + Math.sin(ang)*b.len*0.45 - Math.cos(ang)*5;
-      ctx.beginPath();
-      ctx.moveTo(bp.x, bp.y);
-      ctx.quadraticCurveTo(cx, cy, ex, ey);
-      ctx.strokeStyle = BARK;
-      ctx.lineWidth = b.w;
-      ctx.lineCap = 'round';
-      ctx.stroke();
-      // tip leaves
-      if (progress > 0.7) {
-        var tp2 = clamp((progress-0.7)/0.3, 0, 1);
-        for (var i=0; i<b.tips.length; i++) {
-          var offset = (i - (b.tips.length-1)*0.5) * 0.35;
-          var la = ang - Math.PI/2 + offset;
-          drawLeaf(ex, ey, la, 8-i, easeOut2(tp2)*0.9, b.tips[i]);
-        }
-      }
-    }
-
-    function drawSoil() {
-      ctx.beginPath();
-      ctx.ellipse(RX, GY+8, 52, 13, 0, 0, Math.PI*2);
-      ctx.fillStyle = SOIL;
-      ctx.fill();
-    }
-
-    // Tiny seed/sprout at very start (phase 0-0.08)
-    function drawSprout(phase) {
-      if (phase <= 0) return;
-      var h = 18*phase;
-      // tiny curved stem
-      ctx.beginPath();
-      ctx.moveTo(RX, GY-2);
-      ctx.bezierCurveTo(RX-2, GY-h*0.4, RX+3, GY-h*0.7, RX, GY-h);
-      ctx.strokeStyle = TRUNK;
-      ctx.lineWidth = 1.8;
-      ctx.lineCap = 'round';
-      ctx.stroke();
-      // seed leaves
-      if (phase > 0.4) {
-        var la = clamp((phase-0.4)/0.6, 0, 1);
-        var sx = RX, sy = GY-h;
-        drawLeaf(sx, sy, -0.6, 6*la, la*0.8, LL);
-        drawLeaf(sx, sy,  0.6, 5*la, la*0.8, LM);
-      }
-    }
-
-    var startTime = null;
-    var TOTAL = 8500; // ms for full growth
-
-    function draw(ts) {
-      if (!startTime) startTime = ts;
-      var raw = clamp((ts-startTime)/TOTAL, 0, 1);
-
-      ctx.clearRect(0, 0, W, H);
-      drawSoil();
-
-      // Phase gating:
-      // 0–0.10 : sprout
-      // 0.08–0.60: trunk grows
-      // 0.38+  : leaves emerge
-      // 0.40+  : branches extend
-
-      // Sprout
-      var sproutP = clamp(raw/0.10, 0, 1);
-      drawSprout(easeOut2(sproutP));
-
-      // Trunk (overlaps sprout, fades in naturally)
-      var trunkP = clamp((raw-0.06)/0.54, 0, 1);
-      if (trunkP > 0) drawTrunk(easeOut3(trunkP));
-
-      // Leaves
-      for (var i=0; i<leafDefs.length; i++) {
-        var ld = leafDefs[i];
-        if (raw < ld.bloom) continue;
-        var lp = clamp((raw-ld.bloom)/0.07, 0, 1);
-        var spring = 1 + Math.sin(lp*Math.PI)*0.25; // little overshoot
-        var scale = easeOut2(lp) * (lp < 0.5 ? spring : 1);
-        var tp3 = trunkAt(ld.t * easeOut3(trunkP));
-        if (tp3.y > GY+2) continue;
-        var baseAng = trunkDir(ld.t * Math.max(easeOut3(trunkP),0.01));
-        var leafAng;
-        if (ld.side === 0) {
-          leafAng = baseAng - Math.PI/2;
-        } else {
-          leafAng = baseAng + ld.side * (0.85 + ld.t*0.25);
-        }
-        ctx.save();
-        ctx.translate(tp3.x, tp3.y);
-        ctx.scale(scale, scale);
-        ctx.translate(-tp3.x, -tp3.y);
-        drawLeaf(tp3.x, tp3.y, leafAng, ld.sz, 0.88, ld.col);
-        ctx.restore();
-      }
-
-      // Branches
-      for (var j=0; j<branchDefs.length; j++) {
-        var bd = branchDefs[j];
-        if (raw < bd.bloom) continue;
-        var bp2 = clamp((raw-bd.bloom)/0.14, 0, 1);
-        drawBranch(bd, easeOut3(bp2));
-      }
-
-      if (raw < 1) {
-        requestAnimationFrame(draw);
-      } else {
-        requestAnimationFrame(sway);
-      }
-    }
-
-    // After growth: gentle sway loop
-    var swayStart = null;
-    function sway(ts) {
-      if (!swayStart) swayStart = ts;
-      var angle = Math.sin((ts-swayStart)*0.00065) * 0.022;
-      ctx.clearRect(0, 0, W, H);
-      ctx.save();
-      ctx.translate(RX, GY);
-      ctx.rotate(angle);
-      ctx.translate(-RX, -GY);
-      drawSoil();
-      drawTrunk(1);
-      for (var i=0; i<leafDefs.length; i++) {
-        var ld = leafDefs[i];
-        var tp4 = trunkAt(ld.t);
-        if (tp4.y > GY+2) continue;
-        var baseAng = trunkDir(ld.t);
-        var leafAng = ld.side===0 ? baseAng-Math.PI/2 : baseAng+ld.side*(0.85+ld.t*0.25);
-        drawLeaf(tp4.x, tp4.y, leafAng, ld.sz, 0.88, ld.col);
-      }
-      for (var j=0; j<branchDefs.length; j++) {
-        drawBranch(branchDefs[j], 1);
-      }
-      ctx.restore();
-      requestAnimationFrame(sway);
-    }
-
-    requestAnimationFrame(draw);
-  })();
-  </script>
 </body>
 </html>
