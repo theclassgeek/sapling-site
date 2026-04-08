@@ -19,12 +19,12 @@
       --line: #e0d6c6;
       --green: #3a7049;
       --green-lt: #68a078;
+      --green-3: #d0e6c8;
       --gold: #c89a3f;
-      --sh-sm: 0 2px 4px rgba(26,43,31,.04), 0 6px 20px rgba(26,43,31,.07);
       --sh-lg: 0 8px 18px rgba(26,43,31,.05), 0 24px 56px rgba(26,43,31,.10);
       --radius: 24px;
       --radius-xl: 40px;
-      --max: 1100px;
+      --max: 1080px;
     }
     *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -58,12 +58,14 @@
       border-radius: var(--radius-xl);
       box-shadow: var(--sh-lg);
       backdrop-filter: blur(12px);
-      padding: 32px;
+      padding: 52px 56px;
       overflow: hidden;
       position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      min-height: 520px;
     }
     .panel::before {
       content: '';
@@ -71,67 +73,160 @@
       background: radial-gradient(ellipse 500px 320px at 100% 0%, rgba(104,160,120,.12) 0%, transparent 60%);
       pointer-events: none;
     }
+    .panel-text {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      position: relative;
+      z-index: 1;
+    }
+    .panel-tree {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+    }
     .brand {
       display: inline-flex; align-items: center; gap: 12px;
       font-family: 'Fraunces', serif; font-weight: 700; font-size: 1.25rem; letter-spacing: -.03em;
-      position: relative; z-index: 1;
     }
     .brand img { width: 42px; height: 42px; object-fit: contain; }
     .eyebrow {
       display: inline-flex; align-items: center; gap: 8px;
-      align-self: flex-start;
       margin-top: 28px;
       background: rgba(104,160,120,.1); color: var(--green);
       border: 1px solid rgba(104,160,120,.2);
       padding: 7px 14px; border-radius: 999px;
       font-weight: 600; font-size: 12px; letter-spacing: .05em; text-transform: uppercase;
-      position: relative; z-index: 1;
+      align-self: flex-start;
     }
     h1 {
       margin: 18px 0 0;
       font-family: 'Fraunces', Georgia, serif;
-      font-size: clamp(2.8rem, 6vw, 5.4rem);
+      font-size: clamp(2.4rem, 4.5vw, 4.4rem);
       line-height: .94;
       letter-spacing: -.05em;
       max-width: 10ch;
-      position: relative; z-index: 1;
     }
     .lead {
       margin-top: 18px;
-      max-width: 42rem;
+      max-width: 36rem;
       color: var(--muted);
-      font-size: clamp(1.02rem, 1.4vw, 1.16rem);
-      position: relative; z-index: 1;
+      font-size: clamp(1rem, 1.2vw, 1.1rem);
     }
     .quote {
-      margin-top: 26px;
-      padding: 18px 20px;
+      margin-top: 24px;
+      padding: 16px 20px;
       border-radius: var(--radius);
       background: rgba(255,255,255,.7);
       border: 1px solid rgba(224,214,198,.9);
-      max-width: 38rem;
-      position: relative; z-index: 1;
     }
     .quote strong {
       display: block;
       font-family: 'Fraunces', serif;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       letter-spacing: -.02em;
     }
     .quote span {
       display: block;
-      margin-top: 8px;
+      margin-top: 7px;
       color: var(--muted);
-      font-size: .95rem;
+      font-size: .92rem;
     }
     .foot {
-      margin-top: 26px;
+      margin-top: 22px;
       color: var(--muted);
-      font-size: .88rem;
-      position: relative; z-index: 1;
+      font-size: .86rem;
     }
-    @media (max-width: 760px) {
-      .panel { padding: 24px; }
+
+    /* ── Tree animation ── */
+    #sapling-tree { overflow: visible; }
+
+    .trunk-path {
+      stroke: #8a6e50;
+      stroke-width: 11;
+      stroke-linecap: round;
+      fill: none;
+      stroke-dasharray: 300;
+      stroke-dashoffset: 300;
+      animation: draw-path 1.8s cubic-bezier(.4,0,.2,1) 0.4s forwards;
+    }
+    .b1 { stroke:#9a7a5a; stroke-width:8;  stroke-linecap:round; fill:none; stroke-dasharray:120; stroke-dashoffset:120; animation: draw-path 0.9s cubic-bezier(.4,0,.2,1) 1.8s forwards; }
+    .b2 { stroke:#9a7a5a; stroke-width:7;  stroke-linecap:round; fill:none; stroke-dasharray:110; stroke-dashoffset:110; animation: draw-path 0.9s cubic-bezier(.4,0,.2,1) 2.1s forwards; }
+    .b3 { stroke:#a08060; stroke-width:5;  stroke-linecap:round; fill:none; stroke-dasharray: 90; stroke-dashoffset: 90; animation: draw-path 0.8s cubic-bezier(.4,0,.2,1) 2.4s forwards; }
+    .b4 { stroke:#a08060; stroke-width:4.5;stroke-linecap:round; fill:none; stroke-dasharray: 85; stroke-dashoffset: 85; animation: draw-path 0.8s cubic-bezier(.4,0,.2,1) 2.6s forwards; }
+    .b5 { stroke:#a88c6a; stroke-width:3.5;stroke-linecap:round; fill:none; stroke-dasharray: 70; stroke-dashoffset: 70; animation: draw-path 0.7s cubic-bezier(.4,0,.2,1) 2.9s forwards; }
+    .b6 { stroke:#a88c6a; stroke-width:3;  stroke-linecap:round; fill:none; stroke-dasharray: 65; stroke-dashoffset: 65; animation: draw-path 0.7s cubic-bezier(.4,0,.2,1) 3.1s forwards; }
+    .b7 { stroke:#b09070; stroke-width:2.5;stroke-linecap:round; fill:none; stroke-dasharray: 55; stroke-dashoffset: 55; animation: draw-path 0.6s cubic-bezier(.4,0,.2,1) 3.3s forwards; }
+    .b8 { stroke:#b09070; stroke-width:2.5;stroke-linecap:round; fill:none; stroke-dasharray: 50; stroke-dashoffset: 50; animation: draw-path 0.6s cubic-bezier(.4,0,.2,1) 3.5s forwards; }
+    @keyframes draw-path { to { stroke-dashoffset: 0; } }
+
+    .leaf-cluster {
+      opacity: 0;
+      transform-box: fill-box;
+      transform-origin: center;
+      transform: scale(.3);
+      animation: bloom-leaf .65s cubic-bezier(.34,1.56,.64,1) forwards;
+    }
+    .lc1  { animation-delay: 3.1s; }
+    .lc2  { animation-delay: 3.3s; }
+    .lc3  { animation-delay: 3.5s; }
+    .lc4  { animation-delay: 3.7s; }
+    .lc5  { animation-delay: 3.9s; }
+    .lc6  { animation-delay: 4.1s; }
+    .lc7  { animation-delay: 4.3s; }
+    .lc8  { animation-delay: 4.5s; }
+    .lc9  { animation-delay: 4.7s; }
+    .lc10 { animation-delay: 4.9s; }
+    .lc11 { animation-delay: 5.1s; }
+    .lc12 { animation-delay: 5.3s; }
+    .lc13 { animation-delay: 5.5s; }
+    .lc14 { animation-delay: 5.7s; }
+    @keyframes bloom-leaf {
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .tree-sway {
+      transform-origin: 160px 370px;
+      animation: sway 8s ease-in-out 6.5s infinite alternate;
+    }
+    @keyframes sway {
+      0%   { transform: rotate(0deg); }
+      40%  { transform: rotate(1.1deg); }
+      100% { transform: rotate(-0.8deg); }
+    }
+
+    .ground-ellipse {
+      fill: rgba(180,160,120,.12);
+      opacity: 0;
+      animation: fade-in .6s ease 0.2s forwards;
+    }
+    @keyframes fade-in { to { opacity: 1; } }
+
+    .seed {
+      opacity: 0;
+      animation: float-seed 5s ease-in-out infinite;
+    }
+    .seed1 { animation-delay: 6.5s; }
+    .seed2 { animation-delay: 8s; }
+    .seed3 { animation-delay: 9.5s; }
+    @keyframes float-seed {
+      0%   { opacity: 0; transform: translate(0,0) rotate(0deg); }
+      20%  { opacity: .6; }
+      80%  { opacity: .2; }
+      100% { opacity: 0; transform: translate(35px,-90px) rotate(200deg); }
+    }
+
+    @media (max-width: 800px) {
+      .panel {
+        grid-template-columns: 1fr;
+        padding: 32px 28px;
+        min-height: unset;
+        gap: 0;
+      }
+      .panel-tree { margin-top: 32px; min-height: 260px; }
+      #sapling-tree { width: 220px; height: 280px; }
       .eyebrow { margin-top: 22px; }
       h1 { max-width: 100%; }
     }
@@ -139,18 +234,142 @@
 </head>
 <body>
   <main class="panel">
-    <div class="brand">
-      <img src="/sapling.png" alt="Sapling logo">
-      <span>Sapling</span>
+
+    <div class="panel-text">
+      <div class="brand">
+        <img src="/sapling.png" alt="Sapling logo">
+        <span>Sapling</span>
+      </div>
+      <span class="eyebrow">Coming soon</span>
+      <h1>Something thoughtful for families is taking root.</h1>
+      <p class="lead">Sapling is currently being prepared behind the scenes. The public website will return soon with a clearer, more polished launch experience.</p>
+      <div class="quote">
+        <strong>Less plastic tat. More future.</strong>
+        <span>We're not quite ready to put the full story live yet — but we're getting close.</span>
+      </div>
+      <p class="foot">A fuller public launch is on the way.</p>
     </div>
-    <span class="eyebrow">Coming soon</span>
-    <h1>Something thoughtful for families is taking root.</h1>
-    <p class="lead">Sapling is currently being prepared behind the scenes. The public website will return soon with a clearer, more polished launch experience.</p>
-    <div class="quote">
-      <strong>Less plastic tat. More future.</strong>
-      <span>We’re not quite ready to put the full story live yet — but we’re getting close.</span>
+
+    <div class="panel-tree" aria-hidden="true">
+      <svg id="sapling-tree" width="320" height="400" viewBox="0 0 320 400">
+
+        <!-- Ground -->
+        <ellipse class="ground-ellipse" cx="160" cy="375" rx="100" ry="12"/>
+
+        <g class="tree-sway">
+
+          <!-- Trunk -->
+          <path class="trunk-path" d="M160 370 C158 330 154 290 156 250 C157 220 160 190 158 160 C156 140 155 120 158 100"/>
+
+          <!-- Main branches left/right -->
+          <path class="b1" d="M157 220 C140 210 120 195 100 185"/>
+          <path class="b2" d="M158 200 C172 188 192 178 212 168"/>
+          <path class="b3" d="M157 170 C142 158 125 145 108 132"/>
+          <path class="b4" d="M158 155 C170 143 186 132 202 122"/>
+          <path class="b5" d="M158 130 C148 118 135 108 120 98"/>
+          <path class="b6" d="M158 120 C166 108 178 100 192 92"/>
+          <path class="b7" d="M158 108 C152 96 144 86 134 76"/>
+          <path class="b8" d="M158 100 C163 90 172 82 182 74"/>
+
+          <!-- Leaf clusters — each is a small ellipse group -->
+          <!-- Low left -->
+          <g class="leaf-cluster lc1">
+            <ellipse cx="92" cy="178" rx="22" ry="16" fill="#5d9066" opacity=".9"/>
+            <ellipse cx="78" cy="170" rx="15" ry="12" fill="#68a078" opacity=".8"/>
+            <ellipse cx="105" cy="172" rx="14" ry="10" fill="#4e7d58" opacity=".85"/>
+          </g>
+          <!-- Low right -->
+          <g class="leaf-cluster lc2">
+            <ellipse cx="220" cy="162" rx="22" ry="15" fill="#5d9066" opacity=".9"/>
+            <ellipse cx="234" cy="155" rx="14" ry="11" fill="#68a078" opacity=".8"/>
+            <ellipse cx="208" cy="155" rx="13" ry="10" fill="#4e7d58" opacity=".85"/>
+          </g>
+          <!-- Mid left -->
+          <g class="leaf-cluster lc3">
+            <ellipse cx="100" cy="126" rx="22" ry="15" fill="#4e7d58" opacity=".9"/>
+            <ellipse cx="86" cy="118" rx="16" ry="12" fill="#68a078" opacity=".8"/>
+            <ellipse cx="114" cy="120" rx="14" ry="10" fill="#5d9066" opacity=".85"/>
+          </g>
+          <!-- Mid right -->
+          <g class="leaf-cluster lc4">
+            <ellipse cx="210" cy="116" rx="21" ry="15" fill="#4e7d58" opacity=".9"/>
+            <ellipse cx="224" cy="109" rx="15" ry="11" fill="#68a078" opacity=".8"/>
+            <ellipse cx="198" cy="110" rx="13" ry="9" fill="#5d9066" opacity=".85"/>
+          </g>
+          <!-- Mid-upper left -->
+          <g class="leaf-cluster lc5">
+            <ellipse cx="114" cy="92" rx="20" ry="14" fill="#3a7049" opacity=".9"/>
+            <ellipse cx="100" cy="85" rx="14" ry="11" fill="#68a078" opacity=".8"/>
+            <ellipse cx="126" cy="86" rx="12" ry="9" fill="#4e7d58" opacity=".85"/>
+          </g>
+          <!-- Mid-upper right -->
+          <g class="leaf-cluster lc6">
+            <ellipse cx="198" cy="86" rx="20" ry="13" fill="#3a7049" opacity=".9"/>
+            <ellipse cx="212" cy="79" rx="14" ry="10" fill="#68a078" opacity=".8"/>
+            <ellipse cx="185" cy="80" rx="12" ry="9" fill="#4e7d58" opacity=".85"/>
+          </g>
+          <!-- Upper small left -->
+          <g class="leaf-cluster lc7">
+            <ellipse cx="128" cy="70" rx="18" ry="13" fill="#3a7049" opacity=".9"/>
+            <ellipse cx="115" cy="63" rx="13" ry="10" fill="#5d9066" opacity=".8"/>
+          </g>
+          <!-- Upper small right -->
+          <g class="leaf-cluster lc8">
+            <ellipse cx="188" cy="66" rx="18" ry="13" fill="#3a7049" opacity=".9"/>
+            <ellipse cx="200" cy="59" rx="12" ry="9" fill="#5d9066" opacity=".8"/>
+          </g>
+          <!-- Crown centre base -->
+          <g class="leaf-cluster lc9">
+            <ellipse cx="158" cy="88" rx="28" ry="20" fill="#3a7049" opacity=".9"/>
+            <ellipse cx="145" cy="78" rx="18" ry="13" fill="#4e7d58" opacity=".85"/>
+            <ellipse cx="170" cy="78" rx="17" ry="13" fill="#5d9066" opacity=".85"/>
+          </g>
+          <!-- Crown upper -->
+          <g class="leaf-cluster lc10">
+            <ellipse cx="158" cy="62" rx="26" ry="19" fill="#2d5e3c" opacity=".9"/>
+            <ellipse cx="144" cy="52" rx="18" ry="13" fill="#3a7049" opacity=".85"/>
+            <ellipse cx="172" cy="52" rx="16" ry="12" fill="#4e7d58" opacity=".85"/>
+          </g>
+          <!-- Crown tip -->
+          <g class="leaf-cluster lc11">
+            <ellipse cx="158" cy="40" rx="20" ry="15" fill="#2d5e3c" opacity=".92"/>
+            <ellipse cx="148" cy="32" rx="13" ry="10" fill="#3a7049" opacity=".85"/>
+            <ellipse cx="168" cy="32" rx="12" ry="9" fill="#3a7049" opacity=".85"/>
+          </g>
+          <!-- Gold accent leaf highlights -->
+          <g class="leaf-cluster lc12">
+            <ellipse cx="90" cy="172" rx="6" ry="5" fill="#c89a3f" opacity=".45"/>
+            <ellipse cx="228" cy="158" rx="5" ry="4" fill="#c89a3f" opacity=".4"/>
+          </g>
+          <g class="leaf-cluster lc13">
+            <ellipse cx="106" cy="86" rx="7" ry="5" fill="#d0e6c8" opacity=".7"/>
+            <ellipse cx="210" cy="80" rx="6" ry="4" fill="#d0e6c8" opacity=".65"/>
+            <ellipse cx="158" cy="36" rx="7" ry="5" fill="#d0e6c8" opacity=".8"/>
+          </g>
+          <!-- Final golden top spark -->
+          <g class="leaf-cluster lc14">
+            <ellipse cx="158" cy="24" rx="9" ry="7" fill="#c89a3f" opacity=".55"/>
+          </g>
+
+        </g><!-- end tree-sway -->
+
+        <!-- Floating seeds -->
+        <g class="seed seed1">
+          <circle cx="105" cy="160" r="2.5" fill="#c89a3f" opacity=".7"/>
+          <path d="M105 158 C108 152 112 148 114 143" stroke="#c89a3f" stroke-width="1" fill="none" opacity=".5"/>
+        </g>
+        <g class="seed seed2">
+          <circle cx="215" cy="145" r="2" fill="#68a078" opacity=".65"/>
+          <path d="M215 143 C218 138 220 133 222 129" stroke="#68a078" stroke-width="1" fill="none" opacity=".45"/>
+        </g>
+        <g class="seed seed3">
+          <circle cx="168" cy="50" r="2" fill="#c89a3f" opacity=".6"/>
+          <path d="M168 48 C171 42 173 37 176 32" stroke="#c89a3f" stroke-width="1" fill="none" opacity=".45"/>
+        </g>
+
+      </svg>
     </div>
-    <p class="foot">A fuller public launch is on the way.</p>
+
   </main>
 </body>
 </html>
