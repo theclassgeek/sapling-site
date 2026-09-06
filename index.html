@@ -1,118 +1,32 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en-GB">
 <head>
-  <link rel="icon" href="/sapling.ico" sizes="any">
-  <link rel="icon" type="image/png" href="/sapling.png">
-  <link rel="apple-touch-icon" href="/sapling.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#405A49">
+  <title>Sapling — Coming soon</title>
+  <meta name="description" content="Something thoughtful for families is taking root.">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,700&display=swap" rel="stylesheet">
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sapling — Coming soon</title>
-  <meta name="description" content="Sapling is preparing something thoughtful for families. Public website coming soon." />
-  <style>
-    :root {
-      --bg: #f8f5ef; --text: #1a2b1f; --muted: #5a6860;
-      --line: #e0d6c6; --green: #3a7049;
-      --sh-lg: 0 8px 18px rgba(26,43,31,.05), 0 24px 56px rgba(26,43,31,.10);
-      --radius: 24px; --radius-xl: 40px; --max: 640px;
-    }
-    *, *::before, *::after { box-sizing: border-box; }
-    body {
-      margin: 0; min-height: 100vh;
-      font-family: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
-      color: var(--text);
-      background-color: var(--bg);
-      background-image:
-        radial-gradient(ellipse 820px 560px at 85% 0%, rgba(104,160,120,.14) 0%, transparent 65%),
-        radial-gradient(ellipse 620px 480px at 8% 90%, rgba(200,154,63,.08) 0%, transparent 65%),
-        linear-gradient(180deg, #faf7f0 0%, #f8f5ef 55%, #f2ece0 100%);
-      line-height: 1.55; -webkit-font-smoothing: antialiased;
-      display: grid; place-items: center; padding: 24px;
-    }
-    body::after {
-      content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 9999;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-      opacity: .032; mix-blend-mode: multiply;
-    }
-    .panel {
-      width: min(var(--max), 100%);
-      background: rgba(255,255,255,.72);
-      border: 1px solid rgba(224,214,198,.9);
-      border-radius: var(--radius-xl);
-      box-shadow: var(--sh-lg);
-      backdrop-filter: blur(12px);
-      padding: 52px 48px;
-      overflow: hidden; position: relative;
-      display: flex; flex-direction: column;
-      align-items: center; text-align: center;
-    }
-    .panel::before {
-      content: ''; position: absolute; inset: 0;
-      background: radial-gradient(ellipse 500px 320px at 100% 0%, rgba(104,160,120,.12) 0%, transparent 60%);
-      pointer-events: none;
-    }
-    .brand {
-      display: inline-flex; align-items: center; gap: 12px;
-      font-family: 'Fraunces', serif; font-weight: 700;
-      font-size: 1.25rem; letter-spacing: -.03em;
-      position: relative; z-index: 1;
-    }
-    .brand img { width: 42px; height: 42px; object-fit: contain; }
-    .eyebrow {
-      display: inline-flex; align-items: center; gap: 8px;
-      margin-top: 28px;
-      background: rgba(104,160,120,.1); color: var(--green);
-      border: 1px solid rgba(104,160,120,.2);
-      padding: 7px 14px; border-radius: 999px;
-      font-weight: 600; font-size: 12px; letter-spacing: .05em; text-transform: uppercase;
-      position: relative; z-index: 1;
-    }
-    h1 {
-      margin: 18px 0 0;
-      font-family: 'Fraunces', Georgia, serif;
-      font-size: clamp(2.4rem, 5vw, 4rem);
-      line-height: .94; letter-spacing: -.05em;
-      position: relative; z-index: 1;
-    }
-    .lead {
-      margin-top: 18px; max-width: 34rem;
-      color: var(--muted); font-size: clamp(1rem, 1.2vw, 1.08rem);
-      position: relative; z-index: 1;
-    }
-    .quote {
-      margin-top: 24px; padding: 16px 20px;
-      border-radius: var(--radius);
-      background: rgba(255,255,255,.7);
-      border: 1px solid rgba(224,214,198,.9);
-      position: relative; z-index: 1;
-    }
-    .quote strong {
-      display: block; font-family: 'Fraunces', serif;
-      font-size: 1.05rem; letter-spacing: -.02em;
-    }
-    .quote span { display: block; margin-top: 7px; color: var(--muted); font-size: .92rem; }
-    .foot { margin-top: 22px; color: var(--muted); font-size: .86rem; position: relative; z-index: 1; }
-    @media (max-width: 600px) {
-      .panel { padding: 36px 28px; }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/site.css">
 </head>
-<body>
-  <main class="panel">
-    <div class="brand">
-      <img src="/sapling.png" alt="Sapling logo">
-      <span>Sapling</span>
+<body class="holding">
+  <header class="site-header shell">
+    <a class="wordmark" href="/" aria-label="Sapling home">Sapling</a>
+    <a class="nav-link" href="https://app.usesapling.co.uk/login?mode=login">Log in</a>
+  </header>
+  <main class="holding-main shell">
+    <div class="holding-copy">
+      <span class="sprout-badge" aria-hidden="true">
+        <svg class="sprout" viewBox="0 0 64 64"><path class="leaf-a" d="M31 34.5c-10.8.1-17.7-6.1-18.9-16.9 10.7-.3 18.1 5.4 19.5 15.8l-.6 1.1Z"/><path class="leaf-b" d="M33.1 29.8C33.2 18.7 40.5 11 52 10.4c-.1 10.9-6.7 18.1-17.7 19.8l-1.2-.4Z"/><path class="stem" d="M29.6 54c1.5-8.2 1.9-16.3 1.2-24.3l3.5-.3c.7 8.5.3 16.9-1.2 25.2L29.6 54Z"/></svg>
+      </span>
+      <p class="eyebrow">Coming soon</p>
+      <h1>Something thoughtful for families is taking root.</h1>
+      <p class="lead">We’re creating a simpler way to turn gifts from friends and family into long-term savings for children.</p>
     </div>
-    <span class="eyebrow">Coming soon</span>
-    <h1>Something thoughtful for families is taking root.</h1>
-    <p class="lead">Sapling is currently being prepared behind the scenes. The public website will return soon with a clearer, more polished launch experience.</p>
-    <div class="quote">
-      <strong>Less plastic tat. More future.</strong>
-      <span>We're not quite ready to put the full story live yet — but we're getting close.</span>
-    </div>
-    <p class="foot">A fuller public launch is on the way.</p>
   </main>
+  <footer class="holding-footer shell">Sapling · Private beta · UK</footer>
 </body>
 </html>
