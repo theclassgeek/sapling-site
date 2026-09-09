@@ -6,10 +6,21 @@
   <meta name="theme-color" content="#405A49">
   <title>Sapling — Less plastic tat. More future.</title>
   <meta name="description" content="Give friends and family a better answer than more toys. Sapling helps ordinary families turn birthdays and celebrations into a lasting head start for their child.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Sapling — Less plastic tat. More future.">
+  <meta property="og:description" content="Give friends and family a better answer than more toys—and give a small gift more time to grow.">
+  <meta property="og:url" content="https://usesapling.co.uk/preview/">
+  <meta property="og:image" content="https://usesapling.co.uk/assets/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sapling — Less plastic tat. More future.">
+  <meta name="twitter:description" content="A better kind of present for a child’s future.">
+  <meta name="twitter:image" content="https://usesapling.co.uk/assets/og.png">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/site.css">
 </head>
 <body>
@@ -17,7 +28,7 @@
     <a class="wordmark" href="/preview" aria-label="Sapling preview home">Sapling</a>
     <nav class="nav" aria-label="Main navigation">
       <a class="nav-link" href="#how-it-works">How it works</a>
-      <a class="nav-link" href="#start-early">Why start early</a>
+      <a class="nav-link" href="#gift-calculator">Gift calculator</a>
       <a class="nav-link" href="/preview/partners">For partners</a>
       <a class="nav-link" href="https://app.usesapling.co.uk/login?mode=login">Log in</a>
       <a class="button button-primary" href="https://app.usesapling.co.uk/login?mode=signup">Join the beta</a>
@@ -35,8 +46,8 @@
       </div>
 
       <div class="product-card" aria-label="Illustrative Sapling future-value example">
-        <div class="card-head"><div><p class="card-label">Maya’s Sapling · age 3</p><p class="card-value">£3.4k</p></div><span class="card-pill">Illustrative</span></div>
-        <div class="future-summary"><span><small>Current example pot</small><strong>£3,400</strong></span><span><small>Could be worth at 18</small><strong>£26k</strong></span></div>
+        <div class="card-head"><div><p class="card-label">Maya’s Sapling · age 3</p><p class="card-heading">A future built from ordinary gifts</p></div><span class="card-pill">Illustrative</span></div>
+        <div class="future-summary future-first"><span class="future-primary"><small>Could be worth at 18</small><strong>£26,000</strong></span><span><small>Current example pot</small><strong>£3,400</strong></span></div>
         <div class="activity"><span class="activity-mark">🎂</span><span class="activity-copy"><strong>Birthday gifts</strong><span>£520 from family and friends</span></span></div>
         <div class="activity"><span class="activity-mark">🎄</span><span class="activity-copy"><strong>Christmas gifts</strong><span>£330 instead of more toys</span></span></div>
         <p class="fine-print">Example assumes £850 of future gifts each year and 5% annual growth. Investments can fall as well as rise. This is not a forecast or guarantee.</p>
@@ -65,6 +76,32 @@
       </div>
     </section>
 
+    <section class="band" id="gift-calculator">
+      <div class="section shell calculator-layout">
+        <div class="section-intro"><p class="eyebrow">What could this gift become?</p><h2>See what a small gift could mean later.</h2><p class="lead">Choose the child’s age, the gift and a future milestone. Sapling uses one fixed 5% illustrative annual growth assumption—never a personalised forecast.</p></div>
+        <form class="calculator-card" id="future-calculator" data-rate="0.05">
+          <div class="calculator-fields">
+            <label><span>Child’s age now</span><select id="calculator-age" name="age"><option value="0">Newborn</option><option value="1" selected>1 year</option><option value="2">2 years</option><option value="3">3 years</option><option value="4">4 years</option><option value="5">5 years</option><option value="6">6 years</option><option value="7">7 years</option><option value="8">8 years</option><option value="9">9 years</option><option value="10">10 years</option><option value="11">11 years</option><option value="12">12 years</option><option value="13">13 years</option><option value="14">14 years</option><option value="15">15 years</option><option value="16">16 years</option><option value="17">17 years</option></select></label>
+            <label><span>Gift amount</span><span class="money-input"><span>£</span><input id="calculator-gift" name="gift" type="number" min="5" max="1000" step="5" value="25" inputmode="decimal"></span></label>
+          </div>
+          <fieldset class="target-options"><legend>Show its illustrative value</legend><label><input type="radio" name="target" value="18" checked><span>At 18</span></label><label><input type="radio" name="target" value="34"><span>Around age 34</span></label></fieldset>
+          <div class="calculator-result" aria-live="polite"><span id="calculator-today">£25 today</span><strong id="calculator-future">could be about £57 at 18</strong><small id="calculator-years">with 17 years to grow</small></div>
+          <p class="fine-print">Illustrative only. Assumes 5% annual compound growth with no further gifts, before fees and inflation. Investments can fall as well as rise, so the child could get back less than was contributed. From age 18, the child controls whether the money stays invested.</p>
+        </form>
+      </div>
+    </section>
+
+    <section class="section shell planting-layout">
+      <div class="planting-visual" aria-hidden="true">
+        <span class="growth-stage growth-stage-one"><img src="/favicon.svg" alt=""></span>
+        <span class="growth-line"></span>
+        <span class="growth-stage growth-stage-two"><img src="/favicon.svg" alt=""></span>
+        <span class="growth-line"></span>
+        <span class="growth-stage growth-stage-three"><img src="/favicon.svg" alt=""></span>
+      </div>
+      <div><p class="eyebrow">A gift that can outlast the day</p><h2>Plant something for their future.</h2><p class="lead">Another toy can be forgotten by next year. A small gift started early has time to become something much bigger—quietly growing alongside the child it belongs to.</p></div>
+    </section>
+
     <section class="impact-band" id="start-early">
       <div class="section shell impact-grid">
         <div>
@@ -86,12 +123,18 @@
       </div>
     </section>
 
+    <section class="section shell community-grid">
+      <article class="story-panel"><p class="eyebrow">It takes a village</p><h2>A head start can be built together.</h2><p class="lead">It does not have to come from one large parental contribution. Grandparents, relatives, godparents and family friends can add ordinary gifts over many years, helping the people around a child create something meaningful together.</p></article>
+      <article class="story-panel story-panel-sage"><p class="eyebrow">Growing up with saving</p><h2>Let them see what starting early can do.</h2><p class="lead">As gifts arrive and the provider reports changes in value, parents can use Sapling to talk about patience, saving and growth in age-appropriate ways. The aim is to make long-term saving visible and familiar—not to promise financial literacy or returns.</p></article>
+    </section>
+
     <section class="section shell">
       <div class="section-intro"><p class="eyebrow">Made for real gift moments</p><h2>One useful answer, whatever the occasion.</h2></div>
-      <div class="grid-3 occasion-grid">
+      <div class="grid-4 occasion-grid">
         <article class="info-card"><span class="occasion-icon">🎂</span><h3>Birthdays</h3><p>Share one link on the invitation or family chat and make money towards their future feel like a completely normal present.</p></article>
         <article class="info-card"><span class="occasion-icon">🎄</span><h3>Christmas</h3><p>Give grandparents and relatives a meaningful alternative when the toy box is already full.</p></article>
         <article class="info-card"><span class="occasion-icon">✨</span><h3>Christenings and milestones</h3><p>Turn a symbolic present into something the whole family can help build together.</p></article>
+        <article class="info-card"><span class="occasion-icon">🏅</span><h3>Achievements and challenges</h3><p>Mark a family milestone, celebrate an achievement or support a child’s personal challenge without suggesting the gift is a charitable donation.</p></article>
       </div>
     </section>
 
@@ -102,15 +145,28 @@
 
     <section class="section shell pricing-section" aria-labelledby="parent-pricing-title">
       <div class="pricing-panel">
-        <div><p class="eyebrow">Simple, transparent pricing</p><h2 id="parent-pricing-title">A small fee for making family generosity easier.</h2><p class="lead">Sapling’s planned annual fee is 0.5% of the value in your child’s pot. That’s £5 a year for every £1,000. It helps us provide one simple, private place to collect gifts, follow what has arrived and stay connected with the right savings provider.</p></div>
-        <div class="pricing-example" aria-label="Illustrative Sapling annual fee"><span><small>Example pot</small><strong>£1,000</strong></span><span class="pricing-divider" aria-hidden="true">× 0.5%</span><span><small>Illustrative annual fee</small><strong>£5</strong></span></div>
-        <p class="fine-print">Planned pricing only and not yet active. Other provider or investment charges may also apply. Investments can fall as well as rise, and charges reduce investment returns over time.</p>
+        <div><p class="eyebrow">Simple, transparent pricing</p><h2 id="parent-pricing-title">As the pot grows, Sapling’s percentage fee gets smaller.</h2><p class="lead">Our working model uses one annual percentage fee based on the child’s qualifying provider-reported value. A partner referral would never add an extra fee for the parent; any qualifying partner share would come from Sapling’s fee.</p></div>
+        <div class="pricing-tiers" role="table" aria-label="Planned Sapling annual fee tiers"><div role="row"><span role="cell">Up to £9,999</span><strong role="cell">0.50%</strong></div><div role="row"><span role="cell">£10,000–£99,999</span><strong role="cell">0.40%</strong></div><div role="row"><span role="cell">£100,000+</span><strong role="cell">0.25%</strong></div></div>
+        <p class="fine-print">Working pricing only and not yet active or contractual. The rate is currently expected to apply to the whole qualifying pot once a tier is reached. Provider or investment charges may also apply separately. Charges reduce investment returns over time.</p>
       </div>
+    </section>
+
+    <section class="section shell planned-referral" aria-labelledby="referral-title">
+      <div><span class="sample">Planned programme</span><p class="eyebrow">Help another family start</p><h2 id="referral-title">A welcome benefit for them. A thank-you for your child.</h2><p class="lead">Under the proposed model, a referred family could receive a £25 pending Sapling bonus after their child’s qualifying pot reaches £500, and the referring parent could receive a £10 pending bonus for their chosen child.</p></div>
+      <div class="trust-panel"><ul><li>Proposed bonuses would vest at 18 and remain separate from actual Junior ISA value until funded.</li><li>Parent rewards would be limited to 10 successful referrals each calendar year.</li><li>The referral programme is not currently active. Eligibility, funding and full terms still require approval.</li></ul></div>
+    </section>
+
+    <section class="section shell faq-section" aria-labelledby="faq-title">
+      <div class="section-intro"><p class="eyebrow">Good to know</p><h2 id="faq-title">Clear answers before anyone gives.</h2></div>
+      <details><summary>Does all of my gift reach the investment account?</summary><p>During the private beta, Sapling shows what you will be charged and separately tracks payment, allocation and provider confirmation. The final treatment of payment-processing costs is still being tested, so we will not describe a gift as invested until the provider confirms it. Any deduction that affects the amount sent to the provider must be shown clearly in the payment journey and receipt.</p></details>
+      <details><summary>Who owns and controls the money?</summary><p>Money held in a Junior ISA belongs to the child. A parent or guardian manages it while they are young; the child can take control at 16 and normally cannot withdraw it until 18.</p></details>
+      <details><summary>Is the 5% growth rate promised?</summary><p>No. It is a single illustrative assumption used to explain compounding. It is not a provider forecast or guarantee, and actual investments can fall as well as rise.</p></details>
     </section>
 
     <section class="cta shell"><h2>The next present can do more than fill the toy box.</h2><p>Create one private place where friends and family can help give your child a more useful head start.</p><a class="button" href="https://app.usesapling.co.uk/login?mode=signup">Join the private beta</a></section>
   </main>
 
   <footer class="site-footer"><div class="footer-inner shell"><a class="wordmark" href="/preview">Sapling</a><div class="footer-links"><a href="/preview/partners">For partners</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a><span>Private beta · UK</span></div></div></footer>
+  <script src="/assets/site.js" defer></script>
 </body>
 </html>
