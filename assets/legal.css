@@ -1,18 +1,18 @@
 :root {
-  --bg: #f8f5ef;
-  --paper: #fffefb;
-  --text: #1a2b1f;
-  --muted: #5a6860;
-  --line: #e0d6c6;
-  --green: #3a7049;
-  --green-dark: #284f34;
-  --sage-soft: #dce8d8;
-  --linen: #f2ece0;
+  --bg: #fbf9f4;
+  --paper: #ffffff;
+  --text: #2b3d32;
+  --muted: #68736c;
+  --line: #dedbd2;
+  --green: #405a49;
+  --green-dark: #344a3c;
+  --sage-soft: #dce3d9;
+  --linen: #f2ede2;
   --max: 860px;
 }
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; font-size: 17px; }
-body { margin: 0; color: var(--text); background: linear-gradient(180deg,#faf7f0 0%,var(--bg) 55%,var(--linen) 100%); font-family: "Nunito Sans","DM Sans",ui-sans-serif,system-ui,sans-serif; font-size: 1rem; line-height: 1.72; -webkit-font-smoothing: antialiased; }
+body { margin: 0; color: var(--text); background: linear-gradient(180deg,#fbf9f4 0%,var(--bg) 55%,var(--linen) 100%); font-family: "Nunito Sans","DM Sans",ui-sans-serif,system-ui,sans-serif; font-size: 1rem; line-height: 1.72; -webkit-font-smoothing: antialiased; }
 a { color: var(--green-dark); text-underline-offset: 3px; }
 .legal-shell { width: min(var(--max),calc(100% - 40px)); margin: 0 auto; }
 .legal-header { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 76px; }
